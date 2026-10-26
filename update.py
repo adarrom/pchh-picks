@@ -28,6 +28,7 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "picks.json")
 # Wikimedia requires a descriptive agent with a contact link; generic ones get blocked from cloud IPs.
 UA = {"User-Agent": "pchh-picks/1.0 (https://github.com/adarrom/pchh-picks; personal TV row)"}
 POSTER_TRIES = 5
+POSTER_SOURCES = 2  # bump when poster sources change, so missing posters get retried
 
 SCHEMA = {
     "type": "object",
@@ -145,38 +146,91 @@ def slug(s):
 
 
 def poster(title, kind, year):
-    """Poster art from Apple's free iTunes Search API, then Wikipedia. '' if nothing found."""
+    """Best available poster URL, '' if none. TV tries TVmaze first; movies try Letterboxd first."""
+    sources = ([tvmaze_poster, letterboxd_poster, itunes_poster, wikipedia_poster] if kind == "tv"
+               else [letterboxd_poster, itunes_poster, wikipedia_poster, tvmaze_poster])
+    for source in sources:
+        try:
+            img = source(title, kind, year)
+        except Exception:
+            img = ""
+        if img:
+            return img
+    return ""
+
+
+def names(title):
+    """Title variants: as given, and the part after a colon ("Rob Anderson: Are You Afraid of the '90s?")."""
+    out = [title]
+    if ":" in title:
+        out.append(title.split(":", 1)[1].strip())
+    return out
+
+
+def plain(s):
+    return slug(s.replace("'", "").replace("\u2019", ""))
+
+
+def tvmaze_poster(title, kind, year):
+    for name in names(title):
+        for hit in json.loads(get("https://api.tvmaze.com/search/shows?q=" + urllib.parse.quote(name)))[:5]:
+            show = hit["show"]
+            same_year = not year or (show.get("premiered") or "")[:4] == str(year)
+            if plain(show.get("name", "")) == plain(name) and same_year and show.get("image"):
+                return show["image"].get("original") or show["image"].get("medium", "")
+    return ""
+
+
+def letterboxd_poster(title, kind, year):
+    """Letterboxd film pages by address (its search page blocks scripts); poster from the page's JSON-LD."""
+    for name in names(title):
+        base = plain(name)
+        for path in ([f"{base}-{year}", base] if year else [base]):
+            try:
+                page = get(f"https://letterboxd.com/film/{path}/", tries=1)
+            except Exception:
+                continue
+            m = re.search(r'<meta property="og:title" content="([^"]*)"', page)
+            page_title = html.unescape(m.group(1)) if m else ""
+            if year and f"({year})" not in page_title:
+                continue  # same name, different film
+            m = re.search(r'<script type="application/ld\+json">\s*(?:/\*.*?\*/)?\s*(\{.*?\})\s*(?:/\*.*?\*/)?\s*</script>', page, re.S)
+            img = json.loads(m.group(1)).get("image", "") if m else ""
+            if img.startswith("https://") and "empty-poster" not in img:
+                return img
+    return ""
+
+
+def itunes_poster(title, kind, year):
     entity = "movie" if kind == "movie" else "tvSeason"
     q = urllib.parse.urlencode({"term": title, "media": "movie" if kind == "movie" else "tvShow",
                                 "entity": entity, "limit": 10, "country": "US"})
-    try:
-        results = json.loads(get("https://itunes.apple.com/search?" + q)).get("results", [])
-        want = slug(title)
+    results = json.loads(get("https://itunes.apple.com/search?" + q)).get("results", [])
+    want = slug(title)
 
-        def name(r):
-            return r.get("trackName") if kind == "movie" else r.get("artistName") or r.get("collectionName", "")
+    def name(r):
+        return r.get("trackName") if kind == "movie" else r.get("artistName") or r.get("collectionName", "")
 
-        def score(r):
-            s = 0
-            if slug(name(r) or "") == want:
-                s += 2
-            elif want in slug(r.get("collectionName", "") or name(r) or ""):
-                s += 1
-            if year and str(r.get("releaseDate", ""))[:4] == str(year):
-                s += 1
-            return s
-        best = max(results, key=score, default=None)
-        if best and score(best) >= 2 and best.get("artworkUrl100"):
-            return best["artworkUrl100"].replace("100x100bb", "600x900bb")
-    except Exception:
-        pass
+    def score(r):
+        s = 0
+        if slug(name(r) or "") == want:
+            s += 2
+        elif want in slug(r.get("collectionName", "") or name(r) or ""):
+            s += 1
+        if year and str(r.get("releaseDate", ""))[:4] == str(year):
+            s += 1
+        return s
+    best = max(results, key=score, default=None)
+    if best and score(best) >= 2 and best.get("artworkUrl100"):
+        return best["artworkUrl100"].replace("100x100bb", "600x900bb")
+    return ""
+
+
+def wikipedia_poster(title, kind, year):
     hint = "film" if kind == "movie" else "television series"
     q = urllib.parse.urlencode({"action": "query", "list": "search", "format": "json", "srlimit": 3,
                                 "srsearch": f"{title} {year or ''} {hint}"})
-    try:
-        hits = json.loads(get("https://en.wikipedia.org/w/api.php?" + q))["query"]["search"]
-    except Exception:
-        hits = []
+    hits = json.loads(get("https://en.wikipedia.org/w/api.php?" + q))["query"]["search"]
     want = slug(title)
     for h in hits:
         if not slug(h["title"]).startswith(want[:20]):
@@ -246,7 +300,11 @@ def main():
     # Retry posters that weren't found earlier (lookups can fail temporarily).
     if not dry:
         for p in data["picks"]:
-            if p.get("image") or p.get("poster_tries", 0) >= POSTER_TRIES:
+            if p.get("image"):
+                continue
+            if p.get("poster_sources", 1) < POSTER_SOURCES:
+                p["poster_tries"], p["poster_sources"] = 0, POSTER_SOURCES
+            if p.get("poster_tries", 0) >= POSTER_TRIES:
                 continue
             p["image"] = poster(p["title"], p["kind"], p.get("year"))
             p["poster_tries"] = p.get("poster_tries", 0) + 1
