@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T02:23:59Z",
+ "updated": "2026-10-26T02:30:34Z",
  "picks": [
   {
    "id": "movie-kill-bury-print",
@@ -11,7 +11,8 @@
    "image": "",
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
-   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning"
+   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
+   "poster_tries": 1
   },
   {
    "id": "tv-the-try-guys-phoning-it-in",
@@ -23,7 +24,8 @@
    "image": "",
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
-   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning"
+   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
+   "poster_tries": 1
   },
   {
    "id": "tv-alias",
@@ -68,10 +70,11 @@
    "year": 1986,
    "host": "Crucchiola",
    "description": "It is a cozy, witchy watch for the season, featuring Tim Curry's gloriously over-the-top performance as a visiting grand wizard, complete with his Halloween song.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/0/0b/The_Worst_Witch_cover.jpg",
    "episode": "Practical Magic 2 and What’s Making Us Happy",
    "episode_date": "2026-09-11",
-   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia"
+   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia",
+   "poster_tries": 1
   },
   {
    "id": "tv-adults",
@@ -131,7 +134,8 @@
    "image": "",
    "episode": "Hadestown and What’s Making Us Happy",
    "episode_date": "2026-07-24",
-   "episode_url": "https://www.npr.org/2026/07/24/nx-s1-5904447/hadestown-is-a-broadway-smash-you-can-finally-see-at-the-movies"
+   "episode_url": "https://www.npr.org/2026/07/24/nx-s1-5904447/hadestown-is-a-broadway-smash-you-can-finally-see-at-the-movies",
+   "poster_tries": 1
   },
   {
    "id": "tv-days-of-our-lives",
@@ -188,10 +192,11 @@
    "year": 2025,
    "host": "Barber",
    "description": "Her first K-drama, a time-travel story about a chef in 1500s Korea that she found ridiculous, funny, surprisingly bloody, and full of great food.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/4/44/Bon_Appetit%2C_Your_Majesty.jpg",
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
-   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in"
+   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
+   "poster_tries": 1
   },
   {
    "id": "tv-haikyu",
@@ -215,7 +220,8 @@
    "image": "",
    "episode": "Disclosure Day and What’s Making Us Happy",
    "episode_date": "2026-06-12",
-   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day"
+   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
+   "poster_tries": 1
   },
   {
    "id": "tv-kylie",
@@ -224,10 +230,11 @@
    "year": null,
    "host": "Weldon",
    "description": "A flawed but worthwhile three-part Netflix documentary on Kylie Minogue's life, loves and career, especially for Americans who underrate her.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/Kylie_Cantrall_3_%28cropped%29.jpg",
    "episode": "Disclosure Day and What’s Making Us Happy",
    "episode_date": "2026-06-12",
-   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day"
+   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
+   "poster_tries": 1
   },
   {
    "id": "tv-interview-with-the-vampire",
@@ -287,7 +294,8 @@
    "image": "",
    "episode": "Mortal Kombat II and What’s Making Us Happy",
    "episode_date": "2026-05-08",
-   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service"
+   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service",
+   "poster_tries": 1
   },
   {
    "id": "tv-mad-men",
@@ -296,10 +304,11 @@
    "year": 2007,
    "host": "Sarmiento",
    "description": "She got through a tough New York winter with a full start-to-finish rewatch and finds the show even better than she remembered.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/3/33/Mad-men-title-card.jpg",
    "episode": "The Devil Wears Prada 2 and What’s Making Us Happy",
    "episode_date": "2026-05-01",
-   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip"
+   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip",
+   "poster_tries": 1
   },
   {
    "id": "movie-blue-heron",
@@ -308,10 +317,11 @@
    "year": 2025,
    "host": "Harris",
    "description": "She called Sophy Romvari's semi-autobiographical debut about a family coping with a troubled teenage son one of the most moving films she has seen in a while.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/f/fe/Blue_Heron_%28film%29_poster.jpg",
    "episode": "Michael and What's Making Us Happy",
    "episode_date": "2026-04-24",
-   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic"
+   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic",
+   "poster_tries": 1
   },
   {
    "id": "tv-summer-house",
@@ -344,10 +354,11 @@
    "year": 2022,
    "host": "Klimek",
    "description": "Lawrence Kasdan's docuseries on Industrial Light & Magic delights him with its look at practical effects history and its moving footage of effects legends aging over the decades.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/9/9c/Light_%26_Magic_poster.jpeg",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
-   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans"
+   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
+   "poster_tries": 1
   },
   {
    "id": "tv-love-overboard",
@@ -359,7 +370,8 @@
    "image": "",
    "episode": "You, Me & Tuscany and What’s Making Us Happy",
    "episode_date": "2026-04-10",
-   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce"
+   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce",
+   "poster_tries": 1
   },
   {
    "id": "movie-natchez",
@@ -383,7 +395,8 @@
    "image": "",
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
-   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama"
+   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
+   "poster_tries": 1
   },
   {
    "id": "tv-bts-the-comeback-live",
@@ -395,7 +408,8 @@
    "image": "",
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
-   "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait"
+   "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
+   "poster_tries": 1
   },
   {
    "id": "tv-liza-with-a-z",
@@ -443,7 +457,8 @@
    "image": "",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "poster_tries": 1
   },
   {
    "id": "movie-splendor-in-the-grass",
@@ -452,10 +467,11 @@
    "year": 1961,
    "host": "Harris",
    "description": "She adores this lush melodrama for its romantic chemistry and its surprisingly empathetic, progressive take on teen angst and therapy.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Splendor_Sheet_A.jpg",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "poster_tries": 1
   },
   {
    "id": "movie-arco",
@@ -548,10 +564,11 @@
    "year": 2023,
    "host": "Harris",
    "description": "She praised this personal South African documentary for its striking exploration of apartheid's lingering effects and its uniquely candid conversation about interracial friendship.",
-   "image": "",
+   "image": "https://upload.wikimedia.org/wikipedia/en/a/a9/Milisuthando.jpg",
    "episode": "Charli xcx, The Moment and What’s Making Us Happy",
    "episode_date": "2026-02-06",
-   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment"
+   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment",
+   "poster_tries": 1
   },
   {
    "id": "tv-my-so-called-life",
@@ -587,7 +604,8 @@
    "image": "",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
-   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help"
+   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help",
+   "poster_tries": 1
   },
   {
    "id": "movie-plainclothes",
