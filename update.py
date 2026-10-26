@@ -29,6 +29,7 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "picks.json")
 UA = {"User-Agent": "pchh-picks/1.0 (https://github.com/adarrom/pchh-picks; personal TV row)"}
 POSTER_TRIES = 5
 POSTER_SOURCES = 2  # bump when poster sources change, so missing posters get retried
+EXTRACT_VERSION = 2  # bump when the prompt changes, so every episode is extracted again
 
 SCHEMA = {
     "type": "object",
@@ -43,8 +44,9 @@ SCHEMA = {
                     "year": {"type": "integer"},
                     "host": {"type": "string"},
                     "why": {"type": "string"},
+                    "verdict": {"type": "string", "enum": ["positive", "mixed", "negative"]},
                 },
-                "required": ["title", "kind", "year", "host", "why"],
+                "required": ["title", "kind", "year", "host", "why", "verdict"],
                 "additionalProperties": False,
             },
         }
@@ -63,6 +65,7 @@ For each pick give:
 - year: release year (first-season year for TV); use 0 if unsure
 - host: the panelist's surname as it appears in the transcript
 - why: one short sentence in your own words on why they recommended it (no quotes)
+- verdict: "positive" only if the panelist sincerely likes the title itself and recommends watching it. Use "mixed" if they have real reservations, are hate-watching, enjoy it ironically or as a guilty pleasure they don't actually recommend, or are mainly praising something around it (a news story, an interview, one guest appearance) rather than the title. Use "negative" if they dislike it.
 
 If there are no movie or TV picks, return an empty list.
 
@@ -264,7 +267,9 @@ def main():
     # Oldest first, so the newest episode's picks end up at the front of the row.
     for ep in sorted(episodes(), key=lambda e: e["date"]):
         state = data["episodes"].get(ep["guid"], {})
-        if state.get("status") in ("done", "no_transcript"):
+        if state.get("status") == "no_transcript":
+            continue
+        if state.get("status") == "done" and state.get("version", 1) >= EXTRACT_VERSION:
             continue
         lines = transcript(ep["story"]) if ep["story"] else None
         label = ep["date"].strftime("%Y-%m-%d") + " " + ep["title"]
@@ -279,23 +284,33 @@ def main():
             seg = segment(lines)
             print(f"would extract: {label}  ({len(seg)} chars)")
             continue
+        # Re-extraction replaces this episode's earlier picks; posters already found are reused.
+        previous = {p["id"]: p for p in data["picks"] if p.get("episode_url") == ep["link"]}
+        data["picks"] = [p for p in data["picks"] if p.get("episode_url") != ep["link"]]
+        seen -= set(previous)
         picks = extract(client, segment(lines))
+        skipped = [p["title"] for p in picks if p["verdict"] != "positive"]
+        picks = [p for p in picks if p["verdict"] == "positive"]
         new = []
         for p in picks:
             pid = p["kind"] + "-" + slug(p["title"])
             if pid in seen:
                 continue
             seen.add(pid)
+            old = previous.get(pid, {})
             new.append({
                 "id": pid, "title": p["title"], "kind": p["kind"], "year": p["year"] or None,
                 "host": p["host"].title(), "description": p["why"],
-                "image": poster(p["title"], p["kind"], p["year"]),
+                "image": old.get("image") or poster(p["title"], p["kind"], p["year"]),
                 "episode": ep["title"], "episode_date": ep["date"].strftime("%Y-%m-%d"),
                 "episode_url": ep["link"],
             })
-        print(f"{label}: {len(picks)} movie/TV picks, {len(new)} new: " + ", ".join(n["title"] for n in new))
-        data["picks"] = new + data["picks"]
-        data["episodes"][ep["guid"]] = {"status": "done", "title": ep["title"], "picks": len(picks)}
+        print(f"{label}: {len(picks)} positive movie/TV picks, {len(new)} new: " + ", ".join(n["title"] for n in new)
+              + (f" | left out (not positive): {', '.join(skipped)}" if skipped else ""))
+        # Newest episode first; within an episode keep the order the picks were made.
+        data["picks"] = sorted(new + data["picks"], key=lambda p: p["episode_date"], reverse=True)
+        data["episodes"][ep["guid"]] = {"status": "done", "title": ep["title"], "picks": len(picks),
+                                        "version": EXTRACT_VERSION}
         changed = True
 
     # Retry posters that weren't found earlier (lookups can fail temporarily).
@@ -309,7 +324,7 @@ def main():
             if p.get("poster_sources", 1) < POSTER_SOURCES:
                 p["poster_tries"], p["poster_sources"] = 0, POSTER_SOURCES
             if p.get("poster_tries", 0) >= POSTER_TRIES:
-                continue
+                continue  # given up; the TV app hides picks without a poster
             p["image"] = poster(p["title"], p["kind"], p.get("year"))
             p["poster_tries"] = p.get("poster_tries", 0) + 1
             print(("poster found: " if p["image"] else "still no poster: ") + p["title"])
