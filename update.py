@@ -250,6 +250,54 @@ def wikipedia_poster(title, kind, year):
     return ""
 
 
+def imdb_id(title, kind, year):
+    """IMDb ID via TVmaze (TV) or the Letterboxd film page (movies, specials). '' if not found."""
+    for source in ("tvmaze", "letterboxd") if kind == "tv" else ("letterboxd", "tvmaze"):
+        for name in names(title):
+            try:
+                if source == "tvmaze":
+                    for hit in json.loads(get("https://api.tvmaze.com/search/shows?q=" + urllib.parse.quote(name)))[:5]:
+                        show = hit["show"]
+                        same_year = not year or (show.get("premiered") or "")[:4] == str(year)
+                        if plain(show.get("name", "")) == plain(name) and same_year and (show.get("externals") or {}).get("imdb"):
+                            return show["externals"]["imdb"]
+                else:
+                    base = plain(name)
+                    for path in ([f"{base}-{year}", base] if year else [base]):
+                        try:
+                            page = get(f"https://letterboxd.com/film/{path}/", tries=1)
+                        except Exception:
+                            continue
+                        m = re.search(r'<meta property="og:title" content="([^"]*)"', page)
+                        if year and f"({year})" not in html.unescape(m.group(1) if m else ""):
+                            continue
+                        m = re.search(r"imdb\.com/title/(tt\d+)", page)
+                        if m:
+                            return m.group(1)
+            except Exception:
+                pass
+    return ""
+
+
+def google_id(imdb):
+    """Google's ID for a title (opens its Google TV page directly), via Wikidata's IMDb link. '' if none."""
+    if not imdb:
+        return ""
+    q = urllib.parse.urlencode({"action": "query", "list": "search", "format": "json",
+                                "srsearch": f"haswbstatement:P345={imdb}"})
+    hits = json.loads(get("https://www.wikidata.org/w/api.php?" + q))["query"]["search"]
+    if not hits:
+        return ""
+    item = hits[0]["title"]
+    claims = json.loads(get(f"https://www.wikidata.org/wiki/Special:EntityData/{item}.json"))["entities"][item]["claims"]
+    for prop in ("P2671", "P646"):  # Google Knowledge Graph ID, then the older Freebase ID
+        for c in claims.get(prop, []):
+            value = c["mainsnak"].get("datavalue", {}).get("value", "")
+            if value.startswith(("/g/", "/m/")):
+                return value
+    return ""
+
+
 def main():
     dry = "--dry-run" in sys.argv
     data = {"updated": None, "picks": [], "episodes": {}}
@@ -312,6 +360,25 @@ def main():
         data["episodes"][ep["guid"]] = {"status": "done", "title": ep["title"], "picks": len(picks),
                                         "version": EXTRACT_VERSION}
         changed = True
+
+    # Google IDs let the TV open a title's page directly. New titles often get one on Wikidata later,
+    # so missing IDs are looked up again once a week.
+    if not dry:
+        today = now.strftime("%Y-%m-%d")
+        for p in data["picks"]:
+            if p.get("google_id"):
+                continue
+            last = p.get("id_checked")
+            if last and (now - datetime.fromisoformat(last).replace(tzinfo=timezone.utc)).days < 7:
+                continue
+            try:
+                p["imdb"] = p.get("imdb") or imdb_id(p["title"], p["kind"], p.get("year"))
+                p["google_id"] = google_id(p["imdb"])
+            except Exception as e:
+                print(f"id lookup failed for {p['title']}: {e}")
+            p["id_checked"] = today
+            print(("google id: " if p.get("google_id") else "no google id yet: ") + p["title"] + (f" ({p['google_id']})" if p.get("google_id") else ""))
+            changed = True
 
     # Retry posters that weren't found earlier (lookups can fail temporarily).
     if not dry:
