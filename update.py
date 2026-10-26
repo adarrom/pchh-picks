@@ -7,6 +7,7 @@ updates picks.json, which the TV app reads. Older picks are never removed.
   python update.py              # normal run (needs ANTHROPIC_API_KEY)
   python update.py --dry-run    # fetch feed + transcripts only, no AI calls, no writes
 """
+import difflib
 import email.utils
 import html
 import json
@@ -29,7 +30,8 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "picks.json")
 UA = {"User-Agent": "pchh-picks/1.0 (https://github.com/adarrom/pchh-picks; personal TV row)"}
 POSTER_TRIES = 5
 POSTER_SOURCES = 2  # bump when poster sources change, so missing posters get retried
-EXTRACT_VERSION = 2  # bump when the prompt changes, so every episode is extracted again
+EXTRACT_VERSION = 2
+ID_VERSION = 2  # bump when the Google ID lookup improves, so missing IDs are looked up again right away  # bump when the prompt changes, so every episode is extracted again
 
 SCHEMA = {
     "type": "object",
@@ -174,12 +176,37 @@ def plain(s):
     return slug(s.replace("'", "").replace("\u2019", ""))
 
 
+def same_name(a, b):
+    """Loose title match: "Haikyu!!" ~ "Haikyuu!!", "Interview with the Vampire" ~ "Anne Rice's Interview with the Vampire"."""
+    a, b = plain(a), plain(b)
+    return bool(a and b) and (a == b or a in b or b in a or difflib.SequenceMatcher(None, a, b).ratio() >= 0.85)
+
+
+def near_year(year, other):
+    """Release years often differ by one between sources (festival vs. release, premiere dates)."""
+    return not year or not other or abs(int(year) - int(other)) <= 1
+
+
+def letterboxd_page(name, year):
+    """The Letterboxd film page for a title, trying year-suffixed addresses first. '' if not found."""
+    base = plain(name)
+    paths = [f"{base}-{y}" for y in (year, year + 1, year - 1)] + [base] if year else [base]
+    for path in paths:
+        try:
+            page = get(f"https://letterboxd.com/film/{path}/", tries=1)
+        except Exception:
+            continue
+        m = re.search(r'<meta property="og:title" content="[^"]*\((\d{4})\)"', page)
+        if near_year(year, m.group(1) if m else None):
+            return page
+    return ""
+
+
 def tvmaze_poster(title, kind, year):
     for name in names(title):
         for hit in json.loads(get("https://api.tvmaze.com/search/shows?q=" + urllib.parse.quote(name)))[:5]:
             show = hit["show"]
-            same_year = not year or (show.get("premiered") or "")[:4] == str(year)
-            if plain(show.get("name", "")) == plain(name) and same_year and show.get("image"):
+            if same_name(show.get("name", ""), name) and near_year(year, (show.get("premiered") or "")[:4]) and show.get("image"):
                 # The launcher won't load TVmaze's multi-megabyte originals; medium is TV-card sized.
                 return show["image"].get("medium") or show["image"].get("original", "")
     return ""
@@ -188,16 +215,8 @@ def tvmaze_poster(title, kind, year):
 def letterboxd_poster(title, kind, year):
     """Letterboxd film pages by address (its search page blocks scripts); poster from the page's JSON-LD."""
     for name in names(title):
-        base = plain(name)
-        for path in ([f"{base}-{year}", base] if year else [base]):
-            try:
-                page = get(f"https://letterboxd.com/film/{path}/", tries=1)
-            except Exception:
-                continue
-            m = re.search(r'<meta property="og:title" content="([^"]*)"', page)
-            page_title = html.unescape(m.group(1)) if m else ""
-            if year and f"({year})" not in page_title:
-                continue  # same name, different film
+        page = letterboxd_page(name, year)
+        if page:
             m = re.search(r'<script type="application/ld\+json">\s*(?:/\*.*?\*/)?\s*(\{.*?\})\s*(?:/\*.*?\*/)?\s*</script>', page, re.S)
             img = json.loads(m.group(1)).get("image", "") if m else ""
             if img.startswith("https://") and "empty-poster" not in img:
@@ -258,22 +277,12 @@ def imdb_id(title, kind, year):
                 if source == "tvmaze":
                     for hit in json.loads(get("https://api.tvmaze.com/search/shows?q=" + urllib.parse.quote(name)))[:5]:
                         show = hit["show"]
-                        same_year = not year or (show.get("premiered") or "")[:4] == str(year)
-                        if plain(show.get("name", "")) == plain(name) and same_year and (show.get("externals") or {}).get("imdb"):
+                        if same_name(show.get("name", ""), name) and near_year(year, (show.get("premiered") or "")[:4]) and (show.get("externals") or {}).get("imdb"):
                             return show["externals"]["imdb"]
                 else:
-                    base = plain(name)
-                    for path in ([f"{base}-{year}", base] if year else [base]):
-                        try:
-                            page = get(f"https://letterboxd.com/film/{path}/", tries=1)
-                        except Exception:
-                            continue
-                        m = re.search(r'<meta property="og:title" content="([^"]*)"', page)
-                        if year and f"({year})" not in html.unescape(m.group(1) if m else ""):
-                            continue
-                        m = re.search(r"imdb\.com/title/(tt\d+)", page)
-                        if m:
-                            return m.group(1)
+                    m = re.search(r"imdb\.com/title/(tt\d+)", letterboxd_page(name, year))
+                    if m:
+                        return m.group(1)
             except Exception:
                 pass
     return ""
@@ -368,7 +377,7 @@ def main():
         for p in data["picks"]:
             if p.get("google_id"):
                 continue
-            last = p.get("id_checked")
+            last = p.get("id_checked") if p.get("id_version", 1) >= ID_VERSION else None
             if last and (now - datetime.fromisoformat(last).replace(tzinfo=timezone.utc)).days < 7:
                 continue
             try:
@@ -376,7 +385,7 @@ def main():
                 p["google_id"] = google_id(p["imdb"])
             except Exception as e:
                 print(f"id lookup failed for {p['title']}: {e}")
-            p["id_checked"] = today
+            p["id_checked"], p["id_version"] = today, ID_VERSION
             print(("google id: " if p.get("google_id") else "no google id yet: ") + p["title"] + (f" ({p['google_id']})" if p.get("google_id") else ""))
             changed = True
 
