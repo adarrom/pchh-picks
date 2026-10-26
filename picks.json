@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T05:26:43Z",
+ "updated": "2026-10-26T20:14:58Z",
  "picks": [
   {
    "id": "movie-kill-bury-print",
@@ -28,7 +28,7 @@
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
    "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
-   "poster_tries": 3,
+   "poster_tries": 4,
    "poster_sources": 2,
    "imdb": "",
    "google_id": "",
@@ -419,7 +419,7 @@
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
    "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
-   "poster_tries": 3,
+   "poster_tries": 4,
    "poster_sources": 2,
    "imdb": "",
    "google_id": "",
