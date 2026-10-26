@@ -25,7 +25,9 @@ START = datetime(2026, 1, 1, tzinfo=timezone.utc)  # user chose: picks from 2026
 GIVE_UP_DAYS = 21  # stop retrying an episode whose transcript never appears
 MODEL = "claude-opus-5-5"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "picks.json")
-UA = {"User-Agent": "Mozilla/5.0 (personal TV recommendations row; github actions)"}
+# Wikimedia requires a descriptive agent with a contact link; generic ones get blocked from cloud IPs.
+UA = {"User-Agent": "pchh-picks/1.0 (https://github.com/adarrom/pchh-picks; personal TV row)"}
+POSTER_TRIES = 5
 
 SCHEMA = {
     "type": "object",
@@ -75,7 +77,7 @@ def get(url, tries=3):
         except Exception:
             if attempt == tries - 1:
                 raise
-            time.sleep(3 * (attempt + 1))
+            time.sleep(5 * (attempt + 1))
 
 
 def episodes():
@@ -179,6 +181,7 @@ def poster(title, kind, year):
     for h in hits:
         if not slug(h["title"]).startswith(want[:20]):
             continue  # top hits can be unrelated articles; require the title to match
+        time.sleep(1)
         try:
             s = json.loads(get("https://en.wikipedia.org/api/rest_v1/page/summary/" + urllib.parse.quote(h["title"].replace(" ", "_"))))
         except Exception:
@@ -239,6 +242,16 @@ def main():
         data["picks"] = new + data["picks"]
         data["episodes"][ep["guid"]] = {"status": "done", "title": ep["title"], "picks": len(picks)}
         changed = True
+
+    # Retry posters that weren't found earlier (lookups can fail temporarily).
+    if not dry:
+        for p in data["picks"]:
+            if p.get("image") or p.get("poster_tries", 0) >= POSTER_TRIES:
+                continue
+            p["image"] = poster(p["title"], p["kind"], p.get("year"))
+            p["poster_tries"] = p.get("poster_tries", 0) + 1
+            print(("poster found: " if p["image"] else "still no poster: ") + p["title"])
+            changed = True
 
     if changed and not dry:
         data["updated"] = now.strftime("%Y-%m-%dT%H:%M:%SZ")
