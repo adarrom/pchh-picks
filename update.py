@@ -177,7 +177,8 @@ def tvmaze_poster(title, kind, year):
             show = hit["show"]
             same_year = not year or (show.get("premiered") or "")[:4] == str(year)
             if plain(show.get("name", "")) == plain(name) and same_year and show.get("image"):
-                return show["image"].get("original") or show["image"].get("medium", "")
+                # The launcher won't load TVmaze's multi-megabyte originals; medium is TV-card sized.
+                return show["image"].get("medium") or show["image"].get("original", "")
     return ""
 
 
@@ -300,6 +301,9 @@ def main():
     # Retry posters that weren't found earlier (lookups can fail temporarily).
     if not dry:
         for p in data["picks"]:
+            if "static.tvmaze.com/uploads/images/original_untouched/" in p.get("image", ""):
+                p["image"] = p["image"].replace("/original_untouched/", "/medium_portrait/")
+                changed = True
             if p.get("image"):
                 continue
             if p.get("poster_sources", 1) < POSTER_SOURCES:
