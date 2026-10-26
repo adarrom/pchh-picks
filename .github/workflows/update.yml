@@ -1,0 +1,39 @@
+name: Update picks
+
+on:
+  schedule:
+    # Daily at 8:00 PT. Episodes usually land Fridays, and transcripts can lag a few days;
+    # runs with nothing new cost nothing.
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-picks
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python update.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Save picks
+        run: |
+          if git diff --quiet -- picks.json 2>/dev/null && git ls-files --error-unmatch picks.json >/dev/null 2>&1; then
+            echo "No changes"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add picks.json
+          git commit -m "Update picks"
+          git push
