@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T03:00:21Z",
+ "updated": "2026-10-26T05:16:11Z",
  "picks": [
   {
    "id": "movie-kill-bury-print",
@@ -7,13 +7,11 @@
    "kind": "movie",
    "year": null,
    "host": "Holmes",
-   "description": "A sobering but important documentary about a small-town Oklahoma family newspaper whose reporting on alleged sheriff's office corruption put them in danger.",
+   "description": "A sobering but important documentary about a small Oklahoma family newspaper that faced alarming threats after reporting on alleged sheriff's office corruption.",
    "image": "https://a.ltrbxd.com/resized/film-poster/1/6/3/6/8/7/6/1636876-kill-bury-print-0-600-0-900-crop.jpg?v=b1da372232",
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
-   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning"
   },
   {
    "id": "tv-the-try-guys-phoning-it-in",
@@ -21,12 +19,12 @@
    "kind": "tv",
    "year": null,
    "host": "Weldon",
-   "description": "A good-natured cooking competition where chefs coach clueless comedians by payphone without naming the dish, producing hilarious results for Nailed It fans.",
+   "description": "A good-natured cooking competition where chefs guide clueless comedians by payphone, with funny results that fill a Nailed It-shaped void.",
    "image": "",
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
    "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
-   "poster_tries": 2,
+   "poster_tries": 1,
    "poster_sources": 2
   },
   {
@@ -35,7 +33,7 @@
    "kind": "tv",
    "year": 2001,
    "host": "Hadadi",
-   "description": "Rewatching it offers a nostalgic, fun break from new TV, with clever cliffhanger-driven storytelling and a great cast.",
+   "description": "Rewatching it is a fun nostalgic break from new TV, with great cliffhangers, well-built episodes, and a charismatic cast.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video62/v4/a5/ef/d3/a5efd33f-2ef2-3659-a8bd-019bd465039b/mzl.toxnbdgb.lsr/600x900bb.jpg",
    "episode": "Digger and What’s Making Us Happy",
    "episode_date": "2026-10-02",
@@ -47,7 +45,7 @@
    "kind": "tv",
    "year": 2022,
    "host": "Demby",
-   "description": "He finds this Australian backwards romcom hilarious, with sharp joke writing, a great ensemble of scene-stealing character actors, and real heart.",
+   "description": "He finds the Australian backwards romcom hilarious, with sharp joke writing, a great ensemble, and real heart.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video122/v4/58/5e/97/585e9759-a6dc-bba8-6618-764bb32ae071/003b5256-203a-4e9c-80d3-57af3515627f_CFA-S01-LSR-3000x3000.jpg/600x900bb.jpg",
    "episode": "Primetime and What's Making Us Happy",
    "episode_date": "2026-09-25",
@@ -59,7 +57,7 @@
    "kind": "movie",
    "year": 2026,
    "host": "Hadadi",
-   "description": "A lighthearted, Halloween-themed stop-motion homage to classic horror that works as a family-friendly spooky outing kids and adults can both enjoy.",
+   "description": "A fun, lighthearted Halloween stop-motion homage to classic horror that works for both kids and adults.",
    "image": "https://upload.wikimedia.org/wikipedia/en/c/cf/Shaun_the_Sheep%2C_The_Beast_of_Mossy_Bottom_poster.jpeg",
    "episode": "Resident Evil and What's Making Us Happy",
    "episode_date": "2026-09-18",
@@ -71,12 +69,11 @@
    "kind": "movie",
    "year": 1986,
    "host": "Crucchiola",
-   "description": "It is a cozy, witchy watch for the season, featuring Tim Curry's gloriously over-the-top performance as a visiting grand wizard, complete with his Halloween song.",
+   "description": "She recommends it as a witchy seasonal watch featuring Tim Curry's gloriously over-the-top performance as a grand wizard visiting a girls' school of witches.",
    "image": "https://upload.wikimedia.org/wikipedia/en/0/0b/The_Worst_Witch_cover.jpg",
    "episode": "Practical Magic 2 and What’s Making Us Happy",
    "episode_date": "2026-09-11",
-   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia"
   },
   {
    "id": "tv-adults",
@@ -84,23 +81,11 @@
    "kind": "tv",
    "year": 2025,
    "host": "Lim",
-   "description": "After a rewatch won her over, she found the new second season consistently funny and meme-worthy, especially as a showcase for Owen Thiele's Anton.",
+   "description": "After warming to the show on a rewatch, she found season two consistently funny and meme-worthy, with Owen Thiele's Anton standing out.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video211/v4/51/e7/0f/51e70f3d-14ec-29ef-86c5-3b2f8ad59207/Adults_s1_3000x3000.jpg/600x900bb.jpg",
    "episode": "Sterling Point and What’s Making Us Happy",
    "episode_date": "2026-09-04",
    "episode_url": "https://www.npr.org/2026/09/04/nx-s1-5954272/youll-want-more-time-in-sterling-point"
-  },
-  {
-   "id": "movie-shaft",
-   "title": "Shaft",
-   "kind": "movie",
-   "year": 1971,
-   "host": "Thompson",
-   "description": "He celebrated the 1971 film alongside its Isaac Hayes score, finding the movie and its iconic music still effortlessly cool on a recent rewatch.",
-   "image": "https://upload.wikimedia.org/wikipedia/en/d/d0/Shaftposter.jpg",
-   "episode": "What's Making Us Happy (1970s Version)",
-   "episode_date": "2026-08-20",
-   "episode_url": "https://www.npr.org/2026/08/20/nx-s1-5936575/1970s-classics-you-should-listen-to-and-read-now"
   },
   {
    "id": "movie-american-doctor",
@@ -108,7 +93,7 @@
    "kind": "movie",
    "year": 2025,
    "host": "Choudhury",
-   "description": "She found this heavy documentary about three American doctors trying to save lives in Gaza gripping in its medical-thriller style and was glad it is getting a theatrical release.",
+   "description": "A heavy but gripping documentary, told like a medical thriller, about three American doctors trying to save lives in Gaza, and she is glad it is getting a theatrical release.",
    "image": "https://upload.wikimedia.org/wikipedia/en/8/89/American_Doctor_poster.jpg",
    "episode": "The End of Oak Street and What’s Making Us Happy",
    "episode_date": "2026-08-14",
@@ -118,63 +103,13 @@
    "id": "movie-the-last-house",
    "title": "The Last House",
    "kind": "movie",
-   "year": 2026,
+   "year": null,
    "host": "Holmes",
-   "description": "She found it a smart, effective locked-in-the-house sci-fi thriller with strong leads in Greta Lee and Wagner Moura, though the ending falls a bit short.",
+   "description": "She found it a smart, effective locked-in-the-house sci-fi thriller with strong leads in Greta Lee and Wagner Moura, though she felt the ending fell a bit short.",
    "image": "https://upload.wikimedia.org/wikipedia/en/b/b2/The_Last_House_poster.jpg",
    "episode": "One Night Only and What’s Making Us Happy",
    "episode_date": "2026-08-07",
    "episode_url": "https://www.npr.org/2026/08/07/nx-s1-5923351/one-night-only-is-a-dystopian-rom-com-with-very-little-to-say"
-  },
-  {
-   "id": "tv-general-hospital",
-   "title": "General Hospital",
-   "kind": "tv",
-   "year": 1963,
-   "host": "Holmes",
-   "description": "She enjoyed John Oliver's game but respectful guest turn as a spy boss named Z, complete with slaps and dramatic close-ups.",
-   "image": "https://static.tvmaze.com/uploads/images/medium_portrait/521/1302689.jpg",
-   "episode": "Hadestown and What’s Making Us Happy",
-   "episode_date": "2026-07-24",
-   "episode_url": "https://www.npr.org/2026/07/24/nx-s1-5904447/hadestown-is-a-broadway-smash-you-can-finally-see-at-the-movies",
-   "poster_tries": 1,
-   "poster_sources": 2
-  },
-  {
-   "id": "tv-days-of-our-lives",
-   "title": "Days of Our Lives",
-   "kind": "tv",
-   "year": 1965,
-   "host": "Holmes",
-   "description": "She is looking forward to John Oliver's upcoming short arc on the soap, which teases an outrageous wig.",
-   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Days_of_Our_Lives_logo.svg/960px-Days_of_Our_Lives_logo.svg.png",
-   "episode": "Hadestown and What’s Making Us Happy",
-   "episode_date": "2026-07-24",
-   "episode_url": "https://www.npr.org/2026/07/24/nx-s1-5904447/hadestown-is-a-broadway-smash-you-can-finally-see-at-the-movies"
-  },
-  {
-   "id": "tv-big-brother",
-   "title": "Big Brother",
-   "kind": "tv",
-   "year": 2000,
-   "host": "Thompson",
-   "description": "The newly premiered 28th season is ideal low-effort background viewing while doing chores, and he jokingly likens its scheming to The Odyssey.",
-   "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/d9/b5/19/d9b5197c-7d5b-7020-4971-06cabb98b70e/BigBrother_S28_CoverArt_TitleLogo_3000x3000.png/600x900bb.jpg",
-   "episode": "The Odyssey and What's Making Us Happy",
-   "episode_date": "2026-07-17",
-   "episode_url": "https://www.npr.org/2026/07/17/nx-s1-5895088/the-odyssey-is-an-ancient-tale-on-a-modern-budget"
-  },
-  {
-   "id": "tv-love-island-usa",
-   "title": "Love Island USA",
-   "kind": "tv",
-   "year": 2019,
-   "host": "Cruz",
-   "description": "She got hooked once Casa Amor began and watches it nightly as a fascinating sociological experiment, even pulling her brother in.",
-   "image": "https://is1-ssl.mzstatic.com/image/thumb/Video113/v4/de/64/48/de6448a9-5494-5274-ec36-b99101f7f1fa/pr_source.jpg/600x900bb.jpg",
-   "episode": "Minions & Monsters and What’s Making Us Happy",
-   "episode_date": "2026-07-03",
-   "episode_url": "https://www.npr.org/2026/07/03/nx-s1-5877885/minions-monsters-is-oddly-enough-a-love-letter-to-old-hollywood"
   },
   {
    "id": "movie-the-godfather",
@@ -182,7 +117,7 @@
    "kind": "movie",
    "year": 1972,
    "host": "Rosario",
-   "description": "While stuck at home for health reasons, she revisited this long classic and found its structure, character arcs, and storytelling still fully live up to the hype.",
+   "description": "While stuck at home with health issues, she revisited this classic epic and found its structure, character arcs, and storytelling still live up to the hype.",
    "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
    "episode": "Supergirl and What’s Making Us Happy",
    "episode_date": "2026-06-26",
@@ -194,12 +129,11 @@
    "kind": "tv",
    "year": 2025,
    "host": "Barber",
-   "description": "Her first K-drama, a time-travel story about a chef in 1500s Korea that she found ridiculous, funny, surprisingly bloody, and full of great food.",
+   "description": "Her first K-drama, about a chef who travels back to 1500s Korea, which she found ridiculous, funny, and surprisingly bloody, and she loved it.",
    "image": "https://upload.wikimedia.org/wikipedia/en/4/44/Bon_Appetit%2C_Your_Majesty.jpg",
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
-   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in"
   },
   {
    "id": "tv-haikyu",
@@ -207,7 +141,7 @@
    "kind": "tv",
    "year": 2014,
    "host": "Barber",
-   "description": "Her teen daughter got her into this volleyball anime, and she was amazed at how compelling a show entirely about volleyball could be.",
+   "description": "Her daughter got her into this volleyball anime, and she found its single-minded focus on the sport incredibly compelling.",
    "image": "https://upload.wikimedia.org/wikipedia/en/6/6b/Haiky%C5%AB_Volume_1.jpg",
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
@@ -219,26 +153,11 @@
    "kind": "tv",
    "year": null,
    "host": "Harris",
-   "description": "A lo-fi but precise millennial stand-up special that tours the chaotic, conservative pop culture of the 1990s with clips, songs and costume changes.",
+   "description": "A lo-fi but precisely crafted standup special that wittily tours the chaotic, conservative pop culture of the 1990s, ideal for millennials.",
    "image": "https://a.ltrbxd.com/resized/film-poster/1/5/7/6/3/5/2/1576352-are-you-afraid-of-the-90s-0-600-0-900-crop.jpg?v=fc71844cca",
    "episode": "Disclosure Day and What’s Making Us Happy",
    "episode_date": "2026-06-12",
-   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
-   "poster_tries": 1,
-   "poster_sources": 2
-  },
-  {
-   "id": "tv-kylie",
-   "title": "Kylie",
-   "kind": "tv",
-   "year": null,
-   "host": "Weldon",
-   "description": "A flawed but worthwhile three-part Netflix documentary on Kylie Minogue's life, loves and career, especially for Americans who underrate her.",
-   "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/Kylie_Cantrall_3_%28cropped%29.jpg",
-   "episode": "Disclosure Day and What’s Making Us Happy",
-   "episode_date": "2026-06-12",
-   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day"
   },
   {
    "id": "tv-interview-with-the-vampire",
@@ -246,7 +165,7 @@
    "kind": "tv",
    "year": 2022,
    "host": "Monique",
-   "description": "Its third season, retitled The Vampire Lestat, boldly shifts the lead to Sam Reid's Lestat and becomes a musical, and the early episodes pull off that risky change.",
+   "description": "The third season, now called The Vampire Lestat, shifts the lead to Sam Reid's Lestat and boldly becomes a musical, and the early episodes pull it off.",
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/Interview_with_the_Vampire_%28TV_series%29_title_card.png",
    "episode": "Masters of the Universe and What’s Making Us Happy",
    "episode_date": "2026-06-05",
@@ -258,7 +177,7 @@
    "kind": "movie",
    "year": 2026,
    "host": "Klimek",
-   "description": "He called Boots Riley's new satire a wilder, funnier, more ambitious leap beyond Sorry To Bother You and good counterprogramming worth seeking out in theaters.",
+   "description": "He recommends Boots Riley's wild, ambitious anti-capitalist satire as theatrical counterprogramming, calling it a big step up from his earlier work.",
    "image": "https://upload.wikimedia.org/wikipedia/en/2/2c/I_Love_Boosters_poster.jpg",
    "episode": "Star Wars: The Mandalorian and Grogu and What’s Making Us Happy",
    "episode_date": "2026-05-22",
@@ -270,7 +189,7 @@
    "kind": "tv",
    "year": 2026,
    "host": "Crucchiola",
-   "description": "She loves how its strong cast, including Elle Fanning, Michelle Pfeiffer and a tear-jerking Greg Kinnear, captures a young single mother's timeless struggles and joys in a packed dramedy.",
+   "description": "She loves Elle Fanning's performance and how the dramedy captures a young single mother's timeless emotional struggles, with Greg Kinnear moving her to tears.",
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Margo%27s_Got_Money_Troubles_%28logo%29.svg/3840px-Margo%27s_Got_Money_Troubles_%28logo%29.svg.png",
    "episode": "Obsession and What’s Making Us Happy",
    "episode_date": "2026-05-15",
@@ -282,7 +201,7 @@
    "kind": "tv",
    "year": 2026,
    "host": "Weldon",
-   "description": "He finds this suspenseful British undercover customs drama a cynical, Wire-like look at early-90s drug policy, anchored by a rare straight, tough-guy turn from Steve Coogan.",
+   "description": "He praised this suspenseful British undercover drug-squad drama for its Wire-like political cynicism and Steve Coogan's straight, tough-guy role.",
    "image": "https://upload.wikimedia.org/wikipedia/en/6/66/Legends_2026_TV_series_poster.jpeg",
    "episode": "Obsession and What’s Making Us Happy",
    "episode_date": "2026-05-15",
@@ -293,14 +212,12 @@
    "title": "Your Friends & Neighbors",
    "kind": "tv",
    "year": 2025,
-   "host": "Young Jr.",
-   "description": "He finds season 2 surprisingly compelling now that it gives the whole neighborhood fleshed-out arcs, which reminds him of a modern Desperate Housewives told more from the men's side, and he looks forward to it every week.",
+   "host": "Jr.",
+   "description": "Season 2 expands the neighborhood ensemble with richer character arcs, giving it a Desperate Housewives feel from the men's perspective.",
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/620/1550778.jpg",
    "episode": "Mortal Kombat II and What’s Making Us Happy",
    "episode_date": "2026-05-08",
-   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service"
   },
   {
    "id": "tv-mad-men",
@@ -308,12 +225,11 @@
    "kind": "tv",
    "year": 2007,
    "host": "Sarmiento",
-   "description": "She got through a tough New York winter with a full start-to-finish rewatch and finds the show even better than she remembered.",
+   "description": "She has been doing a full beginning-to-end rewatch to get through winter and finds the show even better than she remembered.",
    "image": "https://upload.wikimedia.org/wikipedia/en/3/33/Mad-men-title-card.jpg",
    "episode": "The Devil Wears Prada 2 and What’s Making Us Happy",
    "episode_date": "2026-05-01",
-   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip"
   },
   {
    "id": "movie-blue-heron",
@@ -321,12 +237,11 @@
    "kind": "movie",
    "year": 2025,
    "host": "Harris",
-   "description": "She called Sophy Romvari's semi-autobiographical debut about a family coping with a troubled teenage son one of the most moving films she has seen in a while.",
+   "description": "A deeply moving debut feature about a family strained by a troubled teenage son, which she called one of the best films she has seen in a while.",
    "image": "https://upload.wikimedia.org/wikipedia/en/f/fe/Blue_Heron_%28film%29_poster.jpg",
    "episode": "Michael and What's Making Us Happy",
    "episode_date": "2026-04-24",
-   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic"
   },
   {
    "id": "tv-summer-house",
@@ -334,7 +249,7 @@
    "kind": "tv",
    "year": 2017,
    "host": "Young Jr.",
-   "description": "The current cast drama makes for easy, brain-off summer viewing that he enjoys following along with online.",
+   "description": "He's an longtime fan enjoying the current cast drama as easy, breezy summer viewing.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/6a/f8/09/6af80932-78d9-cb4b-1236-369ba90db36d/mzl.qsupuhoo.lsr/600x900bb.jpg",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
@@ -344,9 +259,9 @@
    "id": "tv-the-real-housewives-of-rhode-island",
    "title": "The Real Housewives of Rhode Island",
    "kind": "tv",
-   "year": null,
+   "year": 2025,
    "host": "Young Jr.",
-   "description": "The newest Real Housewives installment is part of the breezy Bravo fun keeping him entertained this summer.",
+   "description": "The newest Real Housewives installment is part of his fun, turn-your-brain-off Bravo summer.",
    "image": "https://upload.wikimedia.org/wikipedia/en/8/82/Real_Housewives_of_Rhode_Island.png",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
@@ -358,34 +273,31 @@
    "kind": "tv",
    "year": 2022,
    "host": "Klimek",
-   "description": "Lawrence Kasdan's docuseries on Industrial Light & Magic delights him with its look at practical effects history and its moving footage of effects legends aging over the decades.",
+   "description": "Lawrence Kasdan's docuseries on Industrial Light & Magic delights him with practical effects history and moving long-span interviews.",
    "image": "https://upload.wikimedia.org/wikipedia/en/9/9c/Light_%26_Magic_poster.jpeg",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
-   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans"
   },
   {
    "id": "tv-love-overboard",
    "title": "Love Overboard",
    "kind": "tv",
-   "year": 2026,
+   "year": null,
    "host": "Lim",
-   "description": "She enjoys this yacht-set reality dating show, where uncoupled singles work below deck and scheme to break up couples so they can move upstairs, and she likes Gabby Windey's sharp hosting and the show's look at class mobility.",
+   "description": "A Hulu reality dating show on a yacht in Malta where uncoupled singles work below deck and scheme to break up couples, which she finds a sharp look at class mobility with a biting host in Gabby Windey.",
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/619/1548673.jpg",
    "episode": "You, Me & Tuscany and What’s Making Us Happy",
    "episode_date": "2026-04-10",
-   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce"
   },
   {
    "id": "movie-natchez",
    "title": "Natchez",
    "kind": "movie",
-   "year": null,
+   "year": 2024,
    "host": "Choudhury",
-   "description": "It is a surprisingly funny documentary about a Mississippi tourist town built on antebellum mansions, and it makes you think about how America remembers its history of slavery.",
+   "description": "A surprisingly funny documentary about a Mississippi town's antebellum home tours that makes you think about how America confronts its history of slavery.",
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c1/Natchez_poster.jpg",
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
@@ -397,13 +309,11 @@
    "kind": "tv",
    "year": null,
    "host": "Harris",
-   "description": "It is a dating reality show where singles can't ask each other's ages, and it turned out sweeter and more balanced than she expected.",
+   "description": "A dating reality show where singles connect without knowing each other's ages, which she found more balanced and sweeter than expected.",
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/619/1548340.jpg",
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
-   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama"
   },
   {
    "id": "tv-bts-the-comeback-live",
@@ -411,12 +321,12 @@
    "kind": "tv",
    "year": 2026,
    "host": "Yang",
-   "description": "Seeing the reunited boy band perform together felt fresh and innocent, despite RM being unable to dance after a rehearsal injury.",
+   "description": "He stayed up to watch the reunion concert and found the group's return a joyful, refreshing bit of innocence.",
    "image": "",
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
    "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
-   "poster_tries": 2,
+   "poster_tries": 1,
    "poster_sources": 2
   },
   {
@@ -425,7 +335,7 @@
    "kind": "tv",
    "year": 1972,
    "host": "Harris",
-   "description": "Liza Minnelli's new memoir sent her back to this Fosse-directed concert special of Liza in her prime, especially the I Gotcha number.",
+   "description": "Her new memoir sent her back to this Fosse-directed TV concert showing Liza Minnelli at her peak.",
    "image": "https://upload.wikimedia.org/wikipedia/en/5/50/LizawithaZ.jpg",
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
@@ -437,7 +347,7 @@
    "kind": "tv",
    "year": 2014,
    "host": "Young",
-   "description": "He is finally bingeing the whole series and loves its wordplay, animal jokes, and dark existential core.",
+   "description": "He is finally bingeing the whole series and loves its wordplay, animal jokes, and darkly existential core.",
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/BoJack_Horseman_Logo.svg/960px-BoJack_Horseman_Logo.svg.png",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
@@ -449,7 +359,7 @@
    "kind": "movie",
    "year": 2022,
    "host": "Holmes",
-   "description": "She highlights it as a showcase for Daniel Radcliffe's underrated comedic talent as a very funny villain.",
+   "description": "She wants to highlight Daniel Radcliffe's comedic talent, and he is very funny as the villain in this rom-com.",
    "image": "https://upload.wikimedia.org/wikipedia/en/e/ee/TheLostCityPoster.jpg",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
@@ -461,13 +371,11 @@
    "kind": "movie",
    "year": 2013,
    "host": "Holmes",
-   "description": "She praises it as a charming rom-com that questions genre clichés, with Radcliffe and the cast at their funniest.",
+   "description": "A charming romantic comedy that questions rom-com tropes, with Radcliffe, Zoe Kazan, and Adam Driver all very funny.",
    "image": "https://a.ltrbxd.com/resized/sm/upload/gw/ai/6k/gs/what-if-0-600-0-900-crop.jpg?v=05d71cfbb0",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
   },
   {
    "id": "movie-splendor-in-the-grass",
@@ -475,12 +383,11 @@
    "kind": "movie",
    "year": 1961,
    "host": "Harris",
-   "description": "She adores this lush melodrama for its romantic chemistry and its surprisingly empathetic, progressive take on teen angst and therapy.",
+   "description": "She loves this lush melodrama for its steamy chemistry and surprisingly empathetic take on teen angst and therapy.",
    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Splendor_Sheet_A.jpg",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
   },
   {
    "id": "movie-arco",
@@ -488,20 +395,8 @@
    "kind": "movie",
    "year": 2025,
    "host": "Weldon",
-   "description": "He enjoyed this Oscar-nominated, Miyazaki-influenced French animated adventure about a time-traveling kid, especially its fun celebrity-voiced villains in the dub.",
+   "description": "A fun, Miyazaki-influenced French animated Oscar nominee about a boy from the future befriending a girl, with an entertaining dub cast.",
    "image": "https://upload.wikimedia.org/wikipedia/en/a/ae/Arco_poster.jpg",
-   "episode": "2026 Oscars Guide and What's Making Us Happy",
-   "episode_date": "2026-03-13",
-   "episode_url": "https://www.npr.org/2026/03/13/nx-s1-5745811/2026-oscars-guide-who-will-win-and-who-should-win"
-  },
-  {
-   "id": "movie-mercy",
-   "title": "Mercy",
-   "kind": "movie",
-   "year": 2026,
-   "host": "Holmes",
-   "description": "She found this Chris Pratt AI-courtroom thriller hilariously bad and had a great time giggling through it.",
-   "image": "https://upload.wikimedia.org/wikipedia/en/4/43/Mercy_2026_poster.jpeg",
    "episode": "2026 Oscars Guide and What's Making Us Happy",
    "episode_date": "2026-03-13",
    "episode_url": "https://www.npr.org/2026/03/13/nx-s1-5745811/2026-oscars-guide-who-will-win-and-who-should-win"
@@ -512,20 +407,8 @@
    "kind": "movie",
    "year": null,
    "host": "Weldon",
-   "description": "This Oscar-nominated minimalist animated short packs a surprising range of poignant emotion into seven minutes as a man imagines his retirement.",
+   "description": "An Oscar-nominated minimalist animated short that packs a full range of poignant emotions into seven minutes as a man imagines his retirement.",
    "image": "https://upload.wikimedia.org/wikipedia/en/5/58/Retirement_Plan_Film_Poster.jpg",
-   "episode": "The Bride! and What's Making Us Happy",
-   "episode_date": "2026-03-06",
-   "episode_url": "https://www.npr.org/2026/03/06/nx-s1-5737348/the-bride-is-more-than-the-sum-of-its-parts"
-  },
-  {
-   "id": "movie-gugusse-and-the-automaton",
-   "title": "Gugusse and the Automaton",
-   "kind": "movie",
-   "year": 1897,
-   "host": "Thompson",
-   "description": "A long-lost Georges Méliès short featuring possibly the first robot on screen was rediscovered and preserved, a treat for film history lovers.",
-   "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Gugusse_et_l%27Automate_-_1897.webm/1280px--Gugusse_et_l%27Automate_-_1897.webm.jpg",
    "episode": "The Bride! and What's Making Us Happy",
    "episode_date": "2026-03-06",
    "episode_url": "https://www.npr.org/2026/03/06/nx-s1-5737348/the-bride-is-more-than-the-sum-of-its-parts"
@@ -536,7 +419,7 @@
    "kind": "tv",
    "year": 2026,
    "host": "Weldon",
-   "description": "He found this goofy adult animated Vegas lawyer comedy consistently funny, with sharp, fast writing and a voice cast that felt tailor-made for him.",
+   "description": "He found this goofy adult animated Netflix comedy about a Las Vegas lawyer sharply written with fast jokes and a voice cast tailored to his tastes.",
    "image": "https://upload.wikimedia.org/wikipedia/en/3/37/Strip_Law.jpg",
    "episode": "Winter Olympics and What’s Making Us Happy",
    "episode_date": "2026-02-20",
@@ -548,7 +431,7 @@
    "kind": "tv",
    "year": 2020,
    "host": "Hardymon",
-   "description": "She loves it as kind, cozy comfort TV about a Yorkshire country vet that her whole family enjoys, with just enough grit to feel real.",
+   "description": "A kind, cozy PBS drama about a Yorkshire country vet that offers comfort with just enough grit and appeals to her whole family.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/06/d5/78/06d578a6-1709-633f-63e8-687d32192578/0ff79e84-8492-4dcc-b6f7-b3be82382174_PBS_IT_MS230100V_3000x3000.png/600x900bb.jpg",
    "episode": "“Wuthering Heights” and What’s Making Us Happy",
    "episode_date": "2026-02-13",
@@ -560,7 +443,7 @@
    "kind": "tv",
    "year": 2011,
    "host": "Anderson",
-   "description": "He recently discovered this long-running Appalachian moonshining docuseries and loves its reality drama and familiar Southern slice of life.",
+   "description": "He recently discovered this long-running docuseries about Appalachian moonshine makers and enjoys its drama and familiar Southern slice of life.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video/v4/c5/44/dd/c544ddc5-448c-70f4-09e6-7517c9436ab2/mzl.myrqscai.jpg/600x900bb.jpg",
    "episode": "Charli xcx, The Moment and What’s Making Us Happy",
    "episode_date": "2026-02-06",
@@ -572,12 +455,11 @@
    "kind": "movie",
    "year": 2023,
    "host": "Harris",
-   "description": "She praised this personal South African documentary for its striking exploration of apartheid's lingering effects and its uniquely candid conversation about interracial friendship.",
+   "description": "She praises this personal South African documentary for its striking archival footage and unusually candid exploration of apartheid's legacy and interracial friendship.",
    "image": "https://upload.wikimedia.org/wikipedia/en/a/a9/Milisuthando.jpg",
    "episode": "Charli xcx, The Moment and What’s Making Us Happy",
    "episode_date": "2026-02-06",
-   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment",
-   "poster_tries": 1
+   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment"
   },
   {
    "id": "tv-my-so-called-life",
@@ -585,7 +467,7 @@
    "kind": "tv",
    "year": 1994,
    "host": "Meinzer",
-   "description": "Rewatching it reveals outstanding writing and acting that mostly holds up, plus a fascinating, sometimes cringey 1990s time capsule.",
+   "description": "Rewatching it showed her the writing and acting still largely hold up, and it works as a fascinating '90s time capsule, despite some topics being handled clumsily.",
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/My_So-Called_Life.svg/1280px-My_So-Called_Life.svg.png",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
@@ -596,8 +478,8 @@
    "title": "A Knight of the Seven Kingdoms",
    "kind": "tv",
    "year": 2026,
-   "host": "Jr.",
-   "description": "This Game of Thrones spinoff is funny and lighthearted, focusing on a smaller character-driven quest rather than heavy lore.",
+   "host": "Young",
+   "description": "He loved the lighthearted, funny first episode's small-scale, character-focused story set in the familiar Game of Thrones world.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/a0/4d/d0/a04dd09c-6a0e-4544-510c-e1c13ab3692c/KnightSevenKingdoms_S1_S_KA_TT_3000x3000_300dpi_EN.jpg/600x900bb.jpg",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
@@ -609,13 +491,11 @@
    "kind": "tv",
    "year": 2023,
    "host": "Holmes",
-   "description": "Back for a third season, it is one of the kindest and funniest shows around, deftly mixing moving moments with comedy.",
+   "description": "One of her favorite shows, returning for season three, it is kind, very funny, and blends moving and comedic moments with a great cast.",
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/610/1527402.jpg",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
-   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help"
   },
   {
    "id": "movie-plainclothes",
@@ -623,7 +503,7 @@
    "kind": "movie",
    "year": 2025,
    "host": "Weldon",
-   "description": "He found this solid, unfussy debut about a closeted undercover cop well made, and felt its handheld video flourishes suited a film about surveillance.",
+   "description": "He found this debut drama about a closeted undercover cop solid and unfussy, and he liked its handheld-video style as a fit for its surveillance theme.",
    "image": "https://upload.wikimedia.org/wikipedia/en/b/bf/Plainclothes_film_poster.jpg",
    "episode": "One Battle After Another and What’s Making Us Happy",
    "episode_date": "2026-01-23",
@@ -635,7 +515,7 @@
    "kind": "movie",
    "year": 2025,
    "host": "Harris",
-   "description": "She called it one of the best films at Sundance, a layered and harrowing documentary about the fallout of To Catch a Predator.",
+   "description": "She called this documentary about the fallout of To Catch a Predator a layered, harrowing look at what the show actually accomplished and what it cost.",
    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Predators_film_poster.png",
    "episode": "One Battle After Another and What’s Making Us Happy",
    "episode_date": "2026-01-23",
@@ -647,7 +527,7 @@
    "kind": "tv",
    "year": 2020,
    "host": "Kesler",
-   "description": "Kesler is thrilled that the high-stakes British finance drama is back for a fourth season packed with new characters and big drama, making it appointment viewing again.",
+   "description": "The new fourth season of the high-stakes British banking drama brings a strong start, exciting new cast additions, and a payoff for sticking with the show.",
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c2/Industry_title.png",
    "episode": "28 Years Later: The Bone Temple and What’s Making Us Happy",
    "episode_date": "2026-01-16",
@@ -659,7 +539,7 @@
    "kind": "tv",
    "year": 2026,
    "host": "Holmes",
-   "description": "She wanted easygoing, undemanding comfort TV, and this Doc Martin adaptation starring Josh Charles as a grumpy surgeon in a small Maine town goes down easy.",
+   "description": "She finds this Doc Martin adaptation starring Josh Charles to be comforting, undemanding television that goes down easy in stressful times.",
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/00/37/49/003749dd-06fa-2859-5657-85bc491724c7/BMD_S2_iTunes_KeyArt_3000x3000_Bugged.png/600x900bb.jpg",
    "episode": "People We Meet On Vacation and What's Making Us Happy",
    "episode_date": "2026-01-09",
@@ -671,7 +551,7 @@
    "kind": "tv",
    "year": 2025,
    "host": "Weldon",
-   "description": "He finds the UK celebrity edition the coziest and best version of the show, thanks to its charming, talented cast and warm host Claudia Winkleman.",
+   "description": "He found this UK celebrity version the coziest and best take on the format, thanks to a charming, polite cast and an encouraging host in Claudia Winkleman, and says it's worth watching even if you already know the ending.",
    "image": "https://upload.wikimedia.org/wikipedia/en/7/78/The_Celebrity_Traitors_logo.jpg",
    "episode": "2026 Resolutions and What’s Making Us Happy",
    "episode_date": "2026-01-02",
@@ -682,107 +562,128 @@
   "670fed58-7d08-4317-9251-e07b7a30f147": {
    "status": "done",
    "title": "2026 Resolutions and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "4006cb6d-4bbb-43a2-9db5-c63f499c75bc": {
    "status": "done",
    "title": "People We Meet On Vacation and What's Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "824dfc99-f395-4a77-96db-d4287a0144ea": {
    "status": "done",
    "title": "28 Years Later: The Bone Temple and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "048e4fa9-7f89-4fba-ad52-5bfcf3ee7899": {
    "status": "done",
    "title": "One Battle After Another and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "daf58b4f-d0ba-49c9-a44a-56f471d99908": {
    "status": "done",
    "title": "Send Help and What’s Making Us Happy",
-   "picks": 3
+   "picks": 3,
+   "version": 2
   },
   "26f49da2-7af7-42dd-8c56-a2c62a9bb31a": {
    "status": "done",
    "title": "Charli xcx, The Moment and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "e14a42a7-999d-4bdb-8c65-275227c803f7": {
    "status": "done",
    "title": "“Wuthering Heights” and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "e9f65d2f-e5be-460f-a2c1-8e43c83d84c7": {
    "status": "done",
    "title": "Winter Olympics and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "b69d95b3-433b-42d3-bd92-f51689363365": {
    "status": "done",
    "title": "Scream 7 and What's Making Us Happy",
-   "picks": 0
+   "picks": 0,
+   "version": 2
   },
   "0f729101-f7e9-4991-b5f1-ebb3573508c0": {
    "status": "done",
    "title": "The Bride! and What's Making Us Happy",
-   "picks": 2
+   "picks": 1,
+   "version": 2
   },
   "3b5442fd-6f5d-4086-b831-2c112a594ad9": {
    "status": "done",
    "title": "2026 Oscars Guide and What's Making Us Happy",
-   "picks": 2
+   "picks": 1,
+   "version": 2
   },
   "29f839a9-9660-4ea2-84d1-ddabed5c1fd7": {
    "status": "done",
    "title": "Project Hail Mary and What’s Making Us Happy",
-   "picks": 4
+   "picks": 4,
+   "version": 2
   },
   "ace510bf-1f32-43d1-8b89-0fff49d60aa8": {
    "status": "done",
    "title": "Bait and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "3019b5d9-e361-4e83-b426-bf2aadc129bc": {
    "status": "done",
    "title": "The Drama and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "03239ad3-d1cc-4cd2-8b16-52c9f8284571": {
    "status": "done",
    "title": "You, Me & Tuscany and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "ee880e80-2850-48b9-b5e7-b1da1b344abe": {
    "status": "done",
    "title": "Normal and What’s Making Us Happy",
-   "picks": 3
+   "picks": 3,
+   "version": 2
   },
   "57da8aae-0bfd-4040-ae0b-ba2239f28082": {
    "status": "done",
    "title": "Michael and What's Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "e4187e5e-1731-4267-94fa-1c92683c565d": {
    "status": "done",
    "title": "The Devil Wears Prada 2 and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "49e8aa8c-de31-433f-97fb-483ba511c950": {
    "status": "done",
    "title": "Mortal Kombat II and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "75204cb3-2283-4cb8-9f31-4919b53cbec4": {
    "status": "done",
    "title": "Obsession and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "2dfe92b1-7c40-4131-aee0-abbcaac48671": {
    "status": "done",
    "title": "Star Wars: The Mandalorian and Grogu and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "dc8eb716-9a6b-434d-8b12-172949d393e7": {
    "status": "no_transcript",
@@ -791,27 +692,32 @@
   "7eff2218-12c8-4595-8e83-fc0cccc63823": {
    "status": "done",
    "title": "Masters of the Universe and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "3a09af30-7877-48bb-a79c-0506c9bc7e96": {
    "status": "done",
    "title": "Disclosure Day and What’s Making Us Happy",
-   "picks": 2
+   "picks": 1,
+   "version": 2
   },
   "f7359f0a-0e2d-4e5d-b59e-0d6f6d009f93": {
    "status": "done",
    "title": "Toy Story 5 and What's Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "a783473d-5bb1-4f2d-95bc-65938697438d": {
    "status": "done",
    "title": "Supergirl and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "1a988111-2b4e-491e-a7cd-ca57f8380214": {
    "status": "done",
    "title": "Minions & Monsters and What’s Making Us Happy",
-   "picks": 1
+   "picks": 0,
+   "version": 2
   },
   "cf7be699-930d-45e5-9a12-0082a309755a": {
    "status": "no_transcript",
@@ -820,77 +726,92 @@
   "b306f3bf-0b7f-4407-989f-4d35ad17df3e": {
    "status": "done",
    "title": "The Odyssey and What's Making Us Happy",
-   "picks": 1
+   "picks": 0,
+   "version": 2
   },
   "14269d34-54ea-43c2-a812-c277e2c1abaa": {
    "status": "done",
    "title": "Hadestown and What’s Making Us Happy",
-   "picks": 2
+   "picks": 0,
+   "version": 2
   },
   "8b76c26a-070d-473c-a7f7-eec086fe9e73": {
    "status": "done",
    "title": "Spider-Man: Brand New Day and What’s Making Us Happy",
-   "picks": 0
+   "picks": 0,
+   "version": 2
   },
   "ab9d023a-eda5-477e-ac24-be8a62183952": {
    "status": "done",
    "title": "One Night Only and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "def7f59c-6c5a-4bc8-8ff3-ffbf12e5805d": {
    "status": "done",
    "title": "The End of Oak Street and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "e01d4284-551f-4164-abc2-f14bc489695c": {
    "status": "done",
    "title": "What's Making Us Happy (1970s Version)",
-   "picks": 1
+   "picks": 0,
+   "version": 2
   },
   "f85ee645-2231-4267-bf49-4013a3e31e39": {
    "status": "done",
    "title": "Tony and What’s Making Us Happy",
-   "picks": 0
+   "picks": 0,
+   "version": 2
   },
   "4fdd83d8-7107-4179-a945-27efef83d509": {
    "status": "done",
    "title": "Sterling Point and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "736b3b55-0fcd-44bf-a8e2-c6c676093e99": {
    "status": "done",
    "title": "Practical Magic 2 and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "dfbce54b-9d5d-4c6b-a16a-a9d1a192b466": {
    "status": "done",
    "title": "Resident Evil and What's Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "fe88775e-105d-4b36-bb04-1016a436a6aa": {
    "status": "done",
    "title": "Primetime and What's Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "7af6459d-a302-4acc-9b6a-a85f52ba61ae": {
    "status": "done",
    "title": "Digger and What’s Making Us Happy",
-   "picks": 1
+   "picks": 1,
+   "version": 2
   },
   "da8560c5-9bec-4cb8-b402-753add713bf3": {
    "status": "done",
    "title": "The Social Reckoning and What’s Making Us Happy",
-   "picks": 2
+   "picks": 2,
+   "version": 2
   },
   "c63b2d81-5296-493d-8560-b8f0407c8395": {
    "status": "done",
    "title": "Whalefall and What's Making Us Happy",
-   "picks": 0
+   "picks": 0,
+   "version": 2
   },
   "b4f9daa7-0606-4b51-bdab-838642a222b1": {
    "status": "done",
    "title": "Wicker and What’s Making Us Happy",
-   "picks": 0
+   "picks": 0,
+   "version": 2
   }
  }
 }
