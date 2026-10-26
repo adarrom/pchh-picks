@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T05:16:11Z",
+ "updated": "2026-10-26T05:23:03Z",
  "picks": [
   {
    "id": "movie-kill-bury-print",
@@ -11,7 +11,10 @@
    "image": "https://a.ltrbxd.com/resized/film-poster/1/6/3/6/8/7/6/1636876-kill-bury-print-0-600-0-900-crop.jpg?v=b1da372232",
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
-   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning"
+   "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
+   "imdb": "tt46076019",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-the-try-guys-phoning-it-in",
@@ -24,8 +27,11 @@
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
    "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "poster_tries": 2,
+   "poster_sources": 2,
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-alias",
@@ -37,7 +43,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video62/v4/a5/ef/d3/a5efd33f-2ef2-3659-a8bd-019bd465039b/mzl.toxnbdgb.lsr/600x900bb.jpg",
    "episode": "Digger and What’s Making Us Happy",
    "episode_date": "2026-10-02",
-   "episode_url": "https://www.npr.org/2026/10/02/nx-s1-5987700/tom-cruise-in-digger-is-loud-divisive-and-intensely-committed-to-the-bit"
+   "episode_url": "https://www.npr.org/2026/10/02/nx-s1-5987700/tom-cruise-in-digger-is-loud-divisive-and-intensely-committed-to-the-bit",
+   "imdb": "tt0285333",
+   "google_id": "/m/01rf57",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-colin-from-accounts",
@@ -49,7 +58,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video122/v4/58/5e/97/585e9759-a6dc-bba8-6618-764bb32ae071/003b5256-203a-4e9c-80d3-57af3515627f_CFA-S01-LSR-3000x3000.jpg/600x900bb.jpg",
    "episode": "Primetime and What's Making Us Happy",
    "episode_date": "2026-09-25",
-   "episode_url": "https://www.npr.org/2026/09/25/nx-s1-5979909/primetime-sits-you-down-with-sleaze"
+   "episode_url": "https://www.npr.org/2026/09/25/nx-s1-5979909/primetime-sits-you-down-with-sleaze",
+   "imdb": "tt18228732",
+   "google_id": "/g/11t189spv8",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-shaun-the-sheep-the-beast-of-mossy-bottom",
@@ -61,7 +73,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/c/cf/Shaun_the_Sheep%2C_The_Beast_of_Mossy_Bottom_poster.jpeg",
    "episode": "Resident Evil and What's Making Us Happy",
    "episode_date": "2026-09-18",
-   "episode_url": "https://www.npr.org/2026/09/18/nx-s1-5973148/resident-evil-is-a-grisly-funny-fight-to-survive"
+   "episode_url": "https://www.npr.org/2026/09/18/nx-s1-5973148/resident-evil-is-a-grisly-funny-fight-to-survive",
+   "imdb": "tt36841161",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-the-worst-witch",
@@ -73,7 +88,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/0/0b/The_Worst_Witch_cover.jpg",
    "episode": "Practical Magic 2 and What’s Making Us Happy",
    "episode_date": "2026-09-11",
-   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia"
+   "episode_url": "https://www.npr.org/2026/09/11/nx-s1-5965548/practical-magic-2-wants-to-cast-a-spell-of-90s-nostalgia",
+   "imdb": "tt0092239",
+   "google_id": "/m/06_vqnt",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-adults",
@@ -85,7 +103,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video211/v4/51/e7/0f/51e70f3d-14ec-29ef-86c5-3b2f8ad59207/Adults_s1_3000x3000.jpg/600x900bb.jpg",
    "episode": "Sterling Point and What’s Making Us Happy",
    "episode_date": "2026-09-04",
-   "episode_url": "https://www.npr.org/2026/09/04/nx-s1-5954272/youll-want-more-time-in-sterling-point"
+   "episode_url": "https://www.npr.org/2026/09/04/nx-s1-5954272/youll-want-more-time-in-sterling-point",
+   "imdb": "tt33049767",
+   "google_id": "/g/11x6qfg61b",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-american-doctor",
@@ -97,7 +118,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/8/89/American_Doctor_poster.jpg",
    "episode": "The End of Oak Street and What’s Making Us Happy",
    "episode_date": "2026-08-14",
-   "episode_url": "https://www.npr.org/2026/08/14/nx-s1-5930407/the-end-of-oak-street-is-a-prehistoric-good-time"
+   "episode_url": "https://www.npr.org/2026/08/14/nx-s1-5930407/the-end-of-oak-street-is-a-prehistoric-good-time",
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-the-last-house",
@@ -109,7 +133,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/b/b2/The_Last_House_poster.jpg",
    "episode": "One Night Only and What’s Making Us Happy",
    "episode_date": "2026-08-07",
-   "episode_url": "https://www.npr.org/2026/08/07/nx-s1-5923351/one-night-only-is-a-dystopian-rom-com-with-very-little-to-say"
+   "episode_url": "https://www.npr.org/2026/08/07/nx-s1-5923351/one-night-only-is-a-dystopian-rom-com-with-very-little-to-say",
+   "imdb": "tt4591226",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-the-godfather",
@@ -121,7 +148,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
    "episode": "Supergirl and What’s Making Us Happy",
    "episode_date": "2026-06-26",
-   "episode_url": "https://www.npr.org/2026/06/26/nx-s1-5870615/supergirl-has-a-solid-hero-but-could-use-a-better-villain"
+   "episode_url": "https://www.npr.org/2026/06/26/nx-s1-5870615/supergirl-has-a-solid-hero-but-could-use-a-better-villain",
+   "imdb": "tt0068646",
+   "google_id": "/m/07g1sm",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-bon-appetit-your-majesty",
@@ -133,7 +163,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/4/44/Bon_Appetit%2C_Your_Majesty.jpg",
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
-   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in"
+   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
+   "imdb": "tt37600136",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-haikyu",
@@ -145,7 +178,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/6/6b/Haiky%C5%AB_Volume_1.jpg",
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
-   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in"
+   "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-rob-anderson-are-you-afraid-of-the-90s",
@@ -157,7 +193,10 @@
    "image": "https://a.ltrbxd.com/resized/film-poster/1/5/7/6/3/5/2/1576352-are-you-afraid-of-the-90s-0-600-0-900-crop.jpg?v=fc71844cca",
    "episode": "Disclosure Day and What’s Making Us Happy",
    "episode_date": "2026-06-12",
-   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day"
+   "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
+   "imdb": "tt42869101",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-interview-with-the-vampire",
@@ -169,7 +208,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c4/Interview_with_the_Vampire_%28TV_series%29_title_card.png",
    "episode": "Masters of the Universe and What’s Making Us Happy",
    "episode_date": "2026-06-05",
-   "episode_url": "https://www.npr.org/2026/06/05/nx-s1-5846643/does-masters-of-the-universe-have-the-power"
+   "episode_url": "https://www.npr.org/2026/06/05/nx-s1-5846643/does-masters-of-the-universe-have-the-power",
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-i-love-boosters",
@@ -181,7 +223,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/2/2c/I_Love_Boosters_poster.jpg",
    "episode": "Star Wars: The Mandalorian and Grogu and What’s Making Us Happy",
    "episode_date": "2026-05-22",
-   "episode_url": "https://www.npr.org/2026/05/22/nx-s1-5830076/star-wars-the-mandalorian-and-grogu-may-not-be-the-way"
+   "episode_url": "https://www.npr.org/2026/05/22/nx-s1-5830076/star-wars-the-mandalorian-and-grogu-may-not-be-the-way",
+   "imdb": "tt30827810",
+   "google_id": "/g/11wn6360pc",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-margo-s-got-money-troubles",
@@ -193,7 +238,10 @@
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Margo%27s_Got_Money_Troubles_%28logo%29.svg/3840px-Margo%27s_Got_Money_Troubles_%28logo%29.svg.png",
    "episode": "Obsession and What’s Making Us Happy",
    "episode_date": "2026-05-15",
-   "episode_url": "https://www.npr.org/2026/05/15/nx-s1-5822305/in-obsession-love-hurts-it-really-really-really-hurts"
+   "episode_url": "https://www.npr.org/2026/05/15/nx-s1-5822305/in-obsession-love-hurts-it-really-really-really-hurts",
+   "imdb": "tt31137273",
+   "google_id": "/g/11vsnwl75d",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-legends",
@@ -205,7 +253,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/6/66/Legends_2026_TV_series_poster.jpeg",
    "episode": "Obsession and What’s Making Us Happy",
    "episode_date": "2026-05-15",
-   "episode_url": "https://www.npr.org/2026/05/15/nx-s1-5822305/in-obsession-love-hurts-it-really-really-really-hurts"
+   "episode_url": "https://www.npr.org/2026/05/15/nx-s1-5822305/in-obsession-love-hurts-it-really-really-really-hurts",
+   "imdb": "tt33265765",
+   "google_id": "/g/11ycc11ds1",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-your-friends-neighbors",
@@ -217,7 +268,10 @@
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/620/1550778.jpg",
    "episode": "Mortal Kombat II and What’s Making Us Happy",
    "episode_date": "2026-05-08",
-   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service"
+   "episode_url": "https://www.npr.org/2026/05/08/nx-s1-5814848/in-mortal-kombat-ii-fatality-meets-fan-service",
+   "imdb": "tt30459041",
+   "google_id": "/g/11vy_bj_dm",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-mad-men",
@@ -229,7 +283,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/3/33/Mad-men-title-card.jpg",
    "episode": "The Devil Wears Prada 2 and What’s Making Us Happy",
    "episode_date": "2026-05-01",
-   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip"
+   "episode_url": "https://www.npr.org/2026/05/01/nx-s1-5805826/the-devil-wears-prada-2-is-a-comfy-nostalgia-trip",
+   "imdb": "tt0804503",
+   "google_id": "/m/02rzdcp",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-blue-heron",
@@ -241,7 +298,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/f/fe/Blue_Heron_%28film%29_poster.jpg",
    "episode": "Michael and What's Making Us Happy",
    "episode_date": "2026-04-24",
-   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic"
+   "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic",
+   "imdb": "tt32252801",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-summer-house",
@@ -253,7 +313,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/6a/f8/09/6af80932-78d9-cb4b-1236-369ba90db36d/mzl.qsupuhoo.lsr/600x900bb.jpg",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
-   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans"
+   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
+   "imdb": "tt6645582",
+   "google_id": "/g/11c2nqls3v",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-the-real-housewives-of-rhode-island",
@@ -265,7 +328,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/8/82/Real_Housewives_of_Rhode_Island.png",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
-   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans"
+   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-light-magic",
@@ -277,7 +343,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/9/9c/Light_%26_Magic_poster.jpeg",
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
-   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans"
+   "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
+   "imdb": "tt19896784",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-love-overboard",
@@ -289,7 +358,10 @@
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/619/1548673.jpg",
    "episode": "You, Me & Tuscany and What’s Making Us Happy",
    "episode_date": "2026-04-10",
-   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce"
+   "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce",
+   "imdb": "tt36144166",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-natchez",
@@ -301,7 +373,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c1/Natchez_poster.jpg",
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
-   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama"
+   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-age-of-attraction",
@@ -313,7 +388,10 @@
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/619/1548340.jpg",
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
-   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama"
+   "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
+   "imdb": "tt37610452",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-bts-the-comeback-live",
@@ -326,8 +404,11 @@
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
    "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
-   "poster_tries": 1,
-   "poster_sources": 2
+   "poster_tries": 2,
+   "poster_sources": 2,
+   "imdb": "",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-liza-with-a-z",
@@ -339,7 +420,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/5/50/LizawithaZ.jpg",
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
-   "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait"
+   "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
+   "imdb": "tt0256153",
+   "google_id": "/m/05q3sbm",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-bojack-horseman",
@@ -351,7 +435,10 @@
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/BoJack_Horseman_Logo.svg/960px-BoJack_Horseman_Logo.svg.png",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "imdb": "tt3398228",
+   "google_id": "/m/010qb1j9",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-the-lost-city",
@@ -363,7 +450,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/e/ee/TheLostCityPoster.jpg",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "imdb": "tt13320622",
+   "google_id": "/g/11q_229n16",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-what-if",
@@ -375,7 +465,10 @@
    "image": "https://a.ltrbxd.com/resized/sm/upload/gw/ai/6k/gs/what-if-0-600-0-900-crop.jpg?v=05d71cfbb0",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "imdb": "tt1486834",
+   "google_id": "/m/0wf0k9n",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-splendor-in-the-grass",
@@ -387,7 +480,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Splendor_Sheet_A.jpg",
    "episode": "Project Hail Mary and What’s Making Us Happy",
    "episode_date": "2026-03-20",
-   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary"
+   "episode_url": "https://www.npr.org/2026/03/20/nx-s1-5751896/ryan-gosling-gets-serious-and-very-funny-about-saving-the-planet-in-project-hail-mary",
+   "imdb": "tt0055471",
+   "google_id": "/m/01dbjh",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-arco",
@@ -399,7 +495,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/a/ae/Arco_poster.jpg",
    "episode": "2026 Oscars Guide and What's Making Us Happy",
    "episode_date": "2026-03-13",
-   "episode_url": "https://www.npr.org/2026/03/13/nx-s1-5745811/2026-oscars-guide-who-will-win-and-who-should-win"
+   "episode_url": "https://www.npr.org/2026/03/13/nx-s1-5745811/2026-oscars-guide-who-will-win-and-who-should-win",
+   "imdb": "tt14883538",
+   "google_id": "/g/11yd6spxbn",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-retirement-plan",
@@ -411,7 +510,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/5/58/Retirement_Plan_Film_Poster.jpg",
    "episode": "The Bride! and What's Making Us Happy",
    "episode_date": "2026-03-06",
-   "episode_url": "https://www.npr.org/2026/03/06/nx-s1-5737348/the-bride-is-more-than-the-sum-of-its-parts"
+   "episode_url": "https://www.npr.org/2026/03/06/nx-s1-5737348/the-bride-is-more-than-the-sum-of-its-parts",
+   "imdb": "tt33019507",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-strip-law",
@@ -423,7 +525,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/3/37/Strip_Law.jpg",
    "episode": "Winter Olympics and What’s Making Us Happy",
    "episode_date": "2026-02-20",
-   "episode_url": "https://www.npr.org/2026/02/20/nx-s1-5719205/why-we-love-watching-the-olympics-from-both-milan-and-our-couch"
+   "episode_url": "https://www.npr.org/2026/02/20/nx-s1-5719205/why-we-love-watching-the-olympics-from-both-milan-and-our-couch",
+   "imdb": "tt37937030",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-all-creatures-great-and-small",
@@ -435,7 +540,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/06/d5/78/06d578a6-1709-633f-63e8-687d32192578/0ff79e84-8492-4dcc-b6f7-b3be82382174_PBS_IT_MS230100V_3000x3000.png/600x900bb.jpg",
    "episode": "“Wuthering Heights” and What’s Making Us Happy",
    "episode_date": "2026-02-13",
-   "episode_url": "https://www.npr.org/2026/02/13/nx-s1-5712290/wuthering-heights-is-rude-moody-and-broody"
+   "episode_url": "https://www.npr.org/2026/02/13/nx-s1-5712290/wuthering-heights-is-rude-moody-and-broody",
+   "imdb": "tt10590066",
+   "google_id": "/g/11j8m_dwk7",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-moonshiners",
@@ -447,7 +555,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video/v4/c5/44/dd/c544ddc5-448c-70f4-09e6-7517c9436ab2/mzl.myrqscai.jpg/600x900bb.jpg",
    "episode": "Charli xcx, The Moment and What’s Making Us Happy",
    "episode_date": "2026-02-06",
-   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment"
+   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment",
+   "imdb": "tt1877005",
+   "google_id": "/m/0hr02cl",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-milisuthando",
@@ -459,7 +570,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/a/a9/Milisuthando.jpg",
    "episode": "Charli xcx, The Moment and What’s Making Us Happy",
    "episode_date": "2026-02-06",
-   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment"
+   "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment",
+   "imdb": "tt24082622",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-my-so-called-life",
@@ -471,7 +585,10 @@
    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/My_So-Called_Life.svg/1280px-My_So-Called_Life.svg.png",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
-   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help"
+   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help",
+   "imdb": "tt0108872",
+   "google_id": "/m/030bh8",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-a-knight-of-the-seven-kingdoms",
@@ -483,7 +600,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/a0/4d/d0/a04dd09c-6a0e-4544-510c-e1c13ab3692c/KnightSevenKingdoms_S1_S_KA_TT_3000x3000_300dpi_EN.jpg/600x900bb.jpg",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
-   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help"
+   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help",
+   "imdb": "tt27497448",
+   "google_id": "/g/11sssr3b18",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-shrinking",
@@ -495,7 +615,10 @@
    "image": "https://static.tvmaze.com/uploads/images/medium_portrait/610/1527402.jpg",
    "episode": "Send Help and What’s Making Us Happy",
    "episode_date": "2026-01-30",
-   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help"
+   "episode_url": "https://www.npr.org/2026/01/30/nx-s1-5691787/a-bratty-boss-gets-a-dose-of-his-own-medicine-in-send-help",
+   "imdb": "tt15677150",
+   "google_id": "/g/11sycqy20t",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-plainclothes",
@@ -507,7 +630,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/b/bf/Plainclothes_film_poster.jpg",
    "episode": "One Battle After Another and What’s Making Us Happy",
    "episode_date": "2026-01-23",
-   "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory"
+   "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory",
+   "imdb": "tt27550504",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "movie-predators",
@@ -519,7 +645,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Predators_film_poster.png",
    "episode": "One Battle After Another and What’s Making Us Happy",
    "episode_date": "2026-01-23",
-   "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory"
+   "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory",
+   "imdb": "tt34963732",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-industry",
@@ -531,7 +660,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/c/c2/Industry_title.png",
    "episode": "28 Years Later: The Bone Temple and What’s Making Us Happy",
    "episode_date": "2026-01-16",
-   "episode_url": "https://www.npr.org/2026/01/16/nx-s1-5677621/in-28-years-later-the-bone-temple-the-zombies-arent-the-worst-villains"
+   "episode_url": "https://www.npr.org/2026/01/16/nx-s1-5677621/in-28-years-later-the-bone-temple-the-zombies-arent-the-worst-villains",
+   "imdb": "tt7671070",
+   "google_id": "/g/11h423smq3",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-best-medicine",
@@ -543,7 +675,10 @@
    "image": "https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/00/37/49/003749dd-06fa-2859-5657-85bc491724c7/BMD_S2_iTunes_KeyArt_3000x3000_Bugged.png/600x900bb.jpg",
    "episode": "People We Meet On Vacation and What's Making Us Happy",
    "episode_date": "2026-01-09",
-   "episode_url": "https://www.npr.org/2026/01/09/nx-s1-5671063/people-we-meet-on-vacation-travels-the-world-with-friends-who-might-be-more"
+   "episode_url": "https://www.npr.org/2026/01/09/nx-s1-5671063/people-we-meet-on-vacation-travels-the-world-with-friends-who-might-be-more",
+   "imdb": "tt36885662",
+   "google_id": "",
+   "id_checked": "2026-10-26"
   },
   {
    "id": "tv-the-celebrity-traitors",
@@ -555,7 +690,10 @@
    "image": "https://upload.wikimedia.org/wikipedia/en/7/78/The_Celebrity_Traitors_logo.jpg",
    "episode": "2026 Resolutions and What’s Making Us Happy",
    "episode_date": "2026-01-02",
-   "episode_url": "https://www.npr.org/2026/01/02/nx-s1-5660877/our-2026-pop-culture-resolutions"
+   "episode_url": "https://www.npr.org/2026/01/02/nx-s1-5660877/our-2026-pop-culture-resolutions",
+   "imdb": "tt33248156",
+   "google_id": "/g/11xfvm1f58",
+   "id_checked": "2026-10-26"
   }
  ],
  "episodes": {
