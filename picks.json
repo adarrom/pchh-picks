@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T05:23:03Z",
+ "updated": "2026-10-26T05:26:43Z",
  "picks": [
   {
    "id": "movie-kill-bury-print",
@@ -14,7 +14,8 @@
    "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
    "imdb": "tt46076019",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-the-try-guys-phoning-it-in",
@@ -27,11 +28,12 @@
    "episode": "The Social Reckoning and What’s Making Us Happy",
    "episode_date": "2026-10-09",
    "episode_url": "https://www.npr.org/2026/10/09/nx-s1-5995123/do-we-like-comment-or-share-the-social-reckoning",
-   "poster_tries": 2,
+   "poster_tries": 3,
    "poster_sources": 2,
    "imdb": "",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-alias",
@@ -76,7 +78,8 @@
    "episode_url": "https://www.npr.org/2026/09/18/nx-s1-5973148/resident-evil-is-a-grisly-funny-fight-to-survive",
    "imdb": "tt36841161",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-the-worst-witch",
@@ -119,9 +122,10 @@
    "episode": "The End of Oak Street and What’s Making Us Happy",
    "episode_date": "2026-08-14",
    "episode_url": "https://www.npr.org/2026/08/14/nx-s1-5930407/the-end-of-oak-street-is-a-prehistoric-good-time",
-   "imdb": "",
+   "imdb": "tt39149951",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-the-last-house",
@@ -136,7 +140,8 @@
    "episode_url": "https://www.npr.org/2026/08/07/nx-s1-5923351/one-night-only-is-a-dystopian-rom-com-with-very-little-to-say",
    "imdb": "tt4591226",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-the-godfather",
@@ -166,7 +171,8 @@
    "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
    "imdb": "tt37600136",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-haikyu",
@@ -179,9 +185,10 @@
    "episode": "Toy Story 5 and What's Making Us Happy",
    "episode_date": "2026-06-19",
    "episode_url": "https://www.npr.org/2026/06/19/nx-s1-5862016/in-toy-story-5-playtimes-over-and-screentimes-in",
-   "imdb": "",
+   "imdb": "tt3398540",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-rob-anderson-are-you-afraid-of-the-90s",
@@ -196,7 +203,8 @@
    "episode_url": "https://www.npr.org/2026/06/12/nx-s1-5854650/spielberg-revisits-aliens-and-alienation-in-disclosure-day",
    "imdb": "tt42869101",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-interview-with-the-vampire",
@@ -209,9 +217,10 @@
    "episode": "Masters of the Universe and What’s Making Us Happy",
    "episode_date": "2026-06-05",
    "episode_url": "https://www.npr.org/2026/06/05/nx-s1-5846643/does-masters-of-the-universe-have-the-power",
-   "imdb": "",
-   "google_id": "",
-   "id_checked": "2026-10-26"
+   "imdb": "tt3960394",
+   "google_id": "/g/11p742f928",
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-i-love-boosters",
@@ -301,7 +310,8 @@
    "episode_url": "https://www.npr.org/2026/04/24/nx-s1-5797276/michael-is-the-worlds-most-authorized-biopic",
    "imdb": "tt32252801",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-summer-house",
@@ -329,9 +339,10 @@
    "episode": "Normal and What’s Making Us Happy",
    "episode_date": "2026-04-17",
    "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
-   "imdb": "",
+   "imdb": "tt36850092",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-light-magic",
@@ -346,7 +357,8 @@
    "episode_url": "https://www.npr.org/2026/04/17/nx-s1-5787647/in-normal-bob-odenkirk-lays-down-the-law-and-lets-down-his-fans",
    "imdb": "tt19896784",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-love-overboard",
@@ -361,7 +373,8 @@
    "episode_url": "https://www.npr.org/2026/04/10/nx-s1-5779705/you-me-tuscany-has-got-us-lost-in-the-pasta-sauce",
    "imdb": "tt36144166",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-natchez",
@@ -374,9 +387,10 @@
    "episode": "The Drama and What’s Making Us Happy",
    "episode_date": "2026-04-03",
    "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
-   "imdb": "",
+   "imdb": "tt36589943",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-age-of-attraction",
@@ -391,7 +405,8 @@
    "episode_url": "https://www.npr.org/2026/04/03/nx-s1-5771636/zendaya-and-robert-pattison-bring-the-drama",
    "imdb": "tt37610452",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-bts-the-comeback-live",
@@ -404,11 +419,12 @@
    "episode": "Bait and What’s Making Us Happy",
    "episode_date": "2026-03-27",
    "episode_url": "https://www.npr.org/2026/03/27/nx-s1-5762823/why-yes-well-take-riz-ahmeds-bait",
-   "poster_tries": 2,
+   "poster_tries": 3,
    "poster_sources": 2,
    "imdb": "",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-liza-with-a-z",
@@ -513,7 +529,8 @@
    "episode_url": "https://www.npr.org/2026/03/06/nx-s1-5737348/the-bride-is-more-than-the-sum-of-its-parts",
    "imdb": "tt33019507",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-strip-law",
@@ -528,7 +545,8 @@
    "episode_url": "https://www.npr.org/2026/02/20/nx-s1-5719205/why-we-love-watching-the-olympics-from-both-milan-and-our-couch",
    "imdb": "tt37937030",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-all-creatures-great-and-small",
@@ -573,7 +591,8 @@
    "episode_url": "https://www.npr.org/2026/02/06/nx-s1-5702397/charli-xcx-is-a-365-anxiety-girl-in-the-hypermeta-the-moment",
    "imdb": "tt24082622",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-my-so-called-life",
@@ -633,7 +652,8 @@
    "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory",
    "imdb": "tt27550504",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "movie-predators",
@@ -648,7 +668,8 @@
    "episode_url": "https://www.npr.org/2026/01/23/nx-s1-5683211/one-battle-after-another-is-revolutionary-and-revelatory",
    "imdb": "tt34963732",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-industry",
@@ -678,7 +699,8 @@
    "episode_url": "https://www.npr.org/2026/01/09/nx-s1-5671063/people-we-meet-on-vacation-travels-the-world-with-friends-who-might-be-more",
    "imdb": "tt36885662",
    "google_id": "",
-   "id_checked": "2026-10-26"
+   "id_checked": "2026-10-26",
+   "id_version": 2
   },
   {
    "id": "tv-the-celebrity-traitors",
