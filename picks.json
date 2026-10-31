@@ -1,6 +1,22 @@
 {
- "updated": "2026-10-27T19:46:20Z",
+ "updated": "2026-10-31T18:58:16Z",
  "picks": [
+  {
+   "id": "movie-paralyzed-by-hope-the-maria-bamford-story",
+   "title": "Paralyzed by Hope: The Maria Bamford Story",
+   "kind": "movie",
+   "year": null,
+   "host": "Holmes",
+   "description": "She found this Judd Apatow and Neil Berkeley documentary about comedian Maria Bamford funny, sweet, sometimes sad, and ultimately very satisfying.",
+   "image": "https://a.ltrbxd.com/resized/film-poster/1/4/6/4/8/6/5/1464865-paralyzed-by-hope-the-maria-bamford-story-0-600-0-900-crop.jpg?v=acf80fdb6d",
+   "episode": "War and What’s Making Us Happy",
+   "episode_date": "2026-10-30",
+   "episode_url": "https://www.npr.org/2026/10/30/nx-s1-6019428/war-is-a-little-trashy-and-very-delicious",
+   "imdb": "tt39162810",
+   "google_id": "",
+   "id_checked": "2026-10-31",
+   "id_version": 2
+  },
   {
    "id": "movie-kill-bury-print",
    "title": "Kill. Bury. Print.",
@@ -971,6 +987,12 @@
    "status": "done",
    "title": "Wicker and What’s Making Us Happy",
    "picks": 0,
+   "version": 2
+  },
+  "4242bb5c-ecc0-420c-bc61-8dd1fd50929b": {
+   "status": "done",
+   "title": "War and What’s Making Us Happy",
+   "picks": 1,
    "version": 2
   }
  }
