@@ -80,6 +80,22 @@ h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;
 .board .mapbox{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
 @media (max-width:860px){.board .mapbox{position:static}}
 .acc.pinned{border-style:dashed}
+.live{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:0}
+.live .dot{width:8px;height:8px;border-radius:50%;background:var(--none-ink);flex:none}
+.live.on .dot{background:var(--sr);box-shadow:0 0 0 3px color-mix(in srgb,var(--sr) 25%,transparent)}
+.res{font:600 11.5px var(--f-data);text-align:right;white-space:nowrap;line-height:1.35}
+.res .w{display:inline-block;padding:2px 7px;border-radius:999px;color:#fff}
+.res .w.D{background:var(--sd)}.res .w.R{background:var(--sr)}.res .w.I{background:#6b6f80}
+.res .lead{color:var(--ink)}
+.rbox{border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:8px;background:var(--panel)}
+.rbox-h{display:flex;justify-content:space-between;gap:8px;font:600 11px var(--f-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rline{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) 3.6em;gap:10px;align-items:center;font-size:13.5px}
+.rline .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rline .trk{height:10px;border-radius:3px;background:var(--chip);overflow:hidden}
+.rline .fill{height:100%}
+.rline .fill.D{background:var(--sd)}.rline .fill.R{background:var(--sr)}.rline .fill.I{background:#6b6f80}
+.rline .pc{text-align:right;font:600 13px var(--f-data);font-variant-numeric:tabular-nums}
+.tile small.won{font-weight:700}
 .acc .note{font-size:13px;color:var(--muted);margin:0}
 @media (max-width:860px){.board{grid-template-columns:minmax(0,1fr)}}
 .mapbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
@@ -179,6 +195,8 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
       <span><i class="sw c-none"></i><span id="legend-none">No race</span></span><span><i class="sw c-none" style="box-shadow:inset 0 0 0 2px var(--panel),inset 0 0 0 3px var(--ink)"></i>Favored to flip</span>
     </div>
   </div>
+
+  <p class="live" id="live"><span class="dot"></span><span id="live-text">Results will appear here after polls close. The first close at 6pm ET on Tuesday.</span></p>
 
   <section class="math" aria-labelledby="math-title">
     <div class="math-top">
@@ -458,7 +476,9 @@ function drawMap(){
     else{const ds=houseForState(st);if(ds.length){sub=ds.length;flip=ds.some(d=>isFlip(d.held,d.r));label+=": "+ds.length+" competitive district"+(ds.length>1?"s":"")}else label+=": no top-tier House race"}
     if(flip)b.classList.add("flip");
     b.setAttribute("aria-label",label);
-    b.innerHTML=st+(sub!==""?`<small>${sub}</small>`:"");
+    const rr=mode!=="house"?resFor(mode,st):null;
+    if(rr&&PARTY.has(rr.winner)){sub="✓ "+rr.winner;b.setAttribute("aria-label",label+", called for "+rr.winner)}
+    b.innerHTML=st+(sub!==""?`<small${rr&&rr.winner?' class="won"':""}>${sub}</small>`:"");
     b.addEventListener("click",()=>goTo(st));
     grid.appendChild(b);
   }
@@ -476,15 +496,58 @@ const sigBox=t=>t?`<p class="sig"><b>Why it matters</b>${t}</p>`:"";
 function statewideBody(s,key){
   const flip=isFlip(s.held,s.r);
   return `<dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
-      <div class="cands">${s.c.map(cand).join("")}</div>
+      ${resBox(resFor(mode,key))}<div class="cands">${s.c.map(cand).join("")}</div>
       <p class="why">${s.why}</p>${sigBox(SIG[mode][key])}${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
 }
 function districtBody(d){
-  return `<p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
+  return `${resBox(resFor("house",d.id))}<p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
         ${d.c?`<div class="cands">${d.c.map(cand).join("")}</div>`:""}
         <p class="why">${d.why}</p>${sigBox(SIG.house[d.id])}`;
 }
 let openKey=null;
+/* Live results: written to the artifact's db ("results/<mode>-<key>") as races are counted and called. */
+let RESULTS={};
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const resFor=(kind,key)=>RESULTS[kind+"-"+key];
+const PARTY=new Set(["D","R","I"]);
+function resShort(r){
+  if(!r)return "";
+  if(PARTY.has(r.winner))return `<span class="w ${r.winner}">${r.winner} wins ✓</span>`;
+  const c=(r.cands||[]).filter(x=>typeof x.pct==="number").sort((a,b)=>b.pct-a.pct);
+  const pin=typeof r.pctIn==="number"?`${Math.round(r.pctIn)}% in`:"Counting";
+  if(c.length>=2&&PARTY.has(c[0].party))return `<span class="lead">${c[0].party} +${(c[0].pct-c[1].pct).toFixed(1)}</span><br>${pin}`;
+  return pin;
+}
+function resBox(r){
+  if(!r)return "";
+  const c=(r.cands||[]).slice().sort((a,b)=>(b.pct||0)-(a.pct||0));
+  const when=r.updated?new Date(r.updated):null;
+  const head=PARTY.has(r.winner)?`Called: ${esc(r.winnerName||r.winner)} wins${r.calledBy?" · "+esc(r.calledBy):""}`:(typeof r.pctIn==="number"?`Results · about ${Math.round(r.pctIn)}% counted`:"Results · counting");
+  return `<div class="rbox"><div class="rbox-h"><span>${head}</span><span>${when&&!isNaN(when)?"Updated "+when.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):""}</span></div>
+    ${c.map(x=>`<div class="rline"><span class="nm">${PARTY.has(x.party)?`<b>${x.party}</b> `:""}${esc(x.name)}${r.winner&&x.party===r.winner?" ✓":""}</span><span class="trk"><span class="fill ${PARTY.has(x.party)?x.party:""}" style="width:${Math.max(0,Math.min(100,+x.pct||0))}%;display:block"></span></span><span class="pc">${typeof x.pct==="number"?x.pct.toFixed(1)+"%":"–"}</span></div>`).join("")}
+  </div>`;
+}
+function drawLive(){
+  const all=Object.values(RESULTS), el=document.getElementById("live"), t=document.getElementById("live-text");
+  if(!all.length){el.classList.remove("on");t.textContent="Results will appear here after polls close. The first close at 6pm ET on Tuesday.";return}
+  const latest=all.map(r=>Date.parse(r.updated)).filter(n=>!isNaN(n)).sort((a,b)=>b-a)[0];
+  const called=all.filter(r=>PARTY.has(r.winner)).length;
+  el.classList.add("on");
+  t.textContent=`Live results · ${called} race${called===1?"":"s"} called · ${all.length} reporting${latest?" · last update "+new Date(latest).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):""}`;
+}
+function calledTally(kind){
+  const w={D:0,R:0,I:0};Object.entries(RESULTS).forEach(([id,r])=>{if(id.startsWith(kind+"-")&&PARTY.has(r.winner))w[r.winner]++});
+  const n=w.D+w.R+w.I;return n?` <strong>Called so far:</strong> D ${w.D} · R ${w.R}${w.I?" · I "+w.I:""}.`:"";
+}
+(async()=>{
+  try{
+    const db=await claude.use("db");if(!db)return;
+    db.collection("results").onSnapshot(snap=>{
+      const next={};snap.docs.forEach(d=>{const v=d.data();if(v)next[d.id]=v});
+      RESULTS=next;drawLive();drawMath();drawMap();drawRows();
+    },()=>{});
+  }catch(e){}
+})();
 function drawMath(){
   const bar=document.getElementById("bar"),t=document.getElementById("math-title"),p=document.getElementById("math-text");
   let segs=[],total,lk,mk,rk;
@@ -495,7 +558,7 @@ function drawMath(){
     total=100;
     segs=[["sd",notUpD+cnt.sd,"D not up/solid"],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
     t.textContent="Who wins the Senate?";
-    p.innerHTML=`Tap a toss-up above to see that race.`;
+    p.innerHTML=`Tap a toss-up above to see that race.`+calledTally("senate");
     lk=`D ${dBase}`;mk="51 for control";rk=`R ${rBase}`;
     const dNeed=Math.max(0,51-dBase), rNeed=Math.max(0,50-rBase);
     need(`Democrats need a net gain of <span class="n">4</span> seats`,`They hold 47 and need 51. Counting the races they're safe or favored in, they're at ${dBase}, so they need ${dNeed} of the ${cnt.tu} toss-ups.`,
@@ -508,7 +571,7 @@ function drawMath(){
     total=50;
     segs=[["sd",notUpD+cnt.sd],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
     t.textContent="Governors: 36 races on the ballot";
-    p.innerHTML=`Republicans hold <strong>26</strong> governorships to Democrats' <strong>24</strong>. Governors don't form a "majority" like Congress, but they control vetoes, emergency powers and, in many states, how the 2028 election is run.`;
+    p.innerHTML=`Republicans hold <strong>26</strong> governorships to Democrats' <strong>24</strong>. Governors don't form a "majority" like Congress, but they control vetoes, emergency powers and, in many states, how the 2028 election is run.`+calledTally("gov");
     lk=`D ${dBase} safe or favored`;mk="26 = majority";rk=`R ${rBase} safe or favored`;
     const tuStates=Object.entries(GOV).filter(([,x])=>x.r==="tu");
     document.getElementById("need").hidden=true;
@@ -519,7 +582,7 @@ function drawMath(){
     const d=220,tu=18,r=435-d-tu;
     segs=[["sd",d],["tu",tu],["sr",r]];
     t.textContent="Who wins the House?";
-    p.innerHTML=`Cook projects Democrats ending with <strong>227–240</strong> seats, a net gain of 12 to 25. Tap a toss-up above to see that race.`;
+    p.innerHTML=`Cook projects Democrats ending with <strong>227–240</strong> seats, a net gain of 12 to 25. Tap a toss-up above to see that race.`+calledTally("house");
     lk="D 220 at least Lean";mk="218 to win";rk=`R ${r} at least Lean`;
     need(`Democrats need a net gain of <span class="n">3</span> seats`,`They won 215 in 2024 and need 218. Cook's ratings point to a gain of about 5, with ${d} seats leaning their way and ${tu} toss-ups still open.`,
          `Republicans can afford a net loss of <span class="n">2</span> seats`,`They won 220 in 2024. Only ${r} seats lean their way now, so holding on means sweeping all ${tu} toss-ups and winning ${218-r-tu} seats that lean Democratic.`);
@@ -578,7 +641,7 @@ function drawRows(){
     if(i.empty){wrap.innerHTML=`<div class="row" style="cursor:default"><span class="rk">–</span><span class="tag c-none"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span></span><span></span></div>`;rows.appendChild(wrap);return}
     const b=document.createElement("button");b.className="row";b.id=bid+"-btn";
     b.setAttribute("aria-expanded",open);b.setAttribute("aria-controls",bid);
-    b.innerHTML=`<span class="rk">${i.pinned?"–":i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span><span class="chev" aria-hidden="true"></span>`;
+    b.innerHTML=`<span class="rk">${i.pinned?"–":i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span>${resFor(mode,i.key)?`<span class="res">${resShort(resFor(mode,i.key))}</span>`:`<span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span>`}<span class="chev" aria-hidden="true"></span>`;
     const body=document.createElement("div");body.className="acc-body";body.id=bid;body.setAttribute("role","region");body.setAttribute("aria-labelledby",b.id);
     body.hidden=!open;if(open)body.innerHTML=i.body();
     b.addEventListener("click",()=>{
