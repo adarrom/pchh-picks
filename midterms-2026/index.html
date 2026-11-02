@@ -516,7 +516,7 @@ function drawMath(){
     const d=220,tu=18,r=435-d-tu;
     segs=[["sd",d],["tu",tu],["sr",r]];
     t.textContent="Who wins the House?";
-    p.innerHTML=`Republicans hold a narrow majority (about <strong>218–214</strong> with vacancies). Cook now has Democrats favored in <strong>220</strong> seats, with <strong>~18 Toss Ups</strong>, and projects Democrats ending with <strong>227–240</strong> seats.`;
+    p.innerHTML=`Republicans won the House <strong>220–215</strong> in 2024, so Democrats need a net gain of just <strong>3</strong> seats to reach 218. Cook now has Democrats favored in <strong>220</strong> seats (a gain of 5) and projects them ending with <strong>227–240</strong>.`;
     lk="D 220 at least Lean";mk="218 to win";rk=`R ${r} at least Lean`;
     need(`Democrats need <span class="n">0</span> of the ${tu} toss-ups`,`They're already favored in ${d} seats, two more than the 218 needed. Toss-ups only pad the margin.`,
          `Republicans need <span class="n">all ${tu}</span> toss-ups, plus ${218-r-tu} more`,`They're favored in ${r}. Even sweeping every toss-up leaves them ${218-r-tu} short, so they must also flip seats that lean Democratic.`);
