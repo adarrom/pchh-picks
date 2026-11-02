@@ -492,11 +492,11 @@ function drawMath(){
     total=100;
     segs=[["sd",notUpD+cnt.sd,"D not up/solid"],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
     t.textContent="Who wins the Senate?";
-    p.innerHTML=`Republicans hold the Senate <strong>53–47</strong> today, so Democrats need a net gain of <strong>4</strong> seats. Tap a toss-up above to see that race.`;
+    p.innerHTML=`Tap a toss-up above to see that race.`;
     lk=`D ${dBase}`;mk="51 for control";rk=`R ${rBase}`;
     const dNeed=Math.max(0,51-dBase), rNeed=Math.max(0,50-rBase);
-    need(`Democrats need <span class="n">${dNeed}</span> of the ${cnt.tu} toss-up states`,`Counting seats they're safe or favored in, Democrats are at ${dBase}. They need 51 for control.`,
-         `Republicans need <span class="n">${rNeed}</span> of the ${cnt.tu} toss-up states`,`Republicans are at ${rBase}. They need 50, because VP JD Vance breaks ties.`);
+    need(`Democrats need a net gain of <span class="n">4</span> seats`,`They hold 47 and need 51. Counting the races they're safe or favored in, they're at ${dBase}, so they need ${dNeed} of the ${cnt.tu} toss-ups.`,
+         `Republicans can afford a net loss of <span class="n">3</span> seats`,`They hold 53 and keep control at 50, because VP JD Vance breaks ties. They're safe or favored in ${rBase}, so they need ${rNeed} of the ${cnt.tu} toss-ups.`);
     chips("The "+cnt.tu+" toss-ups",Object.entries(SENATE).filter(([,x])=>x.r==="tu").map(([st])=>[st,NAMES[st]]));
   }else if(mode==="gov"){
     const notUpD=6,notUpR=8,cnt={};ORDER.forEach(k=>cnt[k]=0);
@@ -516,10 +516,10 @@ function drawMath(){
     const d=220,tu=18,r=435-d-tu;
     segs=[["sd",d],["tu",tu],["sr",r]];
     t.textContent="Who wins the House?";
-    p.innerHTML=`Republicans won the House <strong>220–215</strong> in 2024, so Democrats need a net gain of just <strong>3</strong> seats to reach 218. Cook now has Democrats favored in <strong>220</strong> seats (a gain of 5) and projects them ending with <strong>227–240</strong>.`;
+    p.innerHTML=`Cook projects Democrats ending with <strong>227–240</strong> seats, a net gain of 12 to 25. Tap a toss-up above to see that race.`;
     lk="D 220 at least Lean";mk="218 to win";rk=`R ${r} at least Lean`;
-    need(`Democrats can lose <span class="n">all ${tu}</span> toss-ups and still win`,`That's only if they hold every one of the ${d} seats leaning their way, which is two more than the 218 needed. Each toss-up they win gives them room to lose a close seat elsewhere.`,
-         `Republicans need <span class="n">all ${tu}</span> toss-ups, plus ${218-r-tu} more`,`They're favored in ${r}. Even sweeping every toss-up leaves them ${218-r-tu} short, so they must also flip seats that lean Democratic.`);
+    need(`Democrats need a net gain of <span class="n">3</span> seats`,`They won 215 in 2024 and need 218. Cook's ratings point to a gain of about 5, with ${d} seats leaning their way and ${tu} toss-ups still open.`,
+         `Republicans can afford a net loss of <span class="n">2</span> seats`,`They won 220 in 2024. Only ${r} seats lean their way now, so holding on means sweeping all ${tu} toss-ups and winning ${218-r-tu} seats that lean Democratic.`);
     chips("Toss-ups in this guide",HOUSE.filter(x=>x.r==="tu").map(x=>[x.st,x.id]));
   }
   bar.innerHTML=segs.map(([k,n])=>`<div class="${k} c-${k}" style="width:${n/total*100}%" title="${R[k]}: ${n}">${n/total>.035?n:""}</div>`).join("");
