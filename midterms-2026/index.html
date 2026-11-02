@@ -143,13 +143,14 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
   <header>
     <div class="eyebrow">Election Day · Tuesday, November 3, 2026</div>
     <h1>Midterms 2026 <em>Field Guide</em></h1>
-    <p class="lede">Every Senate seat on the ballot and the House districts most likely to decide control. Tap a state to see who's running and why it matters. Ratings follow the Cook Political Report's final-week calls (Oct. 23–30).</p>
+    <p class="lede">Every Senate seat and governor's race on the ballot, plus the House districts most likely to decide control. Tap a state to see who's running and why it matters. Ratings follow the Cook Political Report's final-week calls (Oct. 23–30).</p>
   </header>
 
   <div class="toolbar">
     <div class="modes" role="group" aria-label="Chamber">
       <button id="mode-senate" aria-pressed="true">Senate</button>
       <button id="mode-house" aria-pressed="false">House</button>
+      <button id="mode-gov" aria-pressed="false">Governors</button>
     </div>
     <div class="legend" aria-label="Rating colors">
       <span><i class="sw c-sd"></i>Solid D</span><span><i class="sw c-ld"></i>Likely D</span><span><i class="sw c-lnd"></i>Lean D</span>
@@ -209,7 +210,7 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
     </div>
   </section>
 
-  <footer>Ratings: Cook Political Report, as reported Oct. 6–30, 2026. Nominees from state primary results and news coverage. Ratings move until polls close; check <a href="https://www.cookpolitical.com/ratings" style="color:inherit">cookpolitical.com/ratings</a> for the live list. Florida and Montana ratings are estimates where a current Cook call wasn't available. House coverage here is the top tier of competitive districts, not all 435.</footer>
+  <footer>Ratings: Cook Political Report, as reported Oct. 6–30, 2026. Nominees from state primary results and news coverage. Ratings move until polls close; check <a href="https://www.cookpolitical.com/ratings" style="color:inherit">cookpolitical.com/ratings</a> for the live list. Florida and Montana Senate ratings, and governor ratings marked with *, are estimates where a current Cook call wasn't available. House coverage here is the top tier of competitive districts, not all 435.</footer>
 </div>
 
 <script>
@@ -258,6 +259,46 @@ const SENATE={
  WY:{held:"R",r:"sr",inc:"Open (Cynthia Lummis retiring)",c:[["R","Harriet Hageman","U.S. Rep."],["D","James Byrd",""]],why:"Open seat, safely Republican."}
 };
 
+/* Governors: 36 races. est = rating estimated (no current Cook call found). */
+const GOV={
+ AL:{held:"R",r:"lr",est:true,inc:"Open (Kay Ivey term-limited)",c:[["R","Tommy Tuberville","U.S. Senator"],["D","Doug Jones","Former U.S. Senator"]],why:"Two former senators face off. Jones won a 2017 Senate special here, but Alabama remains deeply Republican."},
+ AK:{held:"R",r:"lnd",inc:"Open (Mike Dunleavy term-limited)",c:[["D","Jonathan Kreiss-Tomkins","Former state Rep."],["R","Bernadette Wilson","Conservative activist"]],why:"Cook moved this to Lean D on Oct. 13. Alaska's top-four ballot and ranked-choice count split the Republican vote across several candidates."},
+ AZ:{held:"D",r:"ld",inc:"Katie Hobbs (D)",c:[["D","Katie Hobbs","Incumbent"],["R","Andy Biggs","U.S. Rep."]],why:"Expected to be one of the closest races in the country, but Cook moved it toward Hobbs in its final ratings."},
+ AR:{held:"R",r:"sr",inc:"Sarah Huckabee Sanders (R)",c:[["R","Sarah Huckabee Sanders","Incumbent"],["D","Fredrick Love","State Sen."]],why:"Not expected to be competitive."},
+ CA:{held:"D",r:"sd",inc:"Open (Gavin Newsom term-limited)",c:[["D","Xavier Becerra","Former HHS Secretary"],["R","Steve Hilton","Former Fox News host"]],why:"Top-two primary produced a D-vs-R final. Safely Democratic."},
+ CO:{held:"D",r:"sd",est:true,inc:"Open (Jared Polis term-limited)",c:[["D","Phil Weiser","Attorney General"],["R","Victor Marx",""]],why:"Open seat, expected to stay Democratic."},
+ CT:{held:"D",r:"sd",inc:"Ned Lamont (D)",c:[["D","Ned Lamont","Incumbent"],["R","Ryan Fazio","State Sen."]],why:"Not expected to be competitive."},
+ FL:{held:"R",r:"lnr",inc:"Open (Ron DeSantis term-limited)",c:[["R","Byron Donalds","U.S. Rep."],["D","David Jolly","Former Republican U.S. Rep."]],why:"Cook moved Florida toward Democrats in late October, but Donalds is still favored."},
+ GA:{held:"R",r:"tu",inc:"Open (Brian Kemp term-limited)",c:[["R","Rick Jackson","Businessman"],["D","Keisha Lance Bottoms","Former Atlanta mayor"]],why:"Democrats' top pickup target. Polls are essentially tied."},
+ HI:{held:"D",r:"sd",inc:"Josh Green (D)",c:[["D","Josh Green","Incumbent"],["R","Gary Cordery",""]],why:"Not expected to be competitive."},
+ ID:{held:"R",r:"sr",inc:"Brad Little (R)",c:[["R","Brad Little","Incumbent"],["D","Terri Pickens","Attorney"],["I","John Stegner","Retired state Supreme Court justice"]],why:"Not expected to be competitive."},
+ IL:{held:"D",r:"sd",inc:"JB Pritzker (D)",c:[["D","JB Pritzker","Incumbent"],["R","Darren Bailey","Former state Sen."]],why:"Rematch of 2022, which Pritzker won easily."},
+ IA:{held:"R",r:"lnd",inc:"Open (Kim Reynolds retiring)",c:[["D","Rob Sand","State Auditor"],["R","Zach Lahn","Farmer"]],why:"Sand, the only Democrat holding statewide office, has led all fall. Cook says Democrats are on the verge of flipping it."},
+ KS:{held:"D",r:"tu",inc:"Open (Laura Kelly term-limited)",c:[["R","Ty Masterson","State Senate president"],["D","Cindy Holscher","State Sen."]],why:"Republicans' best pickup chance. Cook moved it from Lean R to Toss Up on Oct. 27."},
+ ME:{held:"D",r:"lnd",est:true,inc:"Open (Janet Mills term-limited)",c:[["D","Hannah Pingree","Former state House speaker"],["R","Robert Charles",""]],why:"Open seat. An independent is also on the ballot, and Maine uses ranked-choice voting only in primaries for governor."},
+ MD:{held:"D",r:"sd",inc:"Wes Moore (D)",c:[["D","Wes Moore","Incumbent"],["R","Dan Cox","Former state delegate"]],why:"Rematch of 2022, which Moore won by about 2-to-1."},
+ MA:{held:"D",r:"sd",inc:"Maura Healey (D)",c:[["D","Maura Healey","Incumbent"],["R","Mike Minogue","Businessman"]],why:"Not expected to be competitive."},
+ MI:{held:"D",r:"lnd",inc:"Open (Gretchen Whitmer term-limited)",c:[["D","Jocelyn Benson","Secretary of State"],["R","John James","U.S. Rep."],["I","Mike Duggan","Detroit mayor, running as an independent"]],why:"A rare three-way race. Duggan, a former Democrat, could pull votes from either side."},
+ MN:{held:"D",r:"ld",est:true,inc:"Open (Tim Walz not running)",c:[["D","Amy Klobuchar","U.S. Senator"],["R","Lisa Demuth","State House GOP leader"]],why:"Klobuchar left the Senate track to run for governor after Walz dropped his bid."},
+ NE:{held:"R",r:"lnr",inc:"Jim Pillen (R)",c:[["R","Jim Pillen","Incumbent"],["D","Lynne Walz",""]],why:"Surprisingly close polling. Cook moved it from Likely R to Lean R on Oct. 27."},
+ NV:{held:"R",r:"tu",inc:"Joe Lombardo (R)",c:[["R","Joe Lombardo","Incumbent"],["D","Aaron Ford","Attorney General"]],why:"The only Toss Up where a sitting Republican governor is on the ballot."},
+ NH:{held:"R",r:"lnr",est:true,inc:"Kelly Ayotte (R)",c:[["R","Kelly Ayotte","Incumbent"],["D","Cinde Warmington","Former Executive Councilor"]],why:"New Hampshire elects governors every two years, so Ayotte is up after one term."},
+ NM:{held:"D",r:"ld",est:true,inc:"Open (Michelle Lujan Grisham term-limited)",c:[["D","Deb Haaland","Former Interior Secretary"],["R","Gregg Hull","Rio Rancho mayor"]],why:"Open seat, Democrats favored."},
+ NY:{held:"D",r:"ld",est:true,inc:"Kathy Hochul (D)",c:[["D","Kathy Hochul","Incumbent"],["R","Bruce Blakeman","Nassau County executive"]],why:"Hochul won by just 6 points in 2022, closer than usual for New York."},
+ OH:{held:"R",r:"lnd",inc:"Open (Mike DeWine term-limited)",c:[["D","Amy Acton","Former state health director"],["R","Vivek Ramaswamy","Businessman"]],why:"Cook moved it from Toss Up to Lean D on Oct. 23 after an uproar over a Ramaswamy attack ad."},
+ OK:{held:"R",r:"lr",inc:"Open (Kevin Stitt term-limited)",c:[["R","Mike Mazzei","Former state Sen."],["D","Cyndi Munson","State House minority leader"]],why:"Cook moved it from Solid R to Likely R on Oct. 13."},
+ OR:{held:"D",r:"ld",est:true,inc:"Tina Kotek (D)",c:[["D","Tina Kotek","Incumbent"],["R","Christine Drazan","Former state House GOP leader"]],why:"Rematch of 2022, when Drazan came within 4 points."},
+ PA:{held:"D",r:"ld",est:true,inc:"Josh Shapiro (D)",c:[["D","Josh Shapiro","Incumbent"],["R","Stacy Garrity","State Treasurer"]],why:"Shapiro is a likely 2028 presidential contender, so his margin will get attention."},
+ RI:{held:"D",r:"sd",est:true,inc:"Dan McKee (D), lost primary",c:[["D","Helena Foulkes","Former CVS executive"],["R","Republican nominee",""],["I","Ken Block","Independent"]],why:"Foulkes beat McKee 62–38 in September, the first sitting governor to lose a primary in eight years."},
+ SC:{held:"R",r:"sr",inc:"Open (Henry McMaster term-limited)",c:[["R","Alan Wilson","Attorney General"],["D","Jermaine Johnson","State Rep."]],why:"Open seat, safely Republican."},
+ SD:{held:"R",r:"sr",inc:"Larry Rhoden (R)",c:[["R","Larry Rhoden","Incumbent"],["D","Dan Ahlers",""]],why:"Not expected to be competitive."},
+ TN:{held:"R",r:"sr",inc:"Open (Bill Lee term-limited)",c:[["R","Marsha Blackburn","U.S. Senator"],["D","Jerri Green","State Rep."]],why:"Open seat, safely Republican."},
+ TX:{held:"R",r:"lnr",inc:"Greg Abbott (R)",c:[["R","Greg Abbott","Incumbent, seeking 4th term"],["D","Gina Hinojosa","State Rep."]],why:"Cook moved Texas to Lean R in late October. Abbott is still favored."},
+ VT:{held:"R",r:"lr",inc:"Phil Scott (R)",c:[["R","Phil Scott","Incumbent"],["D","Amanda Janoo",""]],why:"Scott, a moderate, is one of the most popular governors in the country. Cook moved it from Solid R to Likely R on Oct. 13."},
+ WI:{held:"D",r:"lnd",inc:"Open (Tony Evers retiring)",c:[["D","David Crowley","Milwaukee County executive"],["R","Tom Tiffany","U.S. Rep."]],why:"Cook moved it from Toss Up to Lean D in its final ratings on Oct. 29."},
+ WY:{held:"R",r:"sr",inc:"Open (Mark Gordon term-limited)",c:[["R","Eric Barlow","Former state House speaker"],["D","Ken Casner","Restaurant owner"]],why:"Open seat, safely Republican."}
+};
+
 /* House: top-tier competitive districts. */
 const HOUSE=[
  ["AZ","AZ-1","R","tu","David Schweikert (R) seat",null,"One of the most Democratic-leaning seats the GOP holds."],
@@ -297,11 +338,13 @@ const isFlip=(held,r)=>{const l=lean(r);return l&&held!=="O"&&l!==held};
 const strength=r=>({tu:0,lnd:1,lnr:1,ld:2,lr:2,sd:3,sr:3})[r];
 
 let mode="senate", sel="ME", filt="all";
-try{const m=localStorage.getItem("mt26-mode");if(m==="house"||m==="senate")mode=m;}catch(e){}
+try{const m=localStorage.getItem("mt26-mode");if(["house","senate","gov"].includes(m))mode=m;}catch(e){}
 
+const SW=()=>mode==="gov"?GOV:SENATE;
+const OFFICE=()=>mode==="gov"?"Governor":"Senate";
 function houseForState(st){return HOUSE.filter(d=>d.st===st).sort((a,b)=>strength(a.r)-strength(b.r))}
 function stateClass(st){
-  if(mode==="senate"){const s=SENATE[st];return s?s.r:"none"}
+  if(mode!=="house"){const s=SW()[st];return s?s.r:"none"}
   const ds=houseForState(st); if(!ds.length) return "none";
   return ds[0].r; // most competitive district sets the tile
 }
@@ -318,7 +361,7 @@ function drawMap(){
     b.className="tile c-"+cls+(st===sel?" sel":"");
     b.dataset.st=st;
     let sub="",flip=false,label=NAMES[st];
-    if(mode==="senate"){const s=SENATE[st];if(s){flip=isFlip(s.held,s.r);label+=": "+R[s.r]+(s.special?", special election":"")}else label+=": no Senate race";if(s&&s.special)sub="SP"}
+    if(mode!=="house"){const s=SW()[st];if(s){flip=isFlip(s.held,s.r);label+=": "+R[s.r]+(s.special?", special election":"")}else label+=": no "+OFFICE()+" race";if(s&&s.special)sub="SP"}
     else{const ds=houseForState(st);if(ds.length){sub=ds.length;flip=ds.some(d=>isFlip(d.held,d.r));label+=": "+ds.length+" competitive district"+(ds.length>1?"s":"")}else label+=": no top-tier House race"}
     if(flip)b.classList.add("flip");
     b.setAttribute("aria-label",label);
@@ -328,8 +371,9 @@ function drawMap(){
   }
   document.getElementById("map-note").textContent= mode==="senate"
     ? "35 seats are up: 33 regular races plus specials in Ohio and Florida (marked SP). Gray states have no Senate race this year."
+    : mode==="gov" ? "36 states elect a governor this year. Gray states have no governor's race in 2026."
     : "Each tile takes the color of its most competitive district; the number is how many top-tier races it has. Only the ~30 districts most likely to decide control are shown.";
-  document.getElementById("legend-none").textContent= mode==="senate"?"No race":"No top-tier race";
+  document.getElementById("legend-none").textContent= mode!=="house"?"No race":"No top-tier race";
 }
 
 const pillStyle=r=>`background:var(--${r});color:${["tu"].includes(r)?"var(--tu-ink)":["lnd","lnr"].includes(r)?"var(--ink)":"#fff"}`;
@@ -337,14 +381,15 @@ function cand(c){return `<div class="cand"><span class="party p-${c[0]}">${c[0]}
 
 function drawCard(){
   const card=document.getElementById("card"), name=NAMES[sel];
-  if(mode==="senate"){
-    const s=SENATE[sel];
-    if(!s){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No race</span></div><p class="empty">${name} has no Senate election in 2026. Its senators were last elected in 2022 or 2024.</p>`;return}
+  if(mode!=="house"){
+    const s=SW()[sel];
+    const none=mode==="gov"?`${name} has no governor's election in 2026.`:`${name} has no Senate election in 2026. Its senators were last elected in 2022 or 2024.`;
+    if(!s){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No race</span></div><p class="empty">${none}</p>`;return}
     const flip=isFlip(s.held,s.r);
-    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">Senate${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}</span></div>
+    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">${OFFICE()}${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}${s.est?"*":""}</span></div>
       <dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
       <div class="cands">${s.c.map(cand).join("")}</div>
-      <p class="why">${s.why}</p>`;
+      <p class="why">${s.why}</p>${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
   }else{
     const ds=houseForState(sel);
     const rd=REDRAWN.has(sel)?`<p class="empty">${name} is using a newly redrawn congressional map this year.</p>`:"";
@@ -373,6 +418,21 @@ function drawMath(){
     need(`Democrats need <span class="n">${dNeed}</span> of the ${cnt.tu} toss-up states`,`Counting seats they're safe or favored in, Democrats are at ${dBase}. They need 51 for control.`,
          `Republicans need <span class="n">${rNeed}</span> of the ${cnt.tu} toss-up states`,`Republicans are at ${rBase}. They need 50, because VP JD Vance breaks ties.`);
     chips("The "+cnt.tu+" toss-ups",Object.entries(SENATE).filter(([,x])=>x.r==="tu").map(([st])=>[st,NAMES[st]]));
+  }else if(mode==="gov"){
+    const notUpD=6,notUpR=8,cnt={};ORDER.forEach(k=>cnt[k]=0);
+    Object.values(GOV).forEach(s=>cnt[s.r]++);
+    const dBase=notUpD+cnt.sd+cnt.ld+cnt.lnd, rBase=notUpR+cnt.sr+cnt.lr+cnt.lnr;
+    total=50;
+    segs=[["sd",notUpD+cnt.sd],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
+    t.textContent="Who holds the most governorships?";
+    p.innerHTML=`Republicans hold <strong>26</strong> governorships to Democrats' <strong>24</strong>. Governors don't form a "majority" like Congress, but they control vetoes, emergency powers and, in many states, how the 2028 election is run.`;
+    lk=`D ${dBase}`;mk="26 = majority";rk=`R ${rBase}`;
+    const tuStates=Object.entries(GOV).filter(([,x])=>x.r==="tu");
+    need(dBase>=26?`Democrats need <span class="n">0</span> of the ${cnt.tu} toss-ups for a majority`:`Democrats need <span class="n">${26-dBase}</span> of the ${cnt.tu} toss-ups`,
+         `They're safe or favored in ${dBase} states, which would be their first majority of governors since 2010.`,
+         rBase+cnt.tu>=26?`Republicans need <span class="n">${26-rBase}</span> of the ${cnt.tu} toss-ups`:`Republicans need <span class="n">all ${cnt.tu}</span> toss-ups, plus ${26-rBase-cnt.tu} more`,
+         `They're favored in ${rBase}. Keeping a majority means sweeping Georgia, Kansas and Nevada and also winning races that lean Democratic, like Iowa or Ohio.`);
+    chips("The "+cnt.tu+" toss-ups",tuStates.map(([st])=>[st,NAMES[st]]));
   }else{
     total=435;
     // Cook (Oct. 23-30): 220 seats at least Lean D, 18 Toss Up, the rest at least Lean R.
@@ -398,8 +458,8 @@ function chips(label,list){
   list.forEach(([st,txt])=>{const b=document.createElement("button");b.textContent=txt;b.addEventListener("click",()=>{sel=st;render();document.getElementById("card").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"})});el.appendChild(b)});
 }
 function drawRows(){
-  let items=mode==="senate"
-    ? Object.entries(SENATE).filter(([,s])=>s.r!=="sd"&&s.r!=="sr").map(([st,s])=>({st,title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r)}))
+  let items=mode!=="house"
+    ? Object.entries(SW()).filter(([,s])=>s.r!=="sd"&&s.r!=="sr").map(([st,s])=>({st,title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r)}))
     : HOUSE.map(d=>({st:d.st,title:d.id,sub:d.c?d.c.map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r)}));
   if(filt==="tu")items=items.filter(i=>i.r==="tu");
   if(filt==="flip")items=items.filter(i=>i.flip);
@@ -415,12 +475,15 @@ function drawRows(){
 function render(){
   document.getElementById("mode-senate").setAttribute("aria-pressed",mode==="senate");
   document.getElementById("mode-house").setAttribute("aria-pressed",mode==="house");
+  document.getElementById("mode-gov").setAttribute("aria-pressed",mode==="gov");
   drawMath();drawMap();drawCard();drawRows();
 }
-function setMode(m){mode=m;if(m==="house"&&!houseForState(sel).length)sel="PA";if(m==="senate"&&!SENATE[sel])sel="ME";try{localStorage.setItem("mt26-mode",m)}catch(e){}render()}
+function setMode(m){mode=m;if(m==="house"&&!houseForState(sel).length)sel="PA";if(m==="senate"&&!SENATE[sel])sel="ME";if(m==="gov"&&!GOV[sel])sel="GA";try{localStorage.setItem("mt26-mode",m)}catch(e){}render()}
 document.getElementById("mode-senate").addEventListener("click",()=>setMode("senate"));
 document.getElementById("mode-house").addEventListener("click",()=>setMode("house"));
+document.getElementById("mode-gov").addEventListener("click",()=>setMode("gov"));
 document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{filt=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawRows()}));
 if(mode==="house")sel="PA";
+if(mode==="gov")sel="GA";
 render();
 </script>
