@@ -61,6 +61,18 @@ h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;
 .bar .lnd,.bar .lnr{color:var(--ink)}
 .mid{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);left:50%}
 .bar-wrap{position:relative;padding-top:4px}
+.need{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:620px){.need{grid-template-columns:minmax(0,1fr)}}
+.need-side{border-radius:8px;padding:14px 16px;background:var(--chip);display:grid;gap:4px;border-left:6px solid var(--sd)}
+.need-side.r{border-left-color:var(--sr)}
+.need-who{font:600 12px var(--f-data);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.need-big{font-family:var(--f-display);font-stretch:75%;font-weight:850;font-size:clamp(26px,4.4vw,40px);line-height:1.02;margin:0;text-wrap:balance}
+.need-big .n{color:var(--tu)}
+.need-small{font-size:13.5px;color:var(--muted);margin:0}
+.tu-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tu-chips .lbl{font:600 12px var(--f-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.tu-chips button{font:650 13px var(--f-body);border:0;border-radius:999px;padding:5px 11px;background:var(--tu);color:var(--tu-ink);cursor:pointer}
+.tu-chips button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .bar-keys{display:flex;justify-content:space-between;font:500 12px var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* board */
@@ -149,9 +161,11 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
 
   <section class="math" aria-labelledby="math-title">
     <div class="math-top">
-      <h2 id="math-title">Senate: Democrats need a net gain of 4</h2>
-      <p id="math-text"></p>
+      <h2 id="math-title">Who wins the Senate?</h2>
     </div>
+    <div class="need" id="need"></div>
+    <div class="tu-chips" id="tu-chips"></div>
+    <p class="need-small" id="math-text"></p>
     <div class="bar-wrap">
       <div class="bar" id="bar"></div>
       <div class="mid" aria-hidden="true"></div>
@@ -352,22 +366,37 @@ function drawMath(){
     const dBase=notUpD+cnt.sd+cnt.ld+cnt.lnd, rBase=notUpR+cnt.sr+cnt.lr+cnt.lnr;
     total=100;
     segs=[["sd",notUpD+cnt.sd,"D not up/solid"],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
-    t.textContent="Senate: Democrats need a net gain of 4";
-    p.innerHTML=`Republicans hold <strong>53–47</strong>. With VP JD Vance breaking ties, Democrats need <strong>51</strong>. They lead or are safe in <strong>${dBase}</strong>; Republicans in <strong>${rBase}</strong>. That leaves <strong>${cnt.tu} Toss Ups</strong>, and Democrats would need ${Math.max(0,51-dBase)} of them.`;
+    t.textContent="Who wins the Senate?";
+    p.innerHTML=`Republicans hold the Senate <strong>53–47</strong> today, so Democrats need a net gain of <strong>4</strong> seats. Tap a toss-up above to see that race.`;
     lk=`D ${dBase}`;mk="51 for control";rk=`R ${rBase}`;
+    const dNeed=Math.max(0,51-dBase), rNeed=Math.max(0,50-rBase);
+    need(`Democrats need <span class="n">${dNeed}</span> of the ${cnt.tu} toss-up states`,`Counting seats they're safe or favored in, Democrats are at ${dBase}. They need 51 for control.`,
+         `Republicans need <span class="n">${rNeed}</span> of the ${cnt.tu} toss-up states`,`Republicans are at ${rBase}. They need 50, because VP JD Vance breaks ties.`);
+    chips("The "+cnt.tu+" toss-ups",Object.entries(SENATE).filter(([,x])=>x.r==="tu").map(([st])=>[st,NAMES[st]]));
   }else{
     total=435;
     // Cook (Oct. 23-30): 220 seats at least Lean D, 18 Toss Up, the rest at least Lean R.
     const d=220,tu=18,r=435-d-tu;
     segs=[["sd",d],["tu",tu],["sr",r]];
-    t.textContent="House: 218 seats for a majority";
+    t.textContent="Who wins the House?";
     p.innerHTML=`Republicans hold a narrow majority (about <strong>218–214</strong> with vacancies). Cook now has Democrats favored in <strong>220</strong> seats, with <strong>~18 Toss Ups</strong>, and projects Democrats ending with <strong>227–240</strong> seats.`;
     lk="D 220 at least Lean";mk="218 to win";rk=`R ${r} at least Lean`;
+    need(`Democrats need <span class="n">0</span> of the ${tu} toss-ups`,`They're already favored in ${d} seats, two more than the 218 needed. Toss-ups only pad the margin.`,
+         `Republicans need <span class="n">all ${tu}</span> toss-ups, plus ${218-r-tu} more`,`They're favored in ${r}. Even sweeping every toss-up leaves them ${218-r-tu} short, so they must also flip seats that lean Democratic.`);
+    chips("Toss-ups in this guide",HOUSE.filter(x=>x.r==="tu").map(x=>[x.st,x.id]));
   }
   bar.innerHTML=segs.map(([k,n])=>`<div class="${k} c-${k}" style="width:${n/total*100}%" title="${R[k]}: ${n}">${n/total>.035?n:""}</div>`).join("");
   document.getElementById("key-l").textContent=lk;document.getElementById("key-m").textContent=mk;document.getElementById("key-r").textContent=rk;
 }
 
+function need(dh,ds,rh,rs){
+  document.getElementById("need").innerHTML=`<div class="need-side"><span class="need-who">To win control · Democrats</span><p class="need-big">${dh}</p><p class="need-small">${ds}</p></div><div class="need-side r"><span class="need-who">To keep control · Republicans</span><p class="need-big">${rh}</p><p class="need-small">${rs}</p></div>`;
+}
+function chips(label,list){
+  const el=document.getElementById("tu-chips");
+  el.innerHTML=`<span class="lbl">${label}</span>`;
+  list.forEach(([st,txt])=>{const b=document.createElement("button");b.textContent=txt;b.addEventListener("click",()=>{sel=st;render();document.getElementById("card").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"})});el.appendChild(b)});
+}
 function drawRows(){
   let items=mode==="senate"
     ? Object.entries(SENATE).filter(([,s])=>s.r!=="sd"&&s.r!=="sr").map(([st,s])=>({st,title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r)}))
