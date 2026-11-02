@@ -11,7 +11,7 @@
   --sd:#1f4fa8; --ld:#4f7fd6; --lnd:#a7c0ee;
   --sr:#b3262f; --lr:#df5a5a; --lnr:#f1b1ab;
   --tu:#d8a530; --tu-ink:#3b2a00;
-  --focus:#151a2b;
+  --focus:#151a2b; --sig-bg:#fbf3df;
   --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
   --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-data:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -22,13 +22,13 @@
   --none:#262b3a; --none-ink:#6f768b;
   --sd:#4b7fe0; --ld:#3a64b4; --lnd:#2c4373;
   --sr:#e0525a; --lr:#b03c42; --lnr:#6f3236;
-  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; color-scheme:dark}}
+  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; --sig-bg:#2a2414; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f121b; --panel:#171b27; --ink:#e9ecf4; --muted:#9aa1b6; --line:#2a3042; --chip:#222838;
   --none:#262b3a; --none-ink:#6f768b;
   --sd:#4b7fe0; --ld:#3a64b4; --lnd:#2c4373;
   --sr:#e0525a; --lr:#b03c42; --lnr:#6f3236;
-  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; color-scheme:dark}
+  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; --sig-bg:#2a2414; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
@@ -110,6 +110,8 @@ h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;
 .cand span{color:var(--muted);font-size:13px}
 .cand .party{color:#fff;font-size:12px}
 .why{margin:0;font-size:14.5px;max-width:65ch}
+.sig{margin:0;padding:10px 12px;border-radius:7px;background:var(--sig-bg);border-left:4px solid var(--tu);font-size:14px;display:grid;gap:2px}
+.sig b{font:600 11px var(--f-data);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .dlist{display:grid;gap:10px}
 .dist{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px}
 .dist:first-child{border-top:0;padding-top:0}
@@ -299,6 +301,80 @@ const GOV={
  WY:{held:"R",r:"sr",inc:"Open (Mark Gordon term-limited)",c:[["R","Eric Barlow","Former state House speaker"],["D","Ken Casner","Restaurant owner"]],why:"Open seat, safely Republican."}
 };
 
+/* "Why it matters": history and context for each competitive race. */
+const SIG={
+ senate:{
+  AK:"Democrats haven't won a Senate race in Alaska since Mark Begich in 2008, and Trump carried the state by 13 points in 2024.",
+  IA:"Democrats haven't won a Senate race in Iowa since Tom Harkin in 2008. Trump won Iowa by 13 points in 2024.",
+  KS:"Kansas hasn't elected a Democratic senator since 1932, one of the longest droughts in the country. Trump won it by 16 points in 2024.",
+  ME:"Collins has held this seat since 1997. In 2020 she trailed in nearly every poll and won by 9 points. Harris carried Maine in 2024.",
+  MI:"Republicans haven't won a Senate race in Michigan since 1994. But Trump won the state in 2024, and Rogers lost by just 0.3 points that year.",
+  OH:"Brown held this seat for 18 years before losing in 2024. Trump won Ohio by 11 points, so a Brown comeback would be one of the night's biggest upsets.",
+  TX:"No Democrat has won a Senate race in Texas since Lloyd Bentsen in 1988, and no Democrat has won any statewide race there since 1994.",
+  NC:"Democrats haven't won a North Carolina Senate race since 2008. This is their likeliest pickup, and it would come in a state Trump carried by 3 points.",
+  GA:"Ossoff is the only Democratic senator on the ballot in a state Trump won in 2024. Holding it is essential to any Democratic majority.",
+  NH:"New Hampshire hasn't elected a Republican senator since 2010. Sununu held a Senate seat from 2003 to 2009 before losing to Jeanne Shaheen, whose seat this is.",
+  MN:"Republicans haven't won a Senate race in Minnesota since Norm Coleman in 2002.",
+  NE:"Nebraska hasn't elected a non-Republican senator since Ben Nelson in 2006. In 2024 Osborn lost by about 7 points in a state Trump won by 20.",
+  SC:"No Democrat has won a Senate race in South Carolina since Fritz Hollings in 1998.",
+  FL:"Democrats haven't won a Florida Senate race since Bill Nelson in 2012. Trump carried Florida by 13 points in 2024.",
+  MT:"Democrats held a Montana seat until Jon Tester lost in 2024. Montana has never elected an independent to the Senate.",
+  LA:"Cassidy is one of the few senators to lose a primary in recent years, a sign of how much Trump's endorsement still matters in GOP primaries."
+ },
+ gov:{
+  GA:"Democrats haven't won a Georgia governor's race since 1998. Bottoms would be the first Black woman ever elected governor of any U.S. state.",
+  KS:"Kansas voted for Trump by 16 points but has had a Democratic governor, Laura Kelly, since 2019. Republicans want the seat back.",
+  NV:"Lombardo was the only challenger in 2022 to beat a sitting Democratic governor. Nevada is the one Toss Up where a Republican incumbent is on the ballot.",
+  IA:"Republicans have held Iowa's governorship since 2011. A Sand win would make him the state's first Democratic governor in 16 years.",
+  OH:"Republicans have held Ohio's governorship since 2011, and Trump won the state by 11 points. Acton led the state's early COVID response.",
+  AK:"Democrats haven't won Alaska's governorship since Tony Knowles in 1998. (Bill Walker, elected in 2014, was an independent.)",
+  MI:"No independent has been elected governor of any state since Bill Walker in Alaska in 2014. Duggan is trying to be the next.",
+  WI:"Wisconsin's last two governor's races were decided by about 1 and 3 points. This is the first open race there since 2010.",
+  AZ:"Hobbs won in 2022 by less than a point, about 17,000 votes. Biggs is a former chair of the House Freedom Caucus.",
+  FL:"Democrats haven't won a Florida governor's race since Lawton Chiles in 1994. Jolly is a former Republican congressman running as a Democrat.",
+  TX:"No Democrat has won a Texas governor's race since Ann Richards in 1990. Abbott is seeking a fourth term.",
+  NE:"Democrats last won a Nebraska governor's race in 1994. A close margin here would be a striking sign of the national mood.",
+  NH:"New Hampshire and Vermont are the only states that elect governors every two years. Ayotte won in 2024 by about 9 points.",
+  VT:"Scott, a Republican, won his last race with over 70% of the vote in one of the most Democratic states in the country.",
+  OK:"Democrats last held Oklahoma's governorship under Brad Henry, who left office in 2011.",
+  AL:"Jones's 2017 Senate win was the first by an Alabama Democrat in 25 years. He lost the seat to Tuberville in 2020, and this is their rematch.",
+  NY:"Hochul's 6-point win in 2022 was the closest New York governor's race since 1994.",
+  PA:"Shapiro won in 2022 by nearly 15 points. A big margin again would boost him as a 2028 presidential contender.",
+  OR:"Republicans haven't won an Oregon governor's race since 1982, but Drazan came within about 4 points in 2022.",
+  MN:"Republicans haven't won a statewide race in Minnesota since 2006.",
+  RI:"Foulkes would be Rhode Island's second woman governor, after Gina Raimondo.",
+  ME:"Maine voters have elected independent governors twice in recent decades, including Angus King in 1994 and 1998."
+ },
+ house:{
+  "NY-17":"One of only three Republicans who won in 2024 while Harris carried their district.",
+  "PA-1":"Fitzpatrick is one of only three Republicans representing a district Harris won in 2024.",
+  "NE-2":"Harris carried this Omaha seat in 2024, and it awards its own presidential electoral vote.",
+  "CA-22":"Valadao is one of only two House Republicans still in office who voted to impeach Trump in 2021.",
+  "CA-13":"Gray won by 187 votes in 2024, the closest House race in the country.",
+  "WA-3":"Gluesenkamp Perez holds a seat Trump won, one of the few Democrats in that position.",
+  "ME-2":"Trump won this district by about 9 points, yet Democrat Jared Golden held it since 2019. With Golden retiring, it's a prime GOP pickup chance.",
+  "OH-9":"Kaptur, first elected in 1982, is the longest-serving woman in the history of Congress.",
+  "IA-1":"Miller-Meeks first won this seat in 2020 by just 6 votes, the closest House race in decades.",
+  "IA-2":"Iowa's entire House delegation has been Republican since 2023. Democrats are competitive in three of its four seats.",
+  "IA-3":"Iowa's entire House delegation has been Republican since 2023. Democrats are competitive in three of its four seats.",
+  "TX-35":"Texas redrew this seat in 2025 to elect a Republican. If Democrats win it anyway, the GOP's map strategy backfires.",
+  "CO-5":"This Colorado Springs seat has never elected a Democrat since it was created in 1973.",
+  "CO-8":"Evans won in 2024 by less than a point. The district was created after the 2020 census.",
+  "SC-1":"The last Democrat to win here was Joe Cunningham in 2018, who served one term.",
+  "KY-6":"Democrats last held this Lexington seat in 2012, when Ben Chandler lost to Andy Barr.",
+  "PA-10":"Perry is a former chair of the conservative House Freedom Caucus.",
+  "PA-7":"Mackenzie flipped this seat from Democrat Susan Wild in 2024.",
+  "PA-8":"Bresnahan unseated Democrat Matt Cartwright in 2024 in this Scranton-area seat.",
+  "VA-2":"Kiggans beat Luria for this seat in 2022. Now Luria is trying to win it back.",
+  "MI-7":"Barrett flipped this Lansing seat in 2024 after Elissa Slotkin left it to run for Senate.",
+  "NC-1":"North Carolina redrew this seat to make it more Republican, so Davis is running on less friendly ground.",
+  "NJ-9":"Trump carried this heavily Latino North Jersey seat in 2024, one of the biggest swings in the country.",
+  "AZ-6":"Ciscomani has won this Tucson-area seat twice, by narrow margins both times.",
+  "WI-3":"Van Orden flipped this seat in 2022 when longtime Democrat Ron Kind retired.",
+  "VA-1":"Wittman has held this seat since 2007. Democrats rarely compete here, which shows how wide the battlefield has become."
+ }
+};
+
 /* House: top-tier competitive districts. */
 const HOUSE=[
  ["AZ","AZ-1","R","tu","David Schweikert (R) seat",null,"One of the most Democratic-leaning seats the GOP holds."],
@@ -379,6 +455,7 @@ function drawMap(){
 const pillStyle=r=>`background:var(--${r});color:${["tu"].includes(r)?"var(--tu-ink)":["lnd","lnr"].includes(r)?"var(--ink)":"#fff"}`;
 function cand(c){return `<div class="cand"><span class="party p-${c[0]}">${c[0]}</span><div><b>${c[1]}</b>${c[2]?`<br><span>${c[2]}</span>`:""}</div></div>`}
 
+const sigBox=t=>t?`<p class="sig"><b>Why it matters</b>${t}</p>`:"";
 function drawCard(){
   const card=document.getElementById("card"), name=NAMES[sel];
   if(mode!=="house"){
@@ -389,7 +466,7 @@ function drawCard(){
     card.innerHTML=`<div class="card-head"><div><div class="eyebrow">${OFFICE()}${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}${s.est?"*":""}</span></div>
       <dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
       <div class="cands">${s.c.map(cand).join("")}</div>
-      <p class="why">${s.why}</p>${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
+      <p class="why">${s.why}</p>${sigBox(SIG[mode][sel])}${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
   }else{
     const ds=houseForState(sel);
     const rd=REDRAWN.has(sel)?`<p class="empty">${name} is using a newly redrawn congressional map this year.</p>`:"";
@@ -398,7 +475,7 @@ function drawCard(){
       <div class="dlist">${ds.map(d=>`<div class="dist"><div class="dist-top"><span class="dist-id">${d.id}</span><span class="pill" style="${pillStyle(d.r)}">${R[d.r]}${isFlip(d.held,d.r)?" · flip":""}</span></div>
         <p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
         ${d.c?`<div class="cands">${d.c.map(cand).join("")}</div>`:""}
-        <p>${d.why}</p></div>`).join("")}</div>`;
+        <p>${d.why}</p>${sigBox(SIG.house[d.id])}</div>`).join("")}</div>`;
   }
 }
 
@@ -424,14 +501,11 @@ function drawMath(){
     const dBase=notUpD+cnt.sd+cnt.ld+cnt.lnd, rBase=notUpR+cnt.sr+cnt.lr+cnt.lnr;
     total=50;
     segs=[["sd",notUpD+cnt.sd],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
-    t.textContent="Who holds the most governorships?";
+    t.textContent="Governors: 36 races on the ballot";
     p.innerHTML=`Republicans hold <strong>26</strong> governorships to Democrats' <strong>24</strong>. Governors don't form a "majority" like Congress, but they control vetoes, emergency powers and, in many states, how the 2028 election is run.`;
-    lk=`D ${dBase}`;mk="26 = majority";rk=`R ${rBase}`;
+    lk=`D ${dBase} safe or favored`;mk="26 = majority";rk=`R ${rBase} safe or favored`;
     const tuStates=Object.entries(GOV).filter(([,x])=>x.r==="tu");
-    need(dBase>=26?`Democrats need <span class="n">0</span> of the ${cnt.tu} toss-ups for a majority`:`Democrats need <span class="n">${26-dBase}</span> of the ${cnt.tu} toss-ups`,
-         `They're safe or favored in ${dBase} states, which would be their first majority of governors since 2010.`,
-         rBase+cnt.tu>=26?`Republicans need <span class="n">${26-rBase}</span> of the ${cnt.tu} toss-ups`:`Republicans need <span class="n">all ${cnt.tu}</span> toss-ups, plus ${26-rBase-cnt.tu} more`,
-         `They're favored in ${rBase}. Keeping a majority means sweeping Georgia, Kansas and Nevada and also winning races that lean Democratic, like Iowa or Ohio.`);
+    document.getElementById("need").hidden=true;
     chips("The "+cnt.tu+" toss-ups",tuStates.map(([st])=>[st,NAMES[st]]));
   }else{
     total=435;
@@ -450,6 +524,7 @@ function drawMath(){
 }
 
 function need(dh,ds,rh,rs){
+  document.getElementById("need").hidden=false;
   document.getElementById("need").innerHTML=`<div class="need-side"><span class="need-who">To win control · Democrats</span><p class="need-big">${dh}</p><p class="need-small">${ds}</p></div><div class="need-side r"><span class="need-who">To keep control · Republicans</span><p class="need-big">${rh}</p><p class="need-small">${rs}</p></div>`;
 }
 function chips(label,list){
