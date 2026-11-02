@@ -76,7 +76,11 @@ h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;
 .bar-keys{display:flex;justify-content:space-between;font:500 12px var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* board */
-.board{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start}
+.board{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start}
+.board .mapbox{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:860px){.board .mapbox{position:static}}
+.acc.pinned{border-style:dashed}
+.acc .note{font-size:13px;color:var(--muted);margin:0}
 @media (max-width:860px){.board{grid-template-columns:minmax(0,1fr)}}
 .mapbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
@@ -195,10 +199,7 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
       <div class="grid" id="grid" role="group" aria-label="State map"></div>
       <p class="map-note" id="map-note"></p>
     </div>
-    <aside class="card" id="card" aria-live="polite"></aside>
-  </section>
-
-  <section class="watch" aria-labelledby="watch-title">
+    <section class="watch" aria-labelledby="watch-title">
     <div class="watch-head">
       <div><h2 id="watch-title">Races to watch</h2><p class="watch-sub">Ranked by how close the race is and how much the result matters. Long shots are left off.</p></div>
       <div class="filters" role="group" aria-label="Filter races">
@@ -208,7 +209,9 @@ footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padd
       </div>
     </div>
     <div class="rows" id="rows"></div>
+    </section>
   </section>
+
 
   <section class="notes">
     <div>
@@ -427,7 +430,7 @@ const REDRAWN=new Set(["TX","CA","OH","MO","NC","FL","UT"]);
 const isFlip=(held,r)=>{const l=lean(r);return l&&held!=="O"&&l!==held};
 const strength=r=>({tu:0,lnd:1,lnr:1,ld:2,lr:2,sd:3,sr:3})[r];
 
-let mode="senate", sel="ME", filt="all";
+let mode="senate", sel=null, filt="all";
 try{const m=localStorage.getItem("mt26-mode");if(["house","senate","gov"].includes(m))mode=m;}catch(e){}
 
 const SW=()=>mode==="gov"?GOV:SENATE;
@@ -456,7 +459,7 @@ function drawMap(){
     if(flip)b.classList.add("flip");
     b.setAttribute("aria-label",label);
     b.innerHTML=st+(sub!==""?`<small>${sub}</small>`:"");
-    b.addEventListener("click",()=>{sel=st;render()});
+    b.addEventListener("click",()=>goTo(st));
     grid.appendChild(b);
   }
   document.getElementById("map-note").textContent= mode==="senate"
@@ -482,24 +485,6 @@ function districtBody(d){
         <p class="why">${d.why}</p>${sigBox(SIG.house[d.id])}`;
 }
 let openKey=null;
-function drawCard(){
-  const card=document.getElementById("card"), name=NAMES[sel];
-  if(mode!=="house"){
-    const s=SW()[sel];
-    const none=mode==="gov"?`${name} has no governor's election in 2026.`:`${name} has no Senate election in 2026. Its senators were last elected in 2022 or 2024.`;
-    if(!s){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No race</span></div><p class="empty">${none}</p>`;return}
-    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">${OFFICE()}${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}${s.est?"*":""}</span></div>
-      ${statewideBody(s,sel)}`;
-  }else{
-    const ds=houseForState(sel);
-    const rd=REDRAWN.has(sel)?`<p class="empty">${name} is using a newly redrawn congressional map this year.</p>`:"";
-    if(!ds.length){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No top-tier race</span></div><p class="empty">None of ${name}'s districts are among the closest House races this year.</p>${rd}`;return}
-    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">House · ${ds.length} competitive</div><h2 class="state-name">${name}</h2></div></div>${rd}
-      <div class="dlist">${ds.map(d=>`<div class="dist"><div class="dist-top"><span class="dist-id">${d.id}</span><span class="pill" style="${pillStyle(d.r)}">${R[d.r]}${isFlip(d.held,d.r)?" · flip":""}</span></div>
-        ${districtBody(d)}</div>`).join("")}</div>`;
-  }
-}
-
 function drawMath(){
   const bar=document.getElementById("bar"),t=document.getElementById("math-title"),p=document.getElementById("math-text");
   let segs=[],total,lk,mk,rk;
@@ -551,7 +536,7 @@ function need(dh,ds,rh,rs){
 function chips(label,list){
   const el=document.getElementById("tu-chips");
   el.innerHTML=`<span class="lbl">${label}</span>`;
-  list.forEach(([st,txt])=>{const b=document.createElement("button");b.textContent=txt;b.addEventListener("click",()=>{sel=st;render();document.getElementById("card").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"})});el.appendChild(b)});
+  list.forEach(([st,txt])=>{const b=document.createElement("button");b.textContent=txt;b.addEventListener("click",()=>goTo(st));el.appendChild(b)});
 }
 /* Watch ranking = stakes x closeness.
    Stakes (1-5): effect on control of the chamber, plus how surprising or historic a result would be.
@@ -570,44 +555,61 @@ function closeness(held,r){
 function watchScore(kind,key,held,r){return (STAKES[kind][key]??(kind==="house"?3:1))*closeness(held,r)}
 function drawRows(){
   let items=mode!=="house"
-    ? Object.entries(SW()).map(([st,s])=>({st,key:st,body:()=>statewideBody(s,st),title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r),score:watchScore(mode,st,s.held,s.r)}))
-    : HOUSE.map(d=>({st:d.st,key:d.id,body:()=>districtBody(d),title:d.id,sub:d.c?d.c.map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r),score:watchScore("house",d.id,d.held,d.r)}));
+    ? Object.entries(SW()).map(([st,s])=>({st,key:st,body:()=>statewideBody(s,st),title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>surname(c[1])+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r),score:watchScore(mode,st,s.held,s.r)}))
+    : HOUSE.map(d=>({st:d.st,key:d.id,body:()=>districtBody(d),title:d.id,sub:d.c?d.c.map(c=>surname(c[1])+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r),score:watchScore("house",d.id,d.held,d.r)}));
   items=items.filter(i=>i.score>=1);
   items.sort((a,b)=>b.score-a.score||strength(a.r)-strength(b.r)||a.title.localeCompare(b.title));
   items.forEach((i,n)=>i.rank=n+1);
   if(filt==="tu")items=items.filter(i=>i.r==="tu");
   if(filt==="flip")items=items.filter(i=>i.flip);
+  // A state picked on the map whose race isn't in the list gets pinned on top.
+  if(sel&&!items.some(i=>i.st===sel)){
+    const all=mode!=="house"?(SW()[sel]?[[sel,SW()[sel]]]:[]):houseForState(sel).map(d=>[d.id,d]);
+    if(!all.length){items.unshift({st:sel,key:sel,pinned:true,empty:true,title:NAMES[sel],sub:mode==="house"?"No top-tier House race":`No ${mode==="gov"?"governor's":"Senate"} race in 2026`,r:"none"})}
+    else{const [k,x]=all[0];const ranked=items.length;
+      items.unshift({st:sel,key:k,pinned:true,title:mode==="house"?k:NAMES[sel],sub:x.c?x.c.slice(0,2).map(c=>surname(c[1])+" ("+c[0]+")").join(" vs "):x.inc,r:x.r,flip:isFlip(x.held,x.r),
+        body:()=>(mode==="house"?districtBody(x):statewideBody(x,sel))+(x.r==="sd"||x.r==="sr"||filt==="all"?`<p class="note">Not one of the top races: ${x.r==="sd"||x.r==="sr"?"it isn't expected to be competitive":"it's not close enough, or not consequential enough, to make the ranked list"}.</p>`:`<p class="note">Not shown under this filter.</p>`)})}
+  }
   const rows=document.getElementById("rows");
   rows.innerHTML=items.length?"":`<p class="empty">No races match this filter.</p>`;
   items.forEach(i=>{
     const open=openKey===mode+":"+i.key, bid="acc-"+mode+"-"+i.key;
-    const wrap=document.createElement("div");wrap.className="acc"+(open?" open":"");
+    const wrap=document.createElement("div");wrap.className="acc"+(open?" open":"")+(i.pinned?" pinned":"");
+    if(i.empty){wrap.innerHTML=`<div class="row" style="cursor:default"><span class="rk">–</span><span class="tag c-none"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span></span><span></span></div>`;rows.appendChild(wrap);return}
     const b=document.createElement("button");b.className="row";b.id=bid+"-btn";
     b.setAttribute("aria-expanded",open);b.setAttribute("aria-controls",bid);
-    b.innerHTML=`<span class="rk">${i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span><span class="chev" aria-hidden="true"></span>`;
+    b.innerHTML=`<span class="rk">${i.pinned?"–":i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span><span class="chev" aria-hidden="true"></span>`;
     const body=document.createElement("div");body.className="acc-body";body.id=bid;body.setAttribute("role","region");body.setAttribute("aria-labelledby",b.id);
     body.hidden=!open;if(open)body.innerHTML=i.body();
     b.addEventListener("click",()=>{
       openKey=open?null:mode+":"+i.key;
       if(!open)sel=i.st;
-      drawMap();drawCard();drawRows();
+      drawMap();drawRows();
       document.getElementById(b.id)?.focus({preventScroll:true});
     });
     wrap.append(b,body);rows.appendChild(wrap)});
 }
 
+const surname=n=>/nominee/.test(n)?n:n.split(" ").slice(-1)[0];
+function goTo(st){
+  sel=st;
+  let key=st;
+  if(mode==="house"){const ds=houseForState(st);key=ds.length?ds[0].id:st}
+  openKey=mode+":"+key;
+  drawMap();drawRows();
+  const el=document.getElementById("acc-"+mode+"-"+key+"-btn")||document.querySelector(".acc.pinned");
+  if(el){el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"center"});el.focus?.({preventScroll:true})}
+}
 function render(){
   document.getElementById("mode-senate").setAttribute("aria-pressed",mode==="senate");
   document.getElementById("mode-house").setAttribute("aria-pressed",mode==="house");
   document.getElementById("mode-gov").setAttribute("aria-pressed",mode==="gov");
-  drawMath();drawMap();drawCard();drawRows();
+  drawMath();drawMap();drawRows();
 }
-function setMode(m){mode=m;if(m==="house"&&!houseForState(sel).length)sel="PA";if(m==="senate"&&!SENATE[sel])sel="ME";if(m==="gov"&&!GOV[sel])sel="GA";try{localStorage.setItem("mt26-mode",m)}catch(e){}render()}
+function setMode(m){mode=m;sel=null;openKey=null;try{localStorage.setItem("mt26-mode",m)}catch(e){}render()}
 document.getElementById("mode-senate").addEventListener("click",()=>setMode("senate"));
 document.getElementById("mode-house").addEventListener("click",()=>setMode("house"));
 document.getElementById("mode-gov").addEventListener("click",()=>setMode("gov"));
 document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{filt=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawRows()}));
-if(mode==="house")sel="PA";
-if(mode==="gov")sel="GA";
 render();
 </script>
