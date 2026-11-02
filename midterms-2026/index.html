@@ -1,0 +1,397 @@
+<title>Midterms 2026 Field Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a ballot-board. Tile map of the 50 states on the left, a race card on the right, seat math above, a ranked watch list below. */
+:root{
+  --bg:#f3f4f7; --panel:#ffffff; --ink:#151a2b; --muted:#5d6479; --line:#d9dce5; --chip:#e8eaf0;
+  --none:#e2e4ea; --none-ink:#8a90a2;
+  --sd:#1f4fa8; --ld:#4f7fd6; --lnd:#a7c0ee;
+  --sr:#b3262f; --lr:#df5a5a; --lnr:#f1b1ab;
+  --tu:#d8a530; --tu-ink:#3b2a00;
+  --focus:#151a2b;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f121b; --panel:#171b27; --ink:#e9ecf4; --muted:#9aa1b6; --line:#2a3042; --chip:#222838;
+  --none:#262b3a; --none-ink:#6f768b;
+  --sd:#4b7fe0; --ld:#3a64b4; --lnd:#2c4373;
+  --sr:#e0525a; --lr:#b03c42; --lnr:#6f3236;
+  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f121b; --panel:#171b27; --ink:#e9ecf4; --muted:#9aa1b6; --line:#2a3042; --chip:#222838;
+  --none:#262b3a; --none-ink:#6f768b;
+  --sd:#4b7fe0; --ld:#3a64b4; --lnd:#2c4373;
+  --sr:#e0525a; --lr:#b03c42; --lnr:#6f3236;
+  --tu:#d8a530; --tu-ink:#2a1e00; --focus:#e9ecf4; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+header{display:grid;gap:6px}
+.eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-stretch:72%;font-weight:850;font-size:clamp(34px,6vw,58px);line-height:.95;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--tu)}
+.lede{max-width:68ch;color:var(--muted);margin:4px 0 0}
+h2{font-family:var(--f-display);font-stretch:80%;font-weight:800;font-size:22px;margin:0;letter-spacing:.005em;text-wrap:balance}
+h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;margin:0}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.modes{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px;gap:4px}
+.modes button{font:600 15px var(--f-body);border:0;background:transparent;color:var(--muted);padding:8px 20px;border-radius:999px;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.modes button:focus-visible,.tile:focus-visible,.row:focus-visible,.filters button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+/* seat math */
+.math{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:10px}
+.math-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline}
+.math-top p{margin:0;color:var(--muted);font-size:14px;max-width:70ch}
+.math-top strong{color:var(--ink)}
+.bar{position:relative;display:flex;height:30px;border-radius:5px;overflow:hidden;background:var(--none)}
+.bar div{height:100%;display:flex;align-items:center;justify-content:center;font:600 12px var(--f-data);color:#fff;min-width:0;overflow:hidden;white-space:nowrap}
+.bar .tu{color:var(--tu-ink)}
+.bar .lnd,.bar .lnr{color:var(--ink)}
+.mid{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);left:50%}
+.bar-wrap{position:relative;padding-top:4px}
+.bar-keys{display:flex;justify-content:space-between;font:500 12px var(--f-data);color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* board */
+.board{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:860px){.board{grid-template-columns:minmax(0,1fr)}}
+.mapbox{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
+.tile{aspect-ratio:1;max-width:100%;border:0;border-radius:5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 clamp(10px,1.6vw,15px) var(--f-display);font-stretch:90%;color:#fff;position:relative;padding:0;transition:transform .12s ease}
+.tile small{font:600 clamp(8px,1vw,11px) var(--f-data);opacity:.9}
+.tile:hover{transform:scale(1.07);z-index:2}
+.tile.sel{box-shadow:0 0 0 3px var(--panel),0 0 0 5px var(--ink);z-index:3}
+.tile.flip{box-shadow:inset 0 0 0 3px var(--panel),inset 0 0 0 4px currentColor}
+.tile.flip.sel{box-shadow:inset 0 0 0 3px var(--panel),inset 0 0 0 4px currentColor,0 0 0 3px var(--panel),0 0 0 5px var(--ink)}
+.c-none{background:var(--none);color:var(--none-ink)}
+.c-sd{background:var(--sd)}.c-ld{background:var(--ld)}.c-lnd{background:var(--lnd);color:var(--ink)}
+.c-sr{background:var(--sr)}.c-lr{background:var(--lr)}.c-lnr{background:var(--lnr);color:var(--ink)}
+.c-tu{background:var(--tu);color:var(--tu-ink)}
+.map-note{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}.tile:hover{transform:none}}
+
+/* card */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:860px){.card{position:static}}
+.card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.state-name{font-family:var(--f-display);font-stretch:72%;font-weight:850;font-size:34px;line-height:1;margin:0}
+.pill{display:inline-block;font:600 12px var(--f-data);letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:600}
+.cands{display:grid;gap:8px}
+.cand{display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:7px;background:var(--chip)}
+.party{font:700 12px var(--f-data);width:24px;height:24px;border-radius:5px;display:grid;place-items:center;color:#fff;flex:none}
+.p-D{background:var(--sd)}.p-R{background:var(--sr)}.p-I{background:#6b6f80}
+.cand b{font-weight:650}
+.cand span{color:var(--muted);font-size:13px}
+.cand .party{color:#fff;font-size:12px}
+.why{margin:0;font-size:14.5px;max-width:65ch}
+.dlist{display:grid;gap:10px}
+.dist{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px}
+.dist:first-child{border-top:0;padding-top:0}
+.dist-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dist-id{font:600 14px var(--f-data)}
+.dist p{margin:0;font-size:14px}
+.empty{color:var(--muted);font-size:14px;margin:0}
+
+/* watch list */
+.watch{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px}
+.watch-head{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:600 13px var(--f-body);border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--chip);color:var(--ink);border-color:var(--ink)}
+.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:10px 12px;cursor:pointer;font:inherit}
+.row:hover{border-color:var(--muted)}
+.row .tag{width:10px;align-self:stretch;border-radius:3px}
+.row .t{font-weight:650;font-size:14px}
+.row .s{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .flipmark{font:600 11px var(--f-data);color:var(--muted)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;font-size:14px;color:var(--muted)}
+.notes h3{color:var(--ink);margin-bottom:6px}
+.notes p{margin:0 0 8px}
+.notes a{color:var(--ink)}
+footer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Election Day · Tuesday, November 3, 2026</div>
+    <h1>Midterms 2026 <em>Field Guide</em></h1>
+    <p class="lede">Every Senate seat on the ballot and the House districts most likely to decide control. Tap a state to see who's running and why it matters. Ratings follow the Cook Political Report's final-week calls (Oct. 23–30).</p>
+  </header>
+
+  <div class="toolbar">
+    <div class="modes" role="group" aria-label="Chamber">
+      <button id="mode-senate" aria-pressed="true">Senate</button>
+      <button id="mode-house" aria-pressed="false">House</button>
+    </div>
+    <div class="legend" aria-label="Rating colors">
+      <span><i class="sw c-sd"></i>Solid D</span><span><i class="sw c-ld"></i>Likely D</span><span><i class="sw c-lnd"></i>Lean D</span>
+      <span><i class="sw c-tu"></i>Toss Up</span>
+      <span><i class="sw c-lnr"></i>Lean R</span><span><i class="sw c-lr"></i>Likely R</span><span><i class="sw c-sr"></i>Solid R</span>
+      <span><i class="sw c-none"></i><span id="legend-none">No race</span></span><span><i class="sw c-none" style="box-shadow:inset 0 0 0 2px var(--panel),inset 0 0 0 3px var(--ink)"></i>Favored to flip</span>
+    </div>
+  </div>
+
+  <section class="math" aria-labelledby="math-title">
+    <div class="math-top">
+      <h2 id="math-title">Senate: Democrats need a net gain of 4</h2>
+      <p id="math-text"></p>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar" id="bar"></div>
+      <div class="mid" aria-hidden="true"></div>
+    </div>
+    <div class="bar-keys"><span id="key-l"></span><span id="key-m"></span><span id="key-r"></span></div>
+  </section>
+
+  <section class="board">
+    <div class="mapbox">
+      <div class="grid" id="grid" role="group" aria-label="State map"></div>
+      <p class="map-note" id="map-note"></p>
+    </div>
+    <aside class="card" id="card" aria-live="polite"></aside>
+  </section>
+
+  <section class="watch" aria-labelledby="watch-title">
+    <div class="watch-head">
+      <h2 id="watch-title">Races to watch</h2>
+      <div class="filters" role="group" aria-label="Filter races">
+        <button data-f="all" aria-pressed="true">All competitive</button>
+        <button data-f="tu" aria-pressed="false">Toss Ups</button>
+        <button data-f="flip" aria-pressed="false">Favored to flip</button>
+      </div>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <section class="notes">
+    <div>
+      <h3>How to read the ratings</h3>
+      <p><b>Solid</b>: not expected to be competitive. <b>Likely</b>: competitive but one party has a clear edge. <b>Lean</b>: competitive, one party has a small edge. <b>Toss Up</b>: either side can win.</p>
+      <p>A tile with an inner ring holds a seat currently favored to change parties.</p>
+    </div>
+    <div>
+      <h3>The new House maps</h3>
+      <p>Several states redrew districts mid-decade. Texas added roughly five GOP-leaning seats; California's Proposition 50 answered with roughly five Democratic-leaning ones. Ohio, Missouri, North Carolina, Florida and Utah also have new lines. Missouri's map is on the ballot as a referendum this year.</p>
+    </div>
+    <div>
+      <h3>Election night timing</h3>
+      <p>Most of Kentucky closes at 6pm ET, Georgia and Virginia at 7, North Carolina and Ohio at 7:30, and Maine, Michigan, New Hampshire and Pennsylvania at 8. Most of Texas, Iowa and Kansas close at 9pm ET. Alaska closes last, and its ranked-choice count can take days.</p>
+    </div>
+  </section>
+
+  <footer>Ratings: Cook Political Report, as reported Oct. 6–30, 2026. Nominees from state primary results and news coverage. Ratings move until polls close; check <a href="https://www.cookpolitical.com/ratings" style="color:inherit">cookpolitical.com/ratings</a> for the live list. Florida and Montana ratings are estimates where a current Cook call wasn't available. House coverage here is the top tier of competitive districts, not all 435.</footer>
+</div>
+
+<script>
+const TILES={AK:[0,0],ME:[11,0],WI:[6,1],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],IL:[6,2],MI:[7,2],NY:[9,2],MA:[10,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IN:[6,3],OH:[7,3],PA:[8,3],NJ:[9,3],CT:[10,3],RI:[11,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
+const NAMES={AK:"Alaska",AL:"Alabama",AR:"Arkansas",AZ:"Arizona",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",IA:"Iowa",ID:"Idaho",IL:"Illinois",IN:"Indiana",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",MA:"Massachusetts",MD:"Maryland",ME:"Maine",MI:"Michigan",MN:"Minnesota",MO:"Missouri",MS:"Mississippi",MT:"Montana",NC:"North Carolina",ND:"North Dakota",NE:"Nebraska",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NV:"Nevada",NY:"New York",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VA:"Virginia",VT:"Vermont",WA:"Washington",WI:"Wisconsin",WV:"West Virginia",WY:"Wyoming"};
+const R={sd:"Solid D",ld:"Likely D",lnd:"Lean D",tu:"Toss Up",lnr:"Lean R",lr:"Likely R",sr:"Solid R"};
+const ORDER=["sd","ld","lnd","tu","lnr","lr","sr"];
+const lean=r=>r==="tu"?null:(r.endsWith("d")?"D":"R");
+
+/* Senate: held = party holding the seat now. c = [party, name, note] */
+const SENATE={
+ AK:{held:"R",r:"tu",inc:"Dan Sullivan (R)",c:[["R","Dan Sullivan","Incumbent"],["D","Mary Peltola","Former U.S. Rep."]],why:"Peltola, who won Alaska's at-large House seat twice, is the strongest Democratic recruit in years. Ranked-choice voting means results may take a week or more."},
+ AL:{held:"R",r:"sr",inc:"Open (Tommy Tuberville is running for governor)",c:[["R","Barry Moore","U.S. Rep."],["D","Everett Wess",""]],why:"Open seat, safely Republican."},
+ AR:{held:"R",r:"sr",inc:"Tom Cotton (R)",c:[["R","Tom Cotton","Incumbent"]],why:"Not expected to be competitive."},
+ CO:{held:"D",r:"sd",inc:"John Hickenlooper (D)",c:[["D","John Hickenlooper","Incumbent"]],why:"Not expected to be competitive."},
+ DE:{held:"D",r:"sd",inc:"Chris Coons (D)",c:[["D","Chris Coons","Incumbent"]],why:"Not expected to be competitive."},
+ FL:{held:"R",r:"lr",special:true,inc:"Ashley Moody (R), appointed 2025",c:[["R","Ashley Moody","Appointed incumbent"],["D","Angie Nixon","State Rep."]],why:"Special election for the rest of Marco Rubio's term. Nixon upset the better-funded Alex Vindman in the primary. Florida has trended firmly Republican."},
+ GA:{held:"D",r:"ld",inc:"Jon Ossoff (D)",c:[["D","Jon Ossoff","Incumbent"],["R","Mike Collins","U.S. Rep."]],why:"The GOP's best pickup target on paper. Collins won a June runoff with Trump's endorsement, but Ossoff has a huge cash edge and Cook moved it to Likely D."},
+ ID:{held:"R",r:"sr",inc:"Jim Risch (R)",c:[["R","Jim Risch","Incumbent"]],why:"Not expected to be competitive."},
+ IL:{held:"D",r:"sd",inc:"Open (Dick Durbin retiring)",c:[["D","Juliana Stratton","Lieutenant Governor"],["R","Don Tracy",""]],why:"Open seat, safely Democratic."},
+ IA:{held:"R",r:"tu",inc:"Open (Joni Ernst retiring)",c:[["R","Ashley Hinson","U.S. Rep."],["D","Josh Turek","State Rep."]],why:"Cook moved this open seat from Lean R to Toss Up in August. A Democratic win in Iowa would signal a wave."},
+ KS:{held:"R",r:"tu",inc:"Roger Marshall (R)",c:[["R","Roger Marshall","Incumbent"],["D","Adam Hamilton",""]],why:"The surprise of the cycle. Cook moved Kansas to Toss Up on Oct. 6; Kansas hasn't elected a Democratic senator since 1932."},
+ KY:{held:"R",r:"sr",inc:"Open (Mitch McConnell retiring)",c:[["R","Andy Barr","U.S. Rep."],["D","Charles Booker","Former state Rep."]],why:"McConnell's seat stays safely Republican."},
+ LA:{held:"R",r:"sr",inc:"Bill Cassidy (R), lost primary",c:[["R","Julia Letlow","U.S. Rep."],["D","Jamie Davis",""]],why:"Cassidy, who voted to convict Trump in 2021, lost renomination to Trump-backed Letlow."},
+ ME:{held:"R",r:"tu",inc:"Susan Collins (R)",c:[["R","Susan Collins","Incumbent, seeking 6th term"],["D","Troy Jackson","Former state Senate president"]],why:"The only Republican defending a state Harris won in 2024. Collins has beaten every poll before; Jackson is running as a populist labor Democrat."},
+ MA:{held:"D",r:"sd",inc:"Ed Markey (D)",c:[["D","Ed Markey","Incumbent"],["R","John Deaton",""]],why:"Markey beat Rep. Seth Moulton by about 30 points in the September primary."},
+ MI:{held:"D",r:"tu",inc:"Open (Gary Peters retiring)",c:[["D","Abdul El-Sayed","Former public health official"],["R","Mike Rogers","Former U.S. Rep."]],why:"Democrats' most vulnerable seat. Rogers lost by less than a point in 2024; El-Sayed won a bruising progressive-vs-establishment primary."},
+ MN:{held:"D",r:"lnd",inc:"Open (Tina Smith retiring)",c:[["D","Peggy Flanagan","Lieutenant Governor"],["R","Michele Tafoya","Former sportscaster"]],why:"Cook nudged this toward the GOP on Oct. 20, but it remains Lean D."},
+ MS:{held:"R",r:"sr",inc:"Cindy Hyde-Smith (R)",c:[["R","Cindy Hyde-Smith","Incumbent"]],why:"Not expected to be competitive."},
+ MT:{held:"R",r:"lr",inc:"Open (Steve Daines withdrew at the filing deadline)",c:[["R","Kurt Alme","Former U.S. Attorney"],["D","Alani Bankhead",""],["I","Seth Bodnar","Independent, former Univ. of Montana president"]],why:"Daines pulled out minutes before filing closed and handed the race to Alme. Independent Seth Bodnar makes this a three-way race to watch."},
+ NE:{held:"R",r:"lnr",inc:"Pete Ricketts (R)",c:[["R","Pete Ricketts","Incumbent"],["I","Dan Osborn","Independent, union leader"]],why:"No Democrat on the ballot. Osborn came within 7 points of Deb Fischer in 2024 and is trying again."},
+ NH:{held:"D",r:"lnd",inc:"Open (Jeanne Shaheen retiring)",c:[["D","Chris Pappas","U.S. Rep."],["R","John E. Sununu","Former U.S. Senator"]],why:"Republicans landed a former senator, but Cook moved it from Toss Up to Lean D on Oct. 6."},
+ NJ:{held:"D",r:"sd",inc:"Cory Booker (D)",c:[["D","Cory Booker","Incumbent"]],why:"Not expected to be competitive."},
+ NM:{held:"D",r:"sd",inc:"Ben Ray Luján (D)",c:[["D","Ben Ray Luján","Incumbent"]],why:"Not expected to be competitive."},
+ NC:{held:"R",r:"ld",inc:"Open (Thom Tillis retiring)",c:[["D","Roy Cooper","Former Governor"],["R","Michael Whatley","Former RNC chair"]],why:"Democrats' likeliest pickup. Cooper, a two-term governor, has led all year; Cook moved it to Likely D on Oct. 6."},
+ OK:{held:"R",r:"sr",inc:"Open seat",c:[["R","Republican nominee","Chosen in the Aug. 25 runoff"]],why:"Safely Republican."},
+ OH:{held:"R",r:"tu",special:true,inc:"Jon Husted (R), appointed 2025",c:[["R","Jon Husted","Appointed incumbent"],["D","Sherrod Brown","Former U.S. Senator"]],why:"Special election for JD Vance's old seat. Brown, who lost by 3.5 points in 2024, is attempting a comeback."},
+ OR:{held:"D",r:"sd",inc:"Jeff Merkley (D)",c:[["D","Jeff Merkley","Incumbent"]],why:"Not expected to be competitive."},
+ RI:{held:"D",r:"sd",inc:"Jack Reed (D)",c:[["D","Jack Reed","Incumbent"]],why:"Not expected to be competitive."},
+ SC:{held:"R",r:"lnr",inc:"Darline Graham Nordone (R), appointed July 2026",c:[["R","Darline Graham Nordone","Appointed after Lindsey Graham's death"],["D","Annie Andrews","Pediatrician"]],why:"Sen. Lindsey Graham died suddenly in July. His sister was appointed and is on the ballot; Andrews has kept it within a few points."},
+ SD:{held:"R",r:"sr",inc:"Mike Rounds (R)",c:[["R","Mike Rounds","Incumbent"]],why:"Not expected to be competitive."},
+ TN:{held:"R",r:"sr",inc:"Bill Hagerty (R)",c:[["R","Bill Hagerty","Incumbent"]],why:"Not expected to be competitive."},
+ TX:{held:"R",r:"tu",inc:"John Cornyn (R), lost primary",c:[["R","Ken Paxton","Attorney General"],["D","James Talarico","State Rep."]],why:"Paxton ousted Cornyn in the primary, and Talarico has raised over $120 million. Cook moved Texas to Toss Up in August."},
+ VA:{held:"D",r:"sd",inc:"Mark Warner (D)",c:[["D","Mark Warner","Incumbent"]],why:"Not expected to be competitive."},
+ WV:{held:"R",r:"sr",inc:"Shelley Moore Capito (R)",c:[["R","Shelley Moore Capito","Incumbent"]],why:"Not expected to be competitive."},
+ WY:{held:"R",r:"sr",inc:"Open (Cynthia Lummis retiring)",c:[["R","Harriet Hageman","U.S. Rep."],["D","James Byrd",""]],why:"Open seat, safely Republican."}
+};
+
+/* House: top-tier competitive districts. */
+const HOUSE=[
+ ["AZ","AZ-1","R","tu","David Schweikert (R) seat",null,"One of the most Democratic-leaning seats the GOP holds."],
+ ["AZ","AZ-6","R","lnd","Juan Ciscomani (R)",null,"Moved from Toss Up to Lean D on Oct. 23."],
+ ["CA","CA-22","R","tu","David Valadao (R)",[["R","David Valadao"],["D","Randy Villegas"]],"Valadao has survived in a Biden-won Central Valley seat for years."],
+ ["CA","CA-13","D","lnd","Adam Gray (D)",null,"Gray won by fewer than 200 votes in 2024."],
+ ["CO","CO-8","R","lnd","Gabe Evans (R)",null,"Moved from Toss Up to Lean D on Oct. 23."],
+ ["CO","CO-5","R","tu","Jeff Crank (R)",[["R","Jeff Crank"],["D","Jessica Killin"]],"A late surprise: Colorado Springs seat moved from Lean R to Toss Up on Oct. 30."],
+ ["FL","FL-22","O","tu","Open (redrawn)",[["R","Casey Askar"],["D","Pia Dandiya"]],"Open seat under Florida's new map."],
+ ["IA","IA-1","R","lnd","Mariannette Miller-Meeks (R)",null,"Won by 799 votes in 2024. Moved to Lean D on Oct. 9."],
+ ["IA","IA-2","R","tu","Open (Ashley Hinson running for Senate)",[["R","Joe Mitchell"],["D","Lindsay James"]],"Open seat in northeast Iowa."],
+ ["IA","IA-3","R","lnd","Zach Nunn (R)",null,"Des Moines-area seat moved to Lean D on Oct. 9."],
+ ["KY","KY-6","R","tu","Open (Andy Barr running for Senate)",[["R","Ralph Alvarado"],["D","Zach Dembo"]],"Lexington-based seat moved from Lean R to Toss Up on Oct. 23."],
+ ["ME","ME-2","D","tu","Open (Jared Golden retiring)",[["R","Paul LePage"],["D","Democratic nominee"]],"Trump won this seat by 9 points. Former Gov. LePage is the GOP nominee."],
+ ["MI","MI-7","R","tu","Tom Barrett (R)",null,"Lansing-area seat; among the most expensive House races in the country."],
+ ["MI","MI-4","R","tu","Bill Huizenga (R)",null,"Southwest Michigan seat that shifted toward Democrats in October."],
+ ["MT","MT-1","O","lnr","Open",[["R","Aaron Flint"],["D","Sam Forstag"]],"Western Montana open seat; Forstag is a former smokejumper."],
+ ["NE","NE-2","R","ld","Open (Don Bacon retiring)",null,"Omaha seat Harris won; Democrats are favored to flip it."],
+ ["NJ","NJ-9","D","lnd","Nellie Pou (D)",null,"North Jersey seat that swung hard right in 2024."],
+ ["NY","NY-17","R","tu","Mike Lawler (R)",[["R","Mike Lawler"],["D","Cait Conley"]],"A Republican defending a Harris-won Hudson Valley seat."],
+ ["NC","NC-1","D","tu","Don Davis (D)",null,"Redrawn to be more Republican. Over $12 million in planned spending."],
+ ["OH","OH-9","D","tu","Marcy Kaptur (D)",[["D","Marcy Kaptur"],["R","Derek Merrin"]],"Rematch in a Toledo seat made redder by Ohio's new map."],
+ ["PA","PA-1","R","tu","Brian Fitzpatrick (R)",[["R","Brian Fitzpatrick"],["D","Bob Harvie"]],"Bucks County. Fitzpatrick always runs ahead of his party; moved to Toss Up Oct. 30."],
+ ["PA","PA-7","R","lnd","Ryan Mackenzie (R)",null,"Lehigh Valley seat moved to Lean D on Oct. 9."],
+ ["PA","PA-8","R","lnd","Rob Bresnahan (R)",null,"Scranton-area seat moved from Toss Up to Lean D on Oct. 30."],
+ ["PA","PA-10","R","lnd","Scott Perry (R)",null,"Harrisburg-area seat moved to Lean D on Oct. 9."],
+ ["SC","SC-1","O","tu","Open (Nancy Mace running for governor)",null,"Charleston-area seat moved from Lean R to Toss Up on Oct. 30."],
+ ["TX","TX-35","O","tu","Open (redrawn)",[["R","Carlos De La Cruz"],["D","Johnny Garcia"]],"Drawn for the GOP in the 2025 Texas remap, but moved to Toss Up on Oct. 23."],
+ ["VA","VA-1","R","tu","Rob Wittman (R)",[["R","Rob Wittman"],["D","Shannon Taylor"]],"Taylor is the Henrico County prosecutor."],
+ ["VA","VA-2","R","lnd","Jen Kiggans (R)",[["R","Jen Kiggans"],["D","Elaine Luria"]],"Rematch of 2022 in Virginia Beach. Moved to Lean D on Oct. 23."],
+ ["WA","WA-3","D","lnd","Marie Gluesenkamp Perez (D)",null,"A Democrat in a Trump-won southwest Washington seat."],
+ ["WI","WI-3","R","lnd","Derrick Van Orden (R)",null,"Western Wisconsin seat. Moved to Lean D on Oct. 23."]
+].map(([st,id,held,r,inc,c,why])=>({st,id,held,r,inc,c,why}));
+const REDRAWN=new Set(["TX","CA","OH","MO","NC","FL","UT"]);
+
+const isFlip=(held,r)=>{const l=lean(r);return l&&held!=="O"&&l!==held};
+const strength=r=>({tu:0,lnd:1,lnr:1,ld:2,lr:2,sd:3,sr:3})[r];
+
+let mode="senate", sel="ME", filt="all";
+try{const m=localStorage.getItem("mt26-mode");if(m==="house"||m==="senate")mode=m;}catch(e){}
+
+function houseForState(st){return HOUSE.filter(d=>d.st===st).sort((a,b)=>strength(a.r)-strength(b.r))}
+function stateClass(st){
+  if(mode==="senate"){const s=SENATE[st];return s?s.r:"none"}
+  const ds=houseForState(st); if(!ds.length) return "none";
+  return ds[0].r; // most competitive district sets the tile
+}
+
+const grid=document.getElementById("grid");
+function drawMap(){
+  grid.innerHTML="";
+  const cells={};for(const[st,[x,y]]of Object.entries(TILES))cells[y*12+x]=st;
+  for(let i=0;i<96;i++){
+    const st=cells[i];
+    if(!st){const d=document.createElement("div");grid.appendChild(d);continue}
+    const b=document.createElement("button");
+    const cls=stateClass(st);
+    b.className="tile c-"+cls+(st===sel?" sel":"");
+    b.dataset.st=st;
+    let sub="",flip=false,label=NAMES[st];
+    if(mode==="senate"){const s=SENATE[st];if(s){flip=isFlip(s.held,s.r);label+=": "+R[s.r]+(s.special?", special election":"")}else label+=": no Senate race";if(s&&s.special)sub="SP"}
+    else{const ds=houseForState(st);if(ds.length){sub=ds.length;flip=ds.some(d=>isFlip(d.held,d.r));label+=": "+ds.length+" competitive district"+(ds.length>1?"s":"")}else label+=": no top-tier House race"}
+    if(flip)b.classList.add("flip");
+    b.setAttribute("aria-label",label);
+    b.innerHTML=st+(sub!==""?`<small>${sub}</small>`:"");
+    b.addEventListener("click",()=>{sel=st;render()});
+    grid.appendChild(b);
+  }
+  document.getElementById("map-note").textContent= mode==="senate"
+    ? "35 seats are up: 33 regular races plus specials in Ohio and Florida (marked SP). Gray states have no Senate race this year."
+    : "Each tile takes the color of its most competitive district; the number is how many top-tier races it has. Only the ~30 districts most likely to decide control are shown.";
+  document.getElementById("legend-none").textContent= mode==="senate"?"No race":"No top-tier race";
+}
+
+const pillStyle=r=>`background:var(--${r});color:${["tu"].includes(r)?"var(--tu-ink)":["lnd","lnr"].includes(r)?"var(--ink)":"#fff"}`;
+function cand(c){return `<div class="cand"><span class="party p-${c[0]}">${c[0]}</span><div><b>${c[1]}</b>${c[2]?`<br><span>${c[2]}</span>`:""}</div></div>`}
+
+function drawCard(){
+  const card=document.getElementById("card"), name=NAMES[sel];
+  if(mode==="senate"){
+    const s=SENATE[sel];
+    if(!s){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No race</span></div><p class="empty">${name} has no Senate election in 2026. Its senators were last elected in 2022 or 2024.</p>`;return}
+    const flip=isFlip(s.held,s.r);
+    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">Senate${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}</span></div>
+      <dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
+      <div class="cands">${s.c.map(cand).join("")}</div>
+      <p class="why">${s.why}</p>`;
+  }else{
+    const ds=houseForState(sel);
+    const rd=REDRAWN.has(sel)?`<p class="empty">${name} is using a newly redrawn congressional map this year.</p>`:"";
+    if(!ds.length){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No top-tier race</span></div><p class="empty">None of ${name}'s districts are among the closest House races this year.</p>${rd}`;return}
+    card.innerHTML=`<div class="card-head"><div><div class="eyebrow">House · ${ds.length} competitive</div><h2 class="state-name">${name}</h2></div></div>${rd}
+      <div class="dlist">${ds.map(d=>`<div class="dist"><div class="dist-top"><span class="dist-id">${d.id}</span><span class="pill" style="${pillStyle(d.r)}">${R[d.r]}${isFlip(d.held,d.r)?" · flip":""}</span></div>
+        <p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
+        ${d.c?`<div class="cands">${d.c.map(cand).join("")}</div>`:""}
+        <p>${d.why}</p></div>`).join("")}</div>`;
+  }
+}
+
+function drawMath(){
+  const bar=document.getElementById("bar"),t=document.getElementById("math-title"),p=document.getElementById("math-text");
+  let segs=[],total,lk,mk,rk;
+  if(mode==="senate"){
+    const notUpD=34,notUpR=31,cnt={};ORDER.forEach(k=>cnt[k]=0);
+    Object.values(SENATE).forEach(s=>cnt[s.r]++);
+    const dBase=notUpD+cnt.sd+cnt.ld+cnt.lnd, rBase=notUpR+cnt.sr+cnt.lr+cnt.lnr;
+    total=100;
+    segs=[["sd",notUpD+cnt.sd,"D not up/solid"],["ld",cnt.ld],["lnd",cnt.lnd],["tu",cnt.tu],["lnr",cnt.lnr],["lr",cnt.lr],["sr",notUpR+cnt.sr]];
+    t.textContent="Senate: Democrats need a net gain of 4";
+    p.innerHTML=`Republicans hold <strong>53–47</strong>. With VP JD Vance breaking ties, Democrats need <strong>51</strong>. They lead or are safe in <strong>${dBase}</strong>; Republicans in <strong>${rBase}</strong>. That leaves <strong>${cnt.tu} Toss Ups</strong>, and Democrats would need ${Math.max(0,51-dBase)} of them.`;
+    lk=`D ${dBase}`;mk="51 for control";rk=`R ${rBase}`;
+  }else{
+    total=435;
+    // Cook (Oct. 23-30): 220 seats at least Lean D, 18 Toss Up, the rest at least Lean R.
+    const d=220,tu=18,r=435-d-tu;
+    segs=[["sd",d],["tu",tu],["sr",r]];
+    t.textContent="House: 218 seats for a majority";
+    p.innerHTML=`Republicans hold a narrow majority (about <strong>218–214</strong> with vacancies). Cook now has Democrats favored in <strong>220</strong> seats, with <strong>~18 Toss Ups</strong>, and projects Democrats ending with <strong>227–240</strong> seats.`;
+    lk="D 220 at least Lean";mk="218 to win";rk=`R ${r} at least Lean`;
+  }
+  bar.innerHTML=segs.map(([k,n])=>`<div class="${k} c-${k}" style="width:${n/total*100}%" title="${R[k]}: ${n}">${n/total>.035?n:""}</div>`).join("");
+  document.getElementById("key-l").textContent=lk;document.getElementById("key-m").textContent=mk;document.getElementById("key-r").textContent=rk;
+}
+
+function drawRows(){
+  let items=mode==="senate"
+    ? Object.entries(SENATE).filter(([,s])=>s.r!=="sd"&&s.r!=="sr").map(([st,s])=>({st,title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r)}))
+    : HOUSE.map(d=>({st:d.st,title:d.id,sub:d.c?d.c.map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r)}));
+  if(filt==="tu")items=items.filter(i=>i.r==="tu");
+  if(filt==="flip")items=items.filter(i=>i.flip);
+  items.sort((a,b)=>strength(a.r)-strength(b.r)||a.title.localeCompare(b.title));
+  const rows=document.getElementById("rows");
+  rows.innerHTML=items.length?"":`<p class="empty">No races match this filter.</p>`;
+  items.forEach(i=>{const b=document.createElement("button");b.className="row";
+    b.innerHTML=`<span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span>`;
+    b.addEventListener("click",()=>{sel=i.st;render();document.getElementById("card").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"})});
+    rows.appendChild(b)});
+}
+
+function render(){
+  document.getElementById("mode-senate").setAttribute("aria-pressed",mode==="senate");
+  document.getElementById("mode-house").setAttribute("aria-pressed",mode==="house");
+  drawMath();drawMap();drawCard();drawRows();
+}
+function setMode(m){mode=m;if(m==="house"&&!houseForState(sel).length)sel="PA";if(m==="senate"&&!SENATE[sel])sel="ME";try{localStorage.setItem("mt26-mode",m)}catch(e){}render()}
+document.getElementById("mode-senate").addEventListener("click",()=>setMode("senate"));
+document.getElementById("mode-house").addEventListener("click",()=>setMode("house"));
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{filt=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawRows()}));
+if(mode==="house")sel="PA";
+render();
+</script>
