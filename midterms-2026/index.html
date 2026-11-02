@@ -126,11 +126,22 @@ h3{font-family:var(--f-display);font-stretch:85%;font-weight:750;font-size:17px;
 .filters{display:flex;flex-wrap:wrap;gap:6px}
 .filters button{font:600 13px var(--f-body);border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--chip);color:var(--ink);border-color:var(--ink)}
-.rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px}
+.rows{display:grid;gap:6px}
+.acc{border:1px solid var(--line);border-radius:8px;background:var(--bg);overflow:hidden}
+.acc.open{border-color:var(--muted)}
+.acc .row{border:0;border-radius:0;width:100%}
+.acc-body{padding:4px 16px 16px calc(12px + 1.6em + 10px + 10px + 10px);display:grid;gap:12px}
+@media (max-width:560px){.acc-body{padding:4px 12px 14px}}
+.acc-body[hidden]{display:none}
+.acc-body .cands{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.chev{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:0 4px 4px 6px;transition:transform .15s ease}
+.acc.open .chev{transform:rotate(-135deg);margin-bottom:-4px}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
 .row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:10px 12px;cursor:pointer;font:inherit}
-.row:hover{border-color:var(--muted)}
+.row:hover{background:var(--chip)}
 .row .tag{width:10px;align-self:stretch;border-radius:3px}
-.row{grid-template-columns:auto auto minmax(0,1fr) auto}
+.row{grid-template-columns:auto auto minmax(0,1fr) auto auto}
+.row:focus-visible{outline-offset:-2px}
 .row .rk{font:600 13px var(--f-data);color:var(--muted);min-width:1.6em;text-align:right;font-variant-numeric:tabular-nums}
 .watch-sub{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
 .row .t{font-weight:650;font-size:14px}
@@ -459,26 +470,33 @@ const pillStyle=r=>`background:var(--${r});color:${["tu"].includes(r)?"var(--tu-
 function cand(c){return `<div class="cand"><span class="party p-${c[0]}">${c[0]}</span><div><b>${c[1]}</b>${c[2]?`<br><span>${c[2]}</span>`:""}</div></div>`}
 
 const sigBox=t=>t?`<p class="sig"><b>Why it matters</b>${t}</p>`:"";
+function statewideBody(s,key){
+  const flip=isFlip(s.held,s.r);
+  return `<dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
+      <div class="cands">${s.c.map(cand).join("")}</div>
+      <p class="why">${s.why}</p>${sigBox(SIG[mode][key])}${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
+}
+function districtBody(d){
+  return `<p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
+        ${d.c?`<div class="cands">${d.c.map(cand).join("")}</div>`:""}
+        <p class="why">${d.why}</p>${sigBox(SIG.house[d.id])}`;
+}
+let openKey=null;
 function drawCard(){
   const card=document.getElementById("card"), name=NAMES[sel];
   if(mode!=="house"){
     const s=SW()[sel];
     const none=mode==="gov"?`${name} has no governor's election in 2026.`:`${name} has no Senate election in 2026. Its senators were last elected in 2022 or 2024.`;
     if(!s){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No race</span></div><p class="empty">${none}</p>`;return}
-    const flip=isFlip(s.held,s.r);
     card.innerHTML=`<div class="card-head"><div><div class="eyebrow">${OFFICE()}${s.special?" · Special election":""}</div><h2 class="state-name">${name}</h2></div><span class="pill" style="${pillStyle(s.r)}">${R[s.r]}${s.est?"*":""}</span></div>
-      <dl class="kv"><dt>Seat now</dt><dd>${s.inc}</dd><dt>Held by</dt><dd>${s.held==="D"?"Democrats":"Republicans"}${flip?" · favored to flip":""}</dd></dl>
-      <div class="cands">${s.c.map(cand).join("")}</div>
-      <p class="why">${s.why}</p>${sigBox(SIG[mode][sel])}${s.est?`<p class="empty">* Rating estimated; no current Cook call was available.</p>`:""}`;
+      ${statewideBody(s,sel)}`;
   }else{
     const ds=houseForState(sel);
     const rd=REDRAWN.has(sel)?`<p class="empty">${name} is using a newly redrawn congressional map this year.</p>`:"";
     if(!ds.length){card.innerHTML=`<div class="card-head"><h2 class="state-name">${name}</h2><span class="pill" style="background:var(--none);color:var(--none-ink)">No top-tier race</span></div><p class="empty">None of ${name}'s districts are among the closest House races this year.</p>${rd}`;return}
     card.innerHTML=`<div class="card-head"><div><div class="eyebrow">House · ${ds.length} competitive</div><h2 class="state-name">${name}</h2></div></div>${rd}
       <div class="dlist">${ds.map(d=>`<div class="dist"><div class="dist-top"><span class="dist-id">${d.id}</span><span class="pill" style="${pillStyle(d.r)}">${R[d.r]}${isFlip(d.held,d.r)?" · flip":""}</span></div>
-        <p><span style="color:var(--muted)">Seat now:</span> <b>${d.inc}</b></p>
-        ${d.c?`<div class="cands">${d.c.map(cand).join("")}</div>`:""}
-        <p>${d.why}</p>${sigBox(SIG.house[d.id])}</div>`).join("")}</div>`;
+        ${districtBody(d)}</div>`).join("")}</div>`;
   }
 }
 
@@ -552,8 +570,8 @@ function closeness(held,r){
 function watchScore(kind,key,held,r){return (STAKES[kind][key]??(kind==="house"?3:1))*closeness(held,r)}
 function drawRows(){
   let items=mode!=="house"
-    ? Object.entries(SW()).map(([st,s])=>({st,title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r),score:watchScore(mode,st,s.held,s.r)}))
-    : HOUSE.map(d=>({st:d.st,title:d.id,sub:d.c?d.c.map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r),score:watchScore("house",d.id,d.held,d.r)}));
+    ? Object.entries(SW()).map(([st,s])=>({st,key:st,body:()=>statewideBody(s,st),title:NAMES[st]+(s.special?" (special)":""),sub:s.c.slice(0,2).map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "),r:s.r,flip:isFlip(s.held,s.r),score:watchScore(mode,st,s.held,s.r)}))
+    : HOUSE.map(d=>({st:d.st,key:d.id,body:()=>districtBody(d),title:d.id,sub:d.c?d.c.map(c=>c[1].split(" ").slice(-1)[0]+" ("+c[0]+")").join(" vs "):d.inc,r:d.r,flip:isFlip(d.held,d.r),score:watchScore("house",d.id,d.held,d.r)}));
   items=items.filter(i=>i.score>=1);
   items.sort((a,b)=>b.score-a.score||strength(a.r)-strength(b.r)||a.title.localeCompare(b.title));
   items.forEach((i,n)=>i.rank=n+1);
@@ -561,10 +579,21 @@ function drawRows(){
   if(filt==="flip")items=items.filter(i=>i.flip);
   const rows=document.getElementById("rows");
   rows.innerHTML=items.length?"":`<p class="empty">No races match this filter.</p>`;
-  items.forEach(i=>{const b=document.createElement("button");b.className="row";
-    b.innerHTML=`<span class="rk">${i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span>`;
-    b.addEventListener("click",()=>{sel=i.st;render();document.getElementById("card").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"})});
-    rows.appendChild(b)});
+  items.forEach(i=>{
+    const open=openKey===mode+":"+i.key, bid="acc-"+mode+"-"+i.key;
+    const wrap=document.createElement("div");wrap.className="acc"+(open?" open":"");
+    const b=document.createElement("button");b.className="row";b.id=bid+"-btn";
+    b.setAttribute("aria-expanded",open);b.setAttribute("aria-controls",bid);
+    b.innerHTML=`<span class="rk">${i.rank}</span><span class="tag c-${i.r}"></span><span style="min-width:0"><span class="t">${i.title}</span><br><span class="s">${i.sub}</span></span><span class="flipmark">${R[i.r]}${i.flip?"<br>flip":""}</span><span class="chev" aria-hidden="true"></span>`;
+    const body=document.createElement("div");body.className="acc-body";body.id=bid;body.setAttribute("role","region");body.setAttribute("aria-labelledby",b.id);
+    body.hidden=!open;if(open)body.innerHTML=i.body();
+    b.addEventListener("click",()=>{
+      openKey=open?null:mode+":"+i.key;
+      if(!open)sel=i.st;
+      drawMap();drawCard();drawRows();
+      document.getElementById(b.id)?.focus({preventScroll:true});
+    });
+    wrap.append(b,body);rows.appendChild(wrap)});
 }
 
 function render(){
