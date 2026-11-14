@@ -1,6 +1,38 @@
 {
- "updated": "2026-11-09T23:39:49Z",
+ "updated": "2026-11-14T19:38:28Z",
  "picks": [
+  {
+   "id": "movie-the-only-living-pickpocket-in-new-york",
+   "title": "The Only Living Pickpocket in New York",
+   "kind": "movie",
+   "year": 2025,
+   "host": "Lim",
+   "description": "A tight, moody crime thriller with John Turturro looking effortlessly cool as an aging pickpocket roaming New York.",
+   "image": "https://a.ltrbxd.com/resized/sm/upload/0e/eb/nv/t8/pick-0-600-0-900-crop.jpg?v=e4ffe8cc42",
+   "episode": "Club Kid and What’s Making Us Happy",
+   "episode_date": "2026-11-13",
+   "episode_url": "https://www.npr.org/2026/11/13/nx-s1-6037714/get-in-line-for-club-kid",
+   "imdb": "tt36482679",
+   "google_id": "/g/11xcsjh3j3",
+   "id_checked": "2026-11-14",
+   "id_version": 2
+  },
+  {
+   "id": "tv-invisible-boys",
+   "title": "Invisible Boys",
+   "kind": "tv",
+   "year": 2025,
+   "host": "Mitchell",
+   "description": "An Australian series about queer teenagers whose lives unravel after one is outed, set against the 2017 same-sex marriage vote.",
+   "image": "https://static.tvmaze.com/uploads/images/medium_portrait/554/1387140.jpg",
+   "episode": "Club Kid and What’s Making Us Happy",
+   "episode_date": "2026-11-13",
+   "episode_url": "https://www.npr.org/2026/11/13/nx-s1-6037714/get-in-line-for-club-kid",
+   "imdb": "tt29353885",
+   "google_id": "/g/11lw0cf4gm",
+   "id_checked": "2026-11-14",
+   "id_version": 2
+  },
   {
    "id": "movie-paralyzed-by-hope-the-maria-bamford-story",
    "title": "Paralyzed by Hope: The Maria Bamford Story",
@@ -14,7 +46,7 @@
    "episode_url": "https://www.npr.org/2026/10/30/nx-s1-6019428/war-is-a-little-trashy-and-very-delicious",
    "imdb": "tt39162810",
    "google_id": "",
-   "id_checked": "2026-11-07",
+   "id_checked": "2026-11-14",
    "id_version": 2
   },
   {
@@ -999,6 +1031,12 @@
    "status": "done",
    "title": "Wild Horse Nine and What’s Making Us Happy",
    "picks": 0,
+   "version": 2
+  },
+  "06e640e3-9e60-4737-a7fa-2a0f4dfefc48": {
+   "status": "done",
+   "title": "Club Kid and What’s Making Us Happy",
+   "picks": 2,
    "version": 2
   }
  }
