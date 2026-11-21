@@ -1,6 +1,22 @@
 {
- "updated": "2026-11-16T23:36:50Z",
+ "updated": "2026-11-21T20:43:26Z",
  "picks": [
+  {
+   "id": "tv-rivals",
+   "title": "Rivals",
+   "kind": "tv",
+   "year": 2024,
+   "host": "Lim",
+   "description": "She loves this smutty, colorful 1980s British drama about rival TV executives for its big hair, fun music, and scandalous affairs.",
+   "image": "https://static.tvmaze.com/uploads/images/medium_portrait/627/1567849.jpg",
+   "episode": "The Hunger Games: Sunrise on the Reaping and What’s Making Us Happy",
+   "episode_date": "2026-11-20",
+   "episode_url": "https://www.npr.org/2026/11/20/nx-s1-6047363/the-latest-hunger-games-prequel-gives-us-the-haymitch-backstory",
+   "imdb": "tt21906238",
+   "google_id": "",
+   "id_checked": "2026-11-21",
+   "id_version": 2
+  },
   {
    "id": "movie-the-only-living-pickpocket-in-new-york",
    "title": "The Only Living Pickpocket in New York",
@@ -46,7 +62,7 @@
    "episode_url": "https://www.npr.org/2026/10/30/nx-s1-6019428/war-is-a-little-trashy-and-very-delicious",
    "imdb": "tt39162810",
    "google_id": "",
-   "id_checked": "2026-11-14",
+   "id_checked": "2026-11-21",
    "id_version": 2
   },
   {
@@ -1037,6 +1053,12 @@
    "status": "done",
    "title": "Club Kid and What’s Making Us Happy",
    "picks": 2,
+   "version": 2
+  },
+  "408794f1-00a4-4966-bc07-2520d55b40ca": {
+   "status": "done",
+   "title": "The Hunger Games: Sunrise on the Reaping and What’s Making Us Happy",
+   "picks": 1,
    "version": 2
   }
  }
