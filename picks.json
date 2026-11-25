@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T01:58:03Z",
+ "updated": "2026-11-25T23:25:55Z",
  "picks": [
   {
    "id": "tv-rivals",
@@ -1059,6 +1059,12 @@
    "status": "done",
    "title": "The Hunger Games: Sunrise on the Reaping and What’s Making Us Happy",
    "picks": 1,
+   "version": 2
+  },
+  "e563bc3d-1404-4539-b7d3-d3d936bd894c": {
+   "status": "done",
+   "title": "Dig and What's Making Us Happy",
+   "picks": 0,
    "version": 2
   }
  }
